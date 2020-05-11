@@ -13,6 +13,9 @@ public class CreateUserDto {
         this.lastName = lastName;
     }
 
+    public CreateUserDto() {
+    }
+
     public String getUsername() {
         return username;
     }
