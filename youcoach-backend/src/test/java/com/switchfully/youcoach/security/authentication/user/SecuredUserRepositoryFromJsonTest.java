@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+/*
 class SecuredUserRepositoryFromJsonTest {
 
     @Test
@@ -18,3 +19,4 @@ class SecuredUserRepositoryFromJsonTest {
         Assertions.assertThat(securedUser.getPassword()).isEqualTo("password");
     }
 }
+*/
