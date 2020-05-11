@@ -3,20 +3,31 @@ package com.switchfully.youcoach.security.authentication.user;
 import com.switchfully.youcoach.security.authorization.Role;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "securedUser")
 public class SecuredUser {
 
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private long id;
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "password")
     private String password;
+
+    @ElementCollection
     private List<Role> roles;
 
-    public SecuredUser(Long id, String username, String password, List<Role> roles) {
-        this.id = id;
+    public SecuredUser(String username, String password) {
         this.username = username;
         this.password = password;
-        this.roles = roles;
+        this.roles = List.of(Role.STUDENT);
     }
 
     public SecuredUser() {
