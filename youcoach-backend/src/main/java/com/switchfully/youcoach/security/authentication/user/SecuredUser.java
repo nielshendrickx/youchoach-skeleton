@@ -4,7 +4,6 @@ import com.switchfully.youcoach.security.authorization.Role;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "securedUser")
@@ -21,13 +20,13 @@ public class SecuredUser {
     @Column(name = "password")
     private String password;
 
-    @ElementCollection
-    private List<Role> roles;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     public SecuredUser(String username, String password) {
         this.username = username;
         this.password = password;
-        this.roles = List.of(Role.STUDENT);
+        this.role = Role.STUDENT;
     }
 
     public SecuredUser() {
@@ -58,12 +57,8 @@ public class SecuredUser {
         this.id = id;
     }
 
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public Role getRole() {
+        return role;
     }
 
     @Override
