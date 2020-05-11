@@ -16,6 +16,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { FooterComponent } from './footer/footer.component';
+import { ProfileComponent } from './profile/profile.component';
+import { CoacheeNavBarComponent } from './coachee-nav-bar/coachee-nav-bar.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -27,7 +29,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginComponent,
     HelloWorldComponent,
     NavBarComponent,
-    FooterComponent
+    FooterComponent,
+    ProfileComponent,
+    CoacheeNavBarComponent
   ],
   imports: [
     BrowserModule,
