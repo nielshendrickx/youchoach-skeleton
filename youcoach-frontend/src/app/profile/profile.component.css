@@ -1,0 +1,14 @@
+#profileInfo {
+  width: 80%;
+  margin: auto;
+  background: #fafafa;
+  overflow: hidden;
+  padding: 15px;
+}
+
+.profileHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+

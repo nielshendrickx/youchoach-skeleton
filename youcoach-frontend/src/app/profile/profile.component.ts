@@ -12,8 +12,10 @@ export class ProfileComponent implements OnInit {
     private http: HttpClient) {
   }
 
-  private UserUrl='put url here';
+  profilePicture: any;
+  private UserUrl = '/users';
   ngOnInit(): void {
+    const profilePicture = 'https://pbs.twimg.com/profile_images/1095310629542551553/TgcAJvMn_400x400.jpg';
   }
 
 }
