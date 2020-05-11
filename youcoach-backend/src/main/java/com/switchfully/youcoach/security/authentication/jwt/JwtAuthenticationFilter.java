@@ -19,7 +19,7 @@ import java.util.Date;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private static final int TOKEN_TIME_TO_LIVE  = 3600000;
+    private static final int TOKEN_TIME_TO_LIVE = 3600000;
 
     private final AuthenticationManager authenticationManager;
     private final String jwtSecret;
