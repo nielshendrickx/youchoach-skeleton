@@ -22,12 +22,14 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              { "glob": "**/??.json",
+              {
+                "glob": "**/??.json",
                 "input": "./node_modules/youcoach-i18n/i18n/",
-                "output": "./assets/i18n/" }
+                "output": "./assets/i18n/"
+              }
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/custom-theme.scss",
               "src/styles.css"
             ],
             "scripts": []
@@ -90,9 +92,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              { "glob": "**/??.json",
+              {
+                "glob": "**/??.json",
                 "input": "./node_modules/youcoach-i18n/i18n/",
-                "output": "./assets/i18n/" }
+                "output": "./assets/i18n/"
+              }
             ],
             "styles": [
               "src/styles.css"
@@ -128,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "youcoach"
+  "defaultProject": "youcoach",
+  "cli": {
+    "analytics": "bacacff5-b950-4737-bb6a-2ed908a327cb"
+  }
 }
