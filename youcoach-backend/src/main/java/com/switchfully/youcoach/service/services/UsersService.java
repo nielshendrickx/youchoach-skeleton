@@ -23,7 +23,7 @@ public class UsersService {
         return userMapper.toDto(usersRepository.save(userMapper.toUser(newUser)));
     }
 
-    public void isEmailAvailable(String email) throws UsernameAlreadyRegisteredException {
+    public void isUsernameAvailable(String email) throws UsernameAlreadyRegisteredException {
         if (usersRepository.findByUsername(email) != null) {
             throw new UsernameAlreadyRegisteredException(email);
         }

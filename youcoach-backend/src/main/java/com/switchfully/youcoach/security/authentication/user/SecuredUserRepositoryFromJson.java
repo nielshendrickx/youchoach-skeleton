@@ -2,7 +2,6 @@ package com.switchfully.youcoach.security.authentication.user;
 
 import java.util.List;
 
-/*
 public class SecuredUserRepositoryFromJson implements SecuredUserRepository {
     private List<SecuredUser> securedUsers;
 
@@ -15,4 +14,3 @@ public class SecuredUserRepositoryFromJson implements SecuredUserRepository {
         return securedUsers.stream().filter(user -> user.getUsername().equals(username)).findFirst().orElse(null);
     }
 }
-*/
