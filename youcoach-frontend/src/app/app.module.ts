@@ -18,7 +18,9 @@ import {MatIconModule} from '@angular/material/icon';
 import { FooterComponent } from './footer/footer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CoacheeNavBarComponent } from './coachee-nav-bar/coachee-nav-bar.component';
-import {MatDividerModule} from "@angular/material/divider";
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import { HomeComponent } from './home/home.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -33,28 +35,30 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavBarComponent,
     FooterComponent,
     ProfileComponent,
-    CoacheeNavBarComponent
+    CoacheeNavBarComponent,
+    HomeComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    NgbModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'en',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatDividerModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        NgbModule,
+        TranslateModule.forRoot({
+            defaultLanguage: 'en',
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatDividerModule,
+        MatButtonModule
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true}
   ],
