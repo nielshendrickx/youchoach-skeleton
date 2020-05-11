@@ -2,6 +2,7 @@ package com.switchfully.youcoach.security.authentication.user;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -14,18 +15,24 @@ import java.util.stream.Collectors;
 @Configuration
 public class SecuredUserConfig {
 
-    private PasswordEncoder passwordEncoder;
+    private SecuredUserRepository securedUserRepository;
+    /*private PasswordEncoder passwordEncoder;
 
     public SecuredUserConfig(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
+    }*/
+
+    @Autowired
+    public SecuredUserConfig(SecuredUserRepository securedUserRepository) {
+        this.securedUserRepository = securedUserRepository;
     }
 
-    @Bean
+    /*    @Bean
     SecuredUserRepository securedUserRepository() {
         return new SecuredUserRepositoryFromJson(loadUsers());
-    }
+    }*/
 
-    private List<SecuredUser> loadUsers() {
+/*    private List<SecuredUser> loadUsers() {
         return readSecuredUsersFile().stream()
                 .peek(loadedUser -> loadedUser.encryptPassword(passwordEncoder))
                 .collect(Collectors.toList());
@@ -37,5 +44,5 @@ public class SecuredUserConfig {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 }

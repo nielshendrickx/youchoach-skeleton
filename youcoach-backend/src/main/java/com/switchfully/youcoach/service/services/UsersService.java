@@ -2,6 +2,8 @@ package com.switchfully.youcoach.service.services;
 
 import com.switchfully.youcoach.domain.exceptions.UsernameAlreadyRegisteredException;
 import com.switchfully.youcoach.domain.user.UsersRepository;
+import com.switchfully.youcoach.security.authentication.user.SecuredUser;
+import com.switchfully.youcoach.security.authentication.user.SecuredUserRepository;
 import com.switchfully.youcoach.service.dto.CreateUserDto;
 import com.switchfully.youcoach.service.dto.UserDto;
 import com.switchfully.youcoach.service.mappers.UserMapper;
@@ -11,11 +13,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class UsersService {
     private UsersRepository usersRepository;
+    private SecuredUserRepository securedUserRepository;
     private UserMapper userMapper;
 
     @Autowired
-    public UsersService(UsersRepository usersRepository, UserMapper userMapper) {
+    public UsersService(UsersRepository usersRepository, SecuredUserRepository securedUserRepository, UserMapper userMapper) {
         this.usersRepository = usersRepository;
+        this.securedUserRepository = securedUserRepository;
         this.userMapper = userMapper;
     }
 
@@ -24,7 +28,7 @@ public class UsersService {
     }
 
     public void isUsernameAvailable(String email) throws UsernameAlreadyRegisteredException {
-        if (usersRepository.findByUsername(email) != null) {
+        if (securedUserRepository.findByUsername(email) != null) {
             throw new UsernameAlreadyRegisteredException(email);
         }
     }
