@@ -1,6 +1,7 @@
 package com.switchfully.youcoach.service.services;
 
 import com.switchfully.youcoach.domain.exceptions.UsernameAlreadyRegisteredException;
+import com.switchfully.youcoach.domain.user.Users;
 import com.switchfully.youcoach.domain.user.UsersRepository;
 import com.switchfully.youcoach.security.authentication.user.SecuredUser;
 import com.switchfully.youcoach.security.authentication.user.SecuredUserRepository;
@@ -8,6 +9,7 @@ import com.switchfully.youcoach.service.dto.CreateUserDto;
 import com.switchfully.youcoach.service.dto.UserDto;
 import com.switchfully.youcoach.service.mappers.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,16 +17,20 @@ public class UsersService {
     private UsersRepository usersRepository;
     private SecuredUserRepository securedUserRepository;
     private UserMapper userMapper;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UsersService(UsersRepository usersRepository, SecuredUserRepository securedUserRepository, UserMapper userMapper) {
+    public UsersService(UsersRepository usersRepository, SecuredUserRepository securedUserRepository, UserMapper userMapper, PasswordEncoder passwordEncoder) {
         this.usersRepository = usersRepository;
         this.securedUserRepository = securedUserRepository;
         this.userMapper = userMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public UserDto register(CreateUserDto newUser) {
-        return userMapper.toDto(usersRepository.save(userMapper.toUser(newUser)));
+        SecuredUser securedUser = securedUserRepository.save(new SecuredUser(newUser.getUsername(), passwordEncoder.encode(newUser.getPassword())));
+        Users user = usersRepository.save(new Users(securedUser,newUser.getFirstName(), newUser.getLastName()));
+        return userMapper.toDto(user);
     }
 
     public void isUsernameAvailable(String email) throws UsernameAlreadyRegisteredException {

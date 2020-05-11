@@ -17,7 +17,8 @@ public class UserMapper {
     }
 
     public Users toUser(CreateUserDto createUserDto) {
-        return new Users(createUserDto.getUsername(), createUserDto.getPassword(), createUserDto.getFirstName(), createUserDto.getLastName());
+        SecuredUser securedUser = new SecuredUser(createUserDto.getUsername(), createUserDto.getPassword()); //TODO CLEANUP
+        return new Users(securedUser, createUserDto.getFirstName(), createUserDto.getLastName());
     }
 
     public Collection<UserDto> toDto (Collection <Users> usersCollection) {

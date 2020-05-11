@@ -32,7 +32,7 @@ public class UsersController {
     @ResponseStatus(HttpStatus.CREATED)
     public UserDto register(@RequestBody CreateUserDto newUser) {
         validateNewMember(newUser);
-        loggerUsers.info("Creating a new member");
+        loggerUsers.info("Creating a new user");
         return usersService.register(newUser);
     }
 

@@ -33,9 +33,13 @@ public class SecuredUserService implements UserDetailsService {
     }
 
     private List<SimpleGrantedAuthority> toAuthority(SecuredUser user) {
-        return user.getRoles().stream()
+        return List.of(new SimpleGrantedAuthority(user.getRole().toString()));
+    }
+
+/*    private List<SimpleGrantedAuthority> toAuthority(SecuredUser user) {
+        return user.getRole().stream()
                 .map(Role::toString)
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
-    }
+    }*/
 }

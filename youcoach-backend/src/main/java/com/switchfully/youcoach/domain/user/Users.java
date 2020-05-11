@@ -24,8 +24,8 @@ public class Users {
     @Column(name = "lastName")
     private String lastName;
 
-    public Users(String username, String password, String firstName, String lastName) {
-        SecuredUser securedUser = new SecuredUser(username, password);
+    public Users(SecuredUser securedUser, String firstName, String lastName) {
+        this.securedUser = securedUser;
         this.firstName = firstName;
         this.lastName = lastName;
     }
