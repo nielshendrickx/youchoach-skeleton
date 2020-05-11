@@ -1,5 +1,6 @@
 package com.switchfully.youcoach.security.authentication.user;
 
+import com.switchfully.youcoach.domain.user.Users;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
@@ -10,10 +11,10 @@ class SecuredUserRepositoryFromJsonTest {
 
     @Test
     void name() {
-        SecuredUserRepositoryFromJson securedUserRepositoryFromJson = new SecuredUserRepositoryFromJson(Lists.newArrayList(new SecuredUser(1L, "username", "password", new ArrayList<>())));
+        SecuredUserRepositoryFromJson securedUserRepositoryFromJson = new SecuredUserRepositoryFromJson(Lists.newArrayList(new SecuredUser("username", "password")));
 
         SecuredUser securedUser = securedUserRepositoryFromJson.findByUsername("username");
 
-        Assertions.assertThat(securedUser.getId()).isEqualTo(1);
+        Assertions.assertThat(securedUser.getPassword()).isEqualTo("password");
     }
 }
