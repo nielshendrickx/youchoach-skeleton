@@ -13,6 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
 @Service
 @Transactional
 public class UsersService {
@@ -29,8 +31,9 @@ public class UsersService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public UserDto getUserByUsername (String username) {
-        return userMapper.toDto(usersRepository.findBySecuredUser_Username(username));
+    public UserDto getUserById(UUID id) {
+        System.out.println(usersRepository.findBySecuredUser_Id(id));
+        return userMapper.toDto(usersRepository.findBySecuredUser_Id(id));
     }
 
     public UserDto register(CreateUserDto newUser) {

@@ -24,9 +24,7 @@ public class SecuredUserService implements UserDetailsService {
     }
 
     public SecuredUser getUserByUsername(String userName) {
-        System.out.println(userName);
         SecuredUser user = securedUserRepository.findByUsername(userName);
-        System.out.println(user);
         if (user == null) {
             throw new UsernameNotFoundException(userName);
         }

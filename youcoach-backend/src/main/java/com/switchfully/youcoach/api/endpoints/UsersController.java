@@ -1,6 +1,5 @@
 package com.switchfully.youcoach.api.endpoints;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import com.switchfully.youcoach.service.dto.CreateUserDto;
 import com.switchfully.youcoach.service.dto.UserDto;
 import com.switchfully.youcoach.service.services.UsersService;
@@ -9,10 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
+import java.util.UUID;
 
 import static com.switchfully.youcoach.api.validation.Validation.isValidEmailAddress;
 import static com.switchfully.youcoach.api.validation.Validation.isValidPassword;
@@ -29,12 +27,12 @@ public class UsersController {
         this.usersService = usersService;
     }
 
-    @GetMapping(produces = "application/json")
+    @GetMapping(produces = "application/json", path = "/{id}")
     @ApiOperation(value = "Get a user by username", notes = "A user will be returned", response = UserDto.class)
     @ResponseStatus(HttpStatus.OK)
-    public UserDto getUserByUsername(@RequestBody String username) {
+    public UserDto getUserByUsername(@PathVariable UUID id) {
         loggerUsers.info("Returning a user");
-        return usersService.getUserByUsername(username);
+        return usersService.getUserById(id);
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
