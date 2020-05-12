@@ -19,7 +19,8 @@ import {CoacheeNavBarComponent} from './coachee-nav-bar/coachee-nav-bar.componen
 import {HomeComponent} from './home/home.component';
 import {RegisterComponent} from './register/register.component';
 import {MaterialModule} from './material/material.module';
-import { SignInComponent } from './sign-in/sign-in.component';
+import {SignInComponent} from './sign-in/sign-in.component';
+import {UserComponent} from './user/user.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -37,7 +38,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoacheeNavBarComponent,
     HomeComponent,
     RegisterComponent,
-    SignInComponent
+    SignInComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

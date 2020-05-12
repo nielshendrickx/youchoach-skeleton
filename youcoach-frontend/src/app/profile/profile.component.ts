@@ -1,9 +1,8 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
-import {UserComponent} from '../user/user.component';
 import {User} from '../user';
 import {ActivatedRoute} from '@angular/router';
+import {AuthenticationService} from '../authentication/authentication.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,6 +14,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private authenticationService: AuthenticationService,
     private route: ActivatedRoute) {
   }
 
@@ -23,10 +23,10 @@ export class ProfileComponent implements OnInit {
   }
 
   getUser(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    // todo: make id flexible
+    const id = '96645fe8-32ba-46c4-8726-9dd6f5a52827';
+    // const id = this.authenticationService.getUsername();
     this.userService.getUserById(String(id))
       .subscribe(user => this.user = user);
   }
-
-
 }
