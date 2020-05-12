@@ -1,10 +1,12 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
   <mat-toolbar-row>
     <span>You-Coach</span>
-    <span class="mainNavButtons">Home</span>
-    <span class="mainNavButtons">About us</span>
-    <span class="mainNavButtons">Contact</span>
-    <span class="mainNavButtons">Sign out</span>
+    <span class="spacer"></span>
+    <span><a routerLink="" translate>menu.link.home</a></span>
+    <span translate>menu.link.about-us</span>
+    <span translate>menu.link.contact</span>
+    <button mat-raised-button color="primary"><span translate>menu.button.sign-in</span><mat-icon>person</mat-icon></button>
+    <button mat-raised-button color="accent"><span translate>menu.button.register</span><mat-icon>person_add</mat-icon></button>
   </mat-toolbar-row>
 </mat-toolbar>
 

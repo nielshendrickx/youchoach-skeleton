@@ -11,13 +11,15 @@ import com.switchfully.youcoach.service.mappers.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class UsersService {
-    private UsersRepository usersRepository;
-    private SecuredUserRepository securedUserRepository;
-    private UserMapper userMapper;
-    private PasswordEncoder passwordEncoder;
+    private final UsersRepository usersRepository;
+    private final SecuredUserRepository securedUserRepository;
+    private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
     public UsersService(UsersRepository usersRepository, SecuredUserRepository securedUserRepository, UserMapper userMapper, PasswordEncoder passwordEncoder) {

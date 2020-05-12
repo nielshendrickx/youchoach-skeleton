@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   username;
   language = 'en';
 
-  constructor(private authenticationService: AuthenticationService, private translate: TranslateService) {
+  constructor(private authenticationService: AuthenticationService, public translate: TranslateService) {
   }
 
   ngOnInit(): void {

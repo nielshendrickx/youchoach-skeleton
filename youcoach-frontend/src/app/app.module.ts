@@ -11,8 +11,8 @@ import {AuthenticationInterceptor} from './authentication/authentication.interce
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NavBarComponent} from './nav-bar/nav-bar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { FooterComponent } from './footer/footer.component';
@@ -20,6 +20,12 @@ import { ProfileComponent } from './profile/profile.component';
 import { CoacheeNavBarComponent } from './coachee-nav-bar/coachee-nav-bar.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { UserComponent } from './user/user.component';
+import {FooterComponent} from './footer/footer.component';
+import {ProfileComponent} from './profile/profile.component';
+import {CoacheeNavBarComponent} from './coachee-nav-bar/coachee-nav-bar.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import {HomeComponent} from './home/home.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -34,6 +40,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavBarComponent,
     FooterComponent,
     ProfileComponent,
+    CoacheeNavBarComponent,
+    HomeComponent
     CoacheeNavBarComponent,
     UserComponent
   ],
@@ -55,7 +63,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    MatButtonModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true}
