@@ -2,9 +2,11 @@ package com.switchfully.youcoach.security.authentication.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.switchfully.youcoach.security.authentication.user.SecuredUser;
+import com.switchfully.youcoach.security.authentication.user.SecuredUserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,13 +22,15 @@ import java.util.Date;
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private static final int TOKEN_TIME_TO_LIVE = 3600000;
+    private SecuredUserService securedUserService;
 
     private final AuthenticationManager authenticationManager;
     private final String jwtSecret;
 
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager, String jwtSecret) {
+    public JwtAuthenticationFilter(AuthenticationManager authenticationManager, String jwtSecret, SecuredUserService securedUserService) {
         this.authenticationManager = authenticationManager;
         this.jwtSecret = jwtSecret;
+        this.securedUserService = securedUserService;
 
         setFilterProcessesUrl("/login");
     }
@@ -54,7 +58,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .setHeaderParam("typ", "JWT")
                 .setIssuer("secure-api")
                 .setAudience("secure-app")
-                .setSubject(authentication.getName())
+                .setSubject(securedUserService.getUserByUsername(authentication.getName()).getId().toString())
                 .setExpiration(new Date(new Date().getTime() + TOKEN_TIME_TO_LIVE))
                 .claim("roles", authentication.getAuthorities())
                 .compact();
