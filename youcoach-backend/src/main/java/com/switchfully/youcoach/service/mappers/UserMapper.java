@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 public class UserMapper {
 
     public UserDto toDto(Users users) {
+        System.out.println(users);
         return new UserDto(users.getSecuredUser().getUsername(), users.getFirstName(), users.getLastName());
     }
 
@@ -24,6 +25,4 @@ public class UserMapper {
     public Collection<UserDto> toDto (Collection <Users> usersCollection) {
         return  usersCollection.stream().map(this::toDto).collect(Collectors.toList());
     }
-
-
 }
