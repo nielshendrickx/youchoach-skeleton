@@ -21,10 +21,10 @@
       <mat-form-field class="full-screen-input">
         <mat-label translate>register.label.email</mat-label>
         <label for="username">
-          <input id="username" matInput type="email" formControlName="username">
+          <input id="username" matInput type="email" formControlName="username" placeholder="{{'register.label.email-placeholder' | translate}}">
         </label>
         <mat-error *ngIf="userForm.get('username').hasError('required')">Email is required</mat-error>
-        <mat-error *ngIf="userForm.get('username').hasError('email')">Please enter a valid email address</mat-error>
+        <mat-error *ngIf="userForm.get('username').hasError('pattern')" translate>register.message.email-wrong-format</mat-error>
       </mat-form-field>
       <mat-form-field class="full-screen-input">
         <mat-label translate>register.label.password</mat-label>
@@ -32,7 +32,7 @@
           <input id="password" matInput type="password" formControlName="password">
         </label>
         <mat-error *ngIf="userForm.get('password').hasError('required')">Password is required</mat-error>
-        <mat-error *ngIf="userForm.get('password').hasError('pattern')">Password format is not correct</mat-error>
+        <mat-error *ngIf="userForm.get('password').hasError('pattern')" translate>register.message.password-policy</mat-error>
       </mat-form-field>
       <mat-form-field class="full-screen-input">
         <mat-label translate>register.label.password2</mat-label>
@@ -40,7 +40,7 @@
           <input id="passwordAgain" matInput type="password" formControlName="passwordAgain">
         </label>
         <mat-error *ngIf="userForm.get('passwordAgain').hasError('required')">Password is required</mat-error>
-        <mat-error *ngIf="userForm.get('passwordAgain').hasError('pattern')">Password format is not correct</mat-error>
+        <mat-error *ngIf="userForm.get('passwordAgain').hasError('pattern')" translate>register.message.password-match</mat-error>
       </mat-form-field>
       <div class="button-container">
         <button mat-raised-button color="primary" (click)="registerUser()" [disabled]="userForm.invalid"><span translate>menu.button.register</span>
