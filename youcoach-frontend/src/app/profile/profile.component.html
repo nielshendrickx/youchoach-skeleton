@@ -1,24 +1,33 @@
-
 <div id="profileInfo" *ngIf="user">
   <div class="profileHeader">
     <h1>Profile Information</h1>
     <img src="assets/editProfileButton.png">
   </div>
   <mat-divider></mat-divider>
-  <div>
-    <span translate>profile-information.label.first-name</span>
-    <span>{{user.firstName}}</span>
+
+
+  <div class="profileItems">
+    <div class="profileImage">
+      <img src="https://pbs.twimg.com/profile_images/1095310629542551553/TgcAJvMn_400x400.jpg" height="200">
+    </div>
+    <div class="profileInfoItem">
+      <span class="itemName" translate>profile-information.label.first-name</span>
+      <span class="itemContent">{{user.firstName}}</span>
+      <span></span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="profileInfoItem">
+      <span class="itemName" translate>profile-information.label.last-name</span>
+      <span class="itemContent">{{user.lastName}}</span>
+      <span></span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="profileInfoItem">
+      <span class="itemName" translate>profile-information.label.email</span>
+      <span class="itemContent">{{user.username}}</span>
+      <span></span>
+    </div>
+    <mat-divider></mat-divider>
   </div>
-  <mat-divider></mat-divider>
-  <div>
-    <span translate>profile-information.label.last-name</span>
-    <span>{{user.lastName}}</span>
-  </div>
-  <mat-divider></mat-divider>
-  <div>
-    <span translate>profile-information.label.email</span>
-    <span>{{user.username}}</span>
-  </div>
-  <mat-divider></mat-divider>
 </div>
 
