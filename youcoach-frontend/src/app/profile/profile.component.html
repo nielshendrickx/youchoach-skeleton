@@ -1,19 +1,23 @@
-<img [src]="profilePicture"/>
 <div id="profileInfo">
   <div class="profileHeader">
     <h1>Profile Information</h1>
     <img src="assets/editProfileButton.png">
   </div>
   <mat-divider></mat-divider>
-  <div>First name</div>
+  <div>
+    <span>First name </span>
+    <span>{{user.firstName}}</span>
+  </div>
   <mat-divider></mat-divider>
-  <div>Last name</div>
+  <div>
+    <span>Last name </span>
+    <span>{{user.lastName}}</span>
+  </div>
   <mat-divider></mat-divider>
-  <div>Email</div>
-  <mat-divider></mat-divider>
-  <div>Class</div>
-  <mat-divider></mat-divider>
-  <div>You-coach role</div>
+  <div>
+    <span>Email</span>
+    <span>{{user.email}}</span>
+  </div>
   <mat-divider></mat-divider>
 </div>
 

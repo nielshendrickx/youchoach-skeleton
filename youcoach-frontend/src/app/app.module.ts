@@ -18,7 +18,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { FooterComponent } from './footer/footer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CoacheeNavBarComponent } from './coachee-nav-bar/coachee-nav-bar.component';
-import {MatDividerModule} from "@angular/material/divider";
+import {MatDividerModule} from '@angular/material/divider';
+import { UserComponent } from './user/user.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -33,7 +34,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavBarComponent,
     FooterComponent,
     ProfileComponent,
-    CoacheeNavBarComponent
+    CoacheeNavBarComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
