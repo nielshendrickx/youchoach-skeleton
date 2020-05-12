@@ -19,8 +19,7 @@ class UsersServiceTest {
     @Test
     void registerUser_givenCreateUserDto_thenUserDtoIsReturned() {
         // Given
-        CreateUserDto createUserDto = new CreateUserDto("test@gmail.com", "password", "first name", "last name");
-        // When
+        CreateUserDto createUserDto = new CreateUserDto("test@gmail.com", "Password1", "first name", "last name", "Password1");        // When
         UserDto userDto = usersService.register(createUserDto);
         // Then
         assertThat(userDto.getFirstName()).isEqualTo(createUserDto.getFirstName());
@@ -31,8 +30,7 @@ class UsersServiceTest {
     @Test
     void isUsernameAvailable_givenUserNameThatAlreadyExists_thenThrowUsernameAlreadyRegisteredException() {
         // Given
-        CreateUserDto createUserDto = new CreateUserDto("test@gmail.com", "password", "first name", "last name");
-        usersService.register(createUserDto);
+        CreateUserDto createUserDto = new CreateUserDto("test@gmail.com", "Password1", "first name", "last name", "Password1");        usersService.register(createUserDto);
         // When
         // Then
         assertThatThrownBy(()-> usersService.isUsernameAvailable(createUserDto.getUsername())).isInstanceOf(UsernameAlreadyRegisteredException.class);
