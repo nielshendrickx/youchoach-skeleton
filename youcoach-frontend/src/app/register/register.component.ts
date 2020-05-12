@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {environment} from '../../environments/environment';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-register',
@@ -18,10 +19,16 @@ export class RegisterComponent implements OnInit {
     passwordAgain: new FormControl('', Validators.required),
   });
 
-  constructor() {
+  constructor(
+    private userService: UserService
+  ) {
   }
 
   ngOnInit(): void {
+  }
+
+  registerUser(): void{
+
   }
 
 }
