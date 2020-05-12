@@ -2,6 +2,10 @@
   background-color: white;
 }
 
+.mat-toolbar-row{
+  flex-wrap: wrap;
+}
+
 .mat-toolbar-row span{
   margin: 0 10px;
 }
