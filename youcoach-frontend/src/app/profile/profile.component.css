@@ -11,4 +11,28 @@
   justify-content: space-between;
 }
 
+.profileItems {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileInfoItem {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.itemName{
+  font-weight: bold;
+}
+
+/*.profileImage {*/
+/*  display: inline-block;*/
+/*}*/
+
+
+
+
+
 
