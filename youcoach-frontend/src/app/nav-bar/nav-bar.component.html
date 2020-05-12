@@ -5,8 +5,20 @@
     <span><a routerLink="" translate>menu.link.home</a></span>
     <span translate>menu.link.about-us</span>
     <span translate>menu.link.contact</span>
-    <button mat-raised-button color="primary" (click)="goToSignIn()"><span translate>menu.button.sign-in</span><mat-icon>person</mat-icon></button>
-    <button mat-raised-button color="accent" (click)="goToRegister()"><span translate>menu.button.register</span><mat-icon>person_add</mat-icon></button>
+    <div *ngIf="loggedIn$ | async; else elseBlock">
+      <button mat-raised-button class="sign-out-button" (click)="signOut()"><span translate>sign out</span>
+        <mat-icon>person</mat-icon>
+      </button>
+    </div>
+    <ng-template #elseBlock>
+      <button mat-raised-button color="primary" (click)="goToSignIn()"><span translate>menu.button.sign-in</span>
+        <mat-icon>person</mat-icon>
+      </button>
+      <button mat-raised-button color="accent" (click)="goToRegister()"><span translate>menu.button.register</span>
+        <mat-icon>person_add</mat-icon>
+      </button>
+    </ng-template>
   </mat-toolbar-row>
 </mat-toolbar>
+
 
