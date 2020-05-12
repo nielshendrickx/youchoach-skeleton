@@ -12,12 +12,12 @@ export class RegisterComponent implements OnInit {
   private url = `${environment.backendUrl}/users`;
 
   userForm = new FormGroup({
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
-    username: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required),
-    passwordAgain: new FormControl('', Validators.required),
-  });
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      username: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}')]),
+      passwordAgain: new FormControl('', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}')]),
+    });
 
   constructor(
     private userService: UserService
@@ -28,7 +28,6 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(): void {
-    this.userService.registerUser(this.userForm.value);
-    console.log(this.userForm.value);
+    this.userService.registerUser(this.userForm.value).subscribe();
   }
 }

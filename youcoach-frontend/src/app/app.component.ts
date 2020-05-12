@@ -15,9 +15,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.username = this.authenticationService.getUsername();
+    this.username = this.authenticationService.getUserId();
     this.authenticationService.userLoggedIn$.subscribe(_ => {
-      this.username = this.authenticationService.getUsername();
+      this.username = this.authenticationService.getUserId();
     });
   }
 

@@ -5,7 +5,6 @@ import {HelloWorldComponent} from './hello-world/hello-world.component';
 import {ProfileComponent} from './profile/profile.component';
 import {HomeComponent} from './home/home.component';
 import {RegisterComponent} from './register/register.component';
-import {CoacheeNavBarComponent} from './coachee-nav-bar/coachee-nav-bar.component';
 import {SignInComponent} from './sign-in/sign-in.component';
 
 const routes: Routes = [
@@ -14,7 +13,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'hello-world', component: HelloWorldComponent},
   {path: 'sign-in', component: SignInComponent},
-  {path: 'my-profile', component: ProfileComponent}
+  {path: 'users/:id', component: ProfileComponent}
 ];
 
 @NgModule({

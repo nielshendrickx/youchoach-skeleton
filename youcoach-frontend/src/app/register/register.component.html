@@ -32,6 +32,7 @@
           <input id="password" matInput type="password" formControlName="password">
         </label>
         <mat-error *ngIf="userForm.get('password').hasError('required')">Password is required</mat-error>
+        <mat-error *ngIf="userForm.get('password').hasError('pattern')">Password format is not correct</mat-error>
       </mat-form-field>
       <mat-form-field class="full-screen-input">
         <mat-label translate>register.label.password2</mat-label>
@@ -39,9 +40,10 @@
           <input id="passwordAgain" matInput type="password" formControlName="passwordAgain">
         </label>
         <mat-error *ngIf="userForm.get('passwordAgain').hasError('required')">Password is required</mat-error>
+        <mat-error *ngIf="userForm.get('passwordAgain').hasError('pattern')">Password format is not correct</mat-error>
       </mat-form-field>
       <div class="button-container">
-        <button mat-raised-button color="primary" (click)="registerUser()"><span translate>menu.button.register</span>
+        <button mat-raised-button color="primary" (click)="registerUser()" [disabled]="userForm.invalid"><span translate>menu.button.register</span>
           <mat-icon>send</mat-icon>
         </button>
       </div>

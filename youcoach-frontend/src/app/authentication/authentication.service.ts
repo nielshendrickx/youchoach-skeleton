@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AuthenticationHttpService} from './authentication.http.service';
 import {tap} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class AuthenticationService {
     return this.loginService.login(loginData)
       .pipe(tap(response => {
         sessionStorage.setItem(this.tokenKey, response.headers.get('Authorization').replace('Bearer', '').trim());
-        sessionStorage.setItem(this.usernameKey, loginData.username);
+        sessionStorage.setItem(this.usernameKey, this.getUserIdFromResponse(response));
         this.userLoggedInSource.next(true);
       }));
   }
@@ -29,7 +30,7 @@ export class AuthenticationService {
     return sessionStorage.getItem(this.tokenKey);
   }
 
-  getUsername() {
+  getUserId() {
     return sessionStorage.getItem(this.usernameKey);
   }
 
@@ -42,4 +43,10 @@ export class AuthenticationService {
     sessionStorage.removeItem(this.usernameKey);
     this.userLoggedInSource.next(false);
   }
+
+  private getUserIdFromResponse(response: any): string {
+    const decoded = jwt_decode(response.headers.get('Authorization').replace('Bearer', '').trim());
+    return decoded.sub;
+  }
+
 }

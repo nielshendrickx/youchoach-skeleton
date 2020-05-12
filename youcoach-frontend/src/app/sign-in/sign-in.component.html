@@ -1,1 +1,30 @@
-<p>sign-in works!</p>
+<div class="container">
+  <h1 translate>sign-in.title</h1>
+  <mat-card>
+    <form class="form-container" [formGroup]="signInForm">
+      <mat-form-field class="full-screen-input">
+        <mat-label translate>sign-in.label.email</mat-label>
+        <label for="username">
+          <input id="username" matInput type="email" formControlName="username">
+        </label>
+        <mat-error *ngIf="signInForm.get('username').hasError('required')">Email is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-screen-input">
+        <mat-label translate>sign-in.label.password</mat-label>
+        <label for="password">
+          <input id="password" matInput type="password" formControlName="password">
+        </label>
+        <mat-error *ngIf="signInForm.get('password').hasError('required')">Password is required</mat-error>
+      </mat-form-field>
+      <div class="button-container">
+        <button mat-raised-button color="accent" class="reset-password-button" (click)="resetPassword()"><span translate>sign-in.button.reset-password</span>
+          <mat-icon>loop</mat-icon>
+        </button>
+        <button mat-raised-button color="primary" (click)="signIn()"><span translate>sign-in.button.sign-in</span>
+          <mat-icon>send</mat-icon>
+        </button>
+      </div>
+    </form>
+    <div class="mat-error" *ngIf="error" translate>sign-in.message.login-failed</div>
+  </mat-card>
+</div>

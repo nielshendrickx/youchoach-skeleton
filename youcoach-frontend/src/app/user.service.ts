@@ -21,14 +21,14 @@ export class UserService {
 
   getUserById(id: string): Observable<User> {
     const UserUrl = `${this.UsersUrl}/${id}`;
-    return this.http.get<User>(UserUrl);
+    return this.http.get<User>(UserUrl)
+      .pipe(catchError(this.handleError<any>('getUserById')));
   }
 
   /** POST: add a new user to the server */
   registerUser(user: User): Observable<User> {
-    console.log(user);
-    console.log(this.UsersUrl);
-    return this.http.post<User>(this.UsersUrl, user, this.httpOptions);
+    return this.http.post<User>(this.UsersUrl, user, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('registerUser')));
   }
 
   /**
