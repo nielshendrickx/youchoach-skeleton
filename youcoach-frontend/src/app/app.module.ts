@@ -15,15 +15,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NavBarComponent} from './nav-bar/nav-bar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
-import { FooterComponent } from './footer/footer.component';
-import { ProfileComponent } from './profile/profile.component';
-import { CoacheeNavBarComponent } from './coachee-nav-bar/coachee-nav-bar.component';
+import {FooterComponent } from './footer/footer.component';
+import {ProfileComponent } from './profile/profile.component';
+import {CoacheeNavBarComponent } from './coachee-nav-bar/coachee-nav-bar.component';
 import {MatDividerModule} from '@angular/material/divider';
-import { UserComponent } from './user/user.component';
-import {FooterComponent} from './footer/footer.component';
-import {ProfileComponent} from './profile/profile.component';
-import {CoacheeNavBarComponent} from './coachee-nav-bar/coachee-nav-bar.component';
-import {MatDividerModule} from '@angular/material/divider';
+import {UserComponent } from './user/user.component';
 import {MatButtonModule} from '@angular/material/button';
 import {HomeComponent} from './home/home.component';
 
@@ -41,8 +37,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     ProfileComponent,
     CoacheeNavBarComponent,
-    HomeComponent
-    CoacheeNavBarComponent,
+    HomeComponent,
     UserComponent
   ],
   imports: [
