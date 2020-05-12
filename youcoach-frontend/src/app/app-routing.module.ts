@@ -4,9 +4,11 @@ import {LoginComponent} from './login/login.component';
 import {HelloWorldComponent} from './hello-world/hello-world.component';
 import {ProfileComponent} from './profile/profile.component';
 import {HomeComponent} from './home/home.component';
+import {RegisterComponent} from './register/register.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'hello-world', component: HelloWorldComponent},
   {path: 'my-profile', component: ProfileComponent}

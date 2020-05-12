@@ -13,14 +13,12 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NavBarComponent} from './nav-bar/nav-bar.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
 import {FooterComponent} from './footer/footer.component';
 import {ProfileComponent} from './profile/profile.component';
 import {CoacheeNavBarComponent} from './coachee-nav-bar/coachee-nav-bar.component';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatButtonModule} from '@angular/material/button';
 import {HomeComponent} from './home/home.component';
+import {RegisterComponent} from './register/register.component';
+import {MaterialModule} from './material/material.module';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -36,7 +34,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     ProfileComponent,
     CoacheeNavBarComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -54,10 +53,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatDividerModule,
-    MatButtonModule
+    MaterialModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true}

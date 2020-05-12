@@ -1,0 +1,50 @@
+<div class="container">
+  <h1 translate>register.title</h1>
+  <mat-card>
+    <form [formGroup]="userForm" class="form-container">
+      <div class="row-container">
+        <mat-form-field class="split-screen-input" style="flex: 1">
+          <mat-label translate>register.label.first-name</mat-label>
+          <label for="firstName">
+            <input id="firstName" matInput type="text" formControlName="firstName">
+          </label>
+          <mat-error *ngIf="userForm.get('firstName').hasError('required')">First name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field style="flex: 1">
+          <mat-label translate>register.label.last-name</mat-label>
+          <label for="lastName">
+            <input id="lastName" matInput type="text" formControlName="lastName">
+          </label>
+          <mat-error *ngIf="userForm.get('lastName').hasError('required')">Last name is required</mat-error>
+        </mat-form-field>
+      </div>
+      <mat-form-field class="full-screen-input">
+        <mat-label translate>register.label.email</mat-label>
+        <label for="email">
+          <input id="email" matInput type="email" formControlName="email">
+        </label>
+        <mat-error *ngIf="userForm.get('email').hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="userForm.get('email').hasError('email')">Please enter a valid email address</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-screen-input">
+        <mat-label translate>register.label.password</mat-label>
+        <label for="password">
+          <input id="password" matInput type="text" formControlName="password">
+        </label>
+        <mat-error *ngIf="userForm.get('password').hasError('required')">Password is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-screen-input">
+        <mat-label translate>register.label.password2</mat-label>
+        <label for="passwordAgain">
+          <input id="passwordAgain" matInput type="text" formControlName="passwordAgain">
+        </label>
+        <mat-error *ngIf="userForm.get('passwordAgain').hasError('required')">Password is required</mat-error>
+      </mat-form-field>
+      <div class="button-container">
+        <button mat-raised-button color="primary"><span translate>menu.button.register</span>
+          <mat-icon>send</mat-icon>
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>
