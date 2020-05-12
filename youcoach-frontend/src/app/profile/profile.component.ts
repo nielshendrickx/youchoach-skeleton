@@ -1,5 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {UserService} from '../user.service';
+import {UserComponent} from '../user/user.component';
+import {User} from '../user';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -7,15 +11,22 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  @Input() user: User;
 
   constructor(
-    private http: HttpClient) {
+    private userService: UserService,
+    private route: ActivatedRoute) {
   }
 
-  profilePicture: any;
-  private UserUrl = '/users';
   ngOnInit(): void {
-    const profilePicture = 'https://pbs.twimg.com/profile_images/1095310629542551553/TgcAJvMn_400x400.jpg';
+    this.getUser();
   }
+
+  getUser(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.userService.getUserById(String(id))
+      .subscribe(user => this.user = user);
+  }
+
 
 }

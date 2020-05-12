@@ -29,6 +29,10 @@ public class UsersService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    public UserDto getUserByUsername (String username) {
+        return userMapper.toDto(usersRepository.findBySecuredUser_Username(username));
+    }
+
     public UserDto register(CreateUserDto newUser) {
         SecuredUser securedUser = securedUserRepository.save(new SecuredUser(newUser.getUsername(), passwordEncoder.encode(newUser.getPassword())));
         Users user = usersRepository.save(new Users(securedUser,newUser.getFirstName(), newUser.getLastName()));
