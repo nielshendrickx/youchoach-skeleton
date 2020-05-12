@@ -26,7 +26,7 @@ class UsersControllerTest {
 
     @Test
     void register_givenCreateUserDto_thenResponseStatusIsCreated() {
-        CreateUserDto createUserDto = new CreateUserDto("test@gmail.com", "Password1", "first name", "last name");
+        CreateUserDto createUserDto = new CreateUserDto("test@gmail.com", "Password1", "first name", "last name", "Password1");
 
         webTestClient.post()
                 .uri(UsersController.USERS_RESOURCE_PATH)
@@ -38,7 +38,7 @@ class UsersControllerTest {
 
     @Test
     void register_givenWrongEmailFormatWithNoAt_thenResponseStatusIsBadRequest() {
-        CreateUserDto createUserDto = new CreateUserDto("testgmail.com", "Password1", "first name", "last name");
+        CreateUserDto createUserDto = new CreateUserDto("test@gmail.com", "Password1", "first name", "last name", "Password1");
 
         webTestClient.post()
                 .uri(UsersController.USERS_RESOURCE_PATH)
@@ -50,8 +50,7 @@ class UsersControllerTest {
 
     @Test
     void register_givenWrongEmailFormatWithNoPoint_thenResponseStatusIsBadRequest() {
-        CreateUserDto createUserDto = new CreateUserDto("test@gmailcom", "Password1", "first name", "last name");
-
+        CreateUserDto createUserDto = new CreateUserDto("test@gmail.com", "Password1", "first name", "last name", "Password1");
         webTestClient.post()
                 .uri(UsersController.USERS_RESOURCE_PATH)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -62,8 +61,7 @@ class UsersControllerTest {
 
     @Test
     void register_givenWrongPasswordFormatWithNoCapitalLetter_thenResponseStatusIsBadRequest() {
-        CreateUserDto createUserDto = new CreateUserDto("test@gmail.com", "password1", "first name", "last name");
-
+        CreateUserDto createUserDto = new CreateUserDto("test@gmail.com", "Password1", "first name", "last name", "Password1");
         webTestClient.post()
                 .uri(UsersController.USERS_RESOURCE_PATH)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -74,8 +72,7 @@ class UsersControllerTest {
 
     @Test
     void register_givenWrongPasswordFormatWithLengthUnderEight_thenResponseStatusIsBadRequest() {
-        CreateUserDto createUserDto = new CreateUserDto("test@gmail.com", "Pass1", "first name", "last name");
-
+        CreateUserDto createUserDto = new CreateUserDto("test@gmail.com", "Password1", "first name", "last name", "Password1");
         webTestClient.post()
                 .uri(UsersController.USERS_RESOURCE_PATH)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -86,8 +83,7 @@ class UsersControllerTest {
 
     @Test
     void register_givenWrongPasswordFormatWithNoNumber_thenResponseStatusIsBadRequest() {
-        CreateUserDto createUserDto = new CreateUserDto("test@gmail.com", "Password", "first name", "last name");
-
+        CreateUserDto createUserDto = new CreateUserDto("test@gmail.com", "Password1", "first name", "last name", "Password1");
         webTestClient.post()
                 .uri(UsersController.USERS_RESOURCE_PATH)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -98,8 +94,7 @@ class UsersControllerTest {
 
     @Test
     void register_givenEmailThatIsAlreadyRegistered_thenResponseStatusIsBadRequest() {
-        CreateUserDto createUserDto = new CreateUserDto("test@gmail.com", "Password1", "first name", "last name");
-
+        CreateUserDto createUserDto = new CreateUserDto("test@gmail.com", "Password1", "first name", "last name", "Password1");
         webTestClient.post()
                 .uri(UsersController.USERS_RESOURCE_PATH)
                 .contentType(MediaType.APPLICATION_JSON)
