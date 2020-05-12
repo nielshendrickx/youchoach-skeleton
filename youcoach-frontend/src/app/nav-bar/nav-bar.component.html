@@ -5,8 +5,8 @@
     <span><a routerLink="" translate>menu.link.home</a></span>
     <span translate>menu.link.about-us</span>
     <span translate>menu.link.contact</span>
-    <button mat-raised-button color="primary"><span translate>menu.button.sign-in</span><mat-icon>person</mat-icon></button>
-    <button mat-raised-button color="accent"><span translate>menu.button.register</span><mat-icon>person_add</mat-icon></button>
+    <button mat-raised-button color="primary" (click)="goToSignIn()"><span translate>menu.button.sign-in</span><mat-icon>person</mat-icon></button>
+    <button mat-raised-button color="accent" (click)="goToRegister()"><span translate>menu.button.register</span><mat-icon>person_add</mat-icon></button>
   </mat-toolbar-row>
 </mat-toolbar>
 
