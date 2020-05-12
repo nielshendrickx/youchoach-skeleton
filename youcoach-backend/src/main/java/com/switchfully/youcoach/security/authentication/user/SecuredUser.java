@@ -4,6 +4,7 @@ import com.switchfully.youcoach.security.authorization.Role;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Table(name = "securedUser")
@@ -12,7 +13,7 @@ public class SecuredUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private long id;
+    private UUID id;
 
     @Column(name = "username")
     private String username;
@@ -49,11 +50,11 @@ public class SecuredUser {
         this.password = password;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

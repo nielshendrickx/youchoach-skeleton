@@ -5,6 +5,7 @@ import com.switchfully.youcoach.security.authorization.Role;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "users")
@@ -12,7 +13,7 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private long id;
+    private UUID id;
 
     @OneToOne
     @JoinColumn(name = "fk_secured_user_id")
