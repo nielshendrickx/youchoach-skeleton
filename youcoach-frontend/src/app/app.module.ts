@@ -42,7 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterComponent,
     SignInComponent,
     UserComponent,
-    ApplyBecomeCoachComponent
+    ApplyBecomeCoachComponent,
     UserComponent,
     MyProfileComponent
   ],
