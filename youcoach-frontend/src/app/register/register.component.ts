@@ -9,7 +9,6 @@ import {UserService} from '../user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  private url = `${environment.backendUrl}/users`;
 
   userForm = new FormGroup({
       firstName: new FormControl('', Validators.required),

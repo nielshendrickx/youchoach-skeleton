@@ -2,8 +2,11 @@ package com.switchfully.youcoach.security;
 
 import com.switchfully.youcoach.security.authentication.jwt.JwtAuthenticationFilter;
 import com.switchfully.youcoach.security.authentication.jwt.JwtAuthorizationFilter;
+import com.switchfully.youcoach.security.authentication.jwt.JwtRegistrationFilter;
+import com.switchfully.youcoach.security.authentication.jwt.TokenService;
 import com.switchfully.youcoach.security.authentication.user.SecuredUserService;
 import com.switchfully.youcoach.security.authorization.RoleToFeatureMapper;
+import com.switchfully.youcoach.service.services.UsersService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -22,12 +25,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private String jwtSecret;
     private RoleToFeatureMapper roleToFeatureMapper;
     private SecuredUserService securedUserService;
+    private UsersService usersService;
+    private TokenService tokenService;
 
-    public SecurityConfig(SecuredUserService securedUserService, PasswordEncoder passwordEncoder, @Value("${jwt.secret}") String jwtSecret, RoleToFeatureMapper roleToFeatureMapper) {
+    public SecurityConfig(SecuredUserService securedUserService, UsersService usersService, PasswordEncoder passwordEncoder, @Value("${jwt.secret}") String jwtSecret, RoleToFeatureMapper roleToFeatureMapper, TokenService tokenService) {
         this.securedUserService = securedUserService;
+        this.usersService = usersService;
         this.passwordEncoder = passwordEncoder;
         this.jwtSecret = jwtSecret;
         this.roleToFeatureMapper = roleToFeatureMapper;
+        this.tokenService = tokenService;
     }
 
     @Override
@@ -37,7 +44,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/users/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtSecret, securedUserService))
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtSecret, securedUserService, tokenService))
+                .addFilter(new JwtRegistrationFilter(authenticationManager(), jwtSecret, securedUserService, usersService, tokenService))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtSecret, roleToFeatureMapper))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }

@@ -35,14 +35,14 @@ public class UsersController {
         return usersService.getUserById(id);
     }
 
-    @PostMapping(consumes = "application/json", produces = "application/json")
+   /* @PostMapping(consumes = "application/json", produces = "application/json")
     @ApiOperation(value = "Register as a user", notes = "Everyone can freely join YouCoach!" , response = CreateUserDto.class)
     @ResponseStatus(HttpStatus.CREATED)
     public UserDto register(@RequestBody CreateUserDto newUser) {
         validateNewMember(newUser);
         loggerUsers.info("Creating a new user");
         return usersService.register(newUser);
-    }
+    }*/
 
     private void validateNewMember(CreateUserDto newUser) {
         isValidEmailAddress(newUser.getUsername());

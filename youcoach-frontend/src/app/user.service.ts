@@ -10,6 +10,7 @@ import {environment} from '../environments/environment';
 })
 export class UserService {
   private UsersUrl = `${environment.backendUrl}/users`;
+  private RegistrationUrl = `${environment.backendUrl}/register`;
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
@@ -27,7 +28,7 @@ export class UserService {
 
   /** POST: add a new user to the server */
   registerUser(user: User): Observable<User> {
-    return this.http.post<User>(this.UsersUrl, user, this.httpOptions)
+    return this.http.post<User>(this.RegistrationUrl, user, this.httpOptions)
       .pipe(catchError(this.handleError<any>('registerUser')));
   }
 
