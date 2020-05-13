@@ -1,19 +1,19 @@
-/*#profileInfo {*/
-/*  width: 80%;*/
-/*  margin: auto;*/
-/*  background: #fafafa;*/
-/*  overflow: hidden;*/
-/*  padding: 15px;*/
-/*}*/
+#profileInfo {
+  margin: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 /*.profileHeader {*/
 /*  display: flex;*/
 /*  justify-content: space-between;*/
 /*}*/
 
-/*.profileItems {*/
-
-/*}*/
+.profileItems {
+  display: flex;
+  flex-direction: column;
+}
 
 .profileInfoItem {
   display: flex;
@@ -41,6 +41,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 3em;
+  border-bottom: 1px solid  black;
 }
 
 .edit-button {
@@ -50,9 +52,10 @@
 .profile-img {
   width: 50%;
   border-radius: 50%;
+  margin-right: 3em;
 }
 
-.info-container {
+.card-body {
   display: flex;
   flex-direction: row;
 }
@@ -62,6 +65,7 @@ info-detail-container{
   flex-direction: column;
   justify-content: space-between;
 }
+
 
 
 
