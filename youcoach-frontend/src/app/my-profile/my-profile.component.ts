@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
 import {AuthenticationService} from '../authentication/authentication.service';
-import {ActivatedRoute} from '@angular/router';
 import {User} from '../user';
 
 @Component({
@@ -12,8 +11,7 @@ import {User} from '../user';
 export class MyProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
-    private authenticationService: AuthenticationService,
-    private route: ActivatedRoute) {
+    private authenticationService: AuthenticationService) {
   }
   @Input() user: User;
 

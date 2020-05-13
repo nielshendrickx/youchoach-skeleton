@@ -17,10 +17,10 @@
         <mat-error *ngIf="signInForm.get('password').hasError('required')">Password is required</mat-error>
       </mat-form-field>
       <div class="button-container">
-        <button mat-raised-button color="primary" class="sign-in-button" (click)="signIn()"><span translate>sign-in.button.sign-in</span>
+        <button mat-raised-button color="primary" (click)="signIn()"><span translate>sign-in.button.sign-in</span>
           <mat-icon>send</mat-icon>
         </button>
-        <button mat-raised-button color="accent" (click)="resetPassword()"><span translate>sign-in.button.reset-password</span>
+        <button mat-raised-button color="accent" class="reset-button" (click)="resetPassword()"><span translate>sign-in.button.reset-password</span>
           <mat-icon>loop</mat-icon>
         </button>
       </div>

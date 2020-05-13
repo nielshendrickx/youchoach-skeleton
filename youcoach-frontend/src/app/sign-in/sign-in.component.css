@@ -38,10 +38,15 @@ h1{
 .button-container{
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap;
 }
 
-.sign-in-button{
-  margin-right: 10px;
+.button-container button{
+  margin-top: 10px;
+  flex-shrink: 0;
+}
+.reset-button{
+  margin-left: 10px;
 }
 
 .error-container{

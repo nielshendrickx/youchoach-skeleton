@@ -1,4 +1,7 @@
 .mat-toolbar{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   background-color: white;
 }
 
@@ -10,6 +13,7 @@
   color: black;
   margin: 0 10px;
   text-transform: uppercase;
+  flex-shrink: 0;
 }
 
 .mat-icon {
