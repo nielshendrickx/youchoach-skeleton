@@ -1,34 +1,67 @@
-#profileInfo {
-  width: 80%;
-  margin: auto;
-  background: #fafafa;
-  overflow: hidden;
-  padding: 15px;
-}
+/*#profileInfo {*/
+/*  width: 80%;*/
+/*  margin: auto;*/
+/*  background: #fafafa;*/
+/*  overflow: hidden;*/
+/*  padding: 15px;*/
+/*}*/
 
-.profileHeader {
-  display: flex;
-  justify-content: space-between;
-}
+/*.profileHeader {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*}*/
 
-.profileItems {
+/*.profileItems {*/
 
-}
+/*}*/
 
 .profileInfoItem {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   padding-bottom: 20px;
   padding-top: 20px;
 }
 
-.itemName{
-  font-weight: bold;
-}
+/*.itemName{*/
+/*  font-weight: bold;*/
+/*}*/
 
 /*.profileImage {*/
 /*  display: inline-block;*/
 /*}*/
+
+
+.mat-card {
+  width: 60%;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-button {
+  color: white;
+}
+
+.profile-img {
+  width: 50%;
+  border-radius: 50%;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: row;
+}
+
+info-detail-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 
 

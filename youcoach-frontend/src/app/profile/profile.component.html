@@ -1,32 +1,65 @@
 <div id="profileInfo" *ngIf="user">
-  <div class="profileHeader">
-    <h1>Profile Information</h1>
-    <img src="assets/editProfileButton.png">
-  </div>
-  <mat-divider></mat-divider>
+  <!--  <div class="profileHeader">-->
+  <!--    <h1>Profile Information</h1>-->
+  <!--    <img src="assets/editProfileButton.png">-->
+  <!--  </div>-->
+  <!--  <mat-divider></mat-divider>-->
 
 
-  <div class="profileItems">
-    <div class="profileImage">
-      <img [src]= user.pictureUrl height="200">
+  <!--  <div class="profileItems">-->
+  <!--    <div class="profileImage">-->
+  <!--      <img [src]=user.pictureUrl height="200">-->
+  <!--    </div>-->
+  <!--    <div class="profileInfoItem">-->
+  <!--      <span class="itemName" translate>profile-information.label.first-name</span>-->
+  <!--      <span class="itemContent">{{user.firstName}}</span>-->
+  <!--      <span></span>-->
+  <!--    </div>-->
+  <!--    <mat-divider></mat-divider>-->
+  <!--    <div class="profileInfoItem">-->
+  <!--      <span class="itemName" translate>profile-information.label.last-name</span>-->
+  <!--      <span class="itemContent">{{user.lastName}}</span>-->
+  <!--      <span></span>-->
+  <!--    </div>-->
+  <!--    <mat-divider></mat-divider>-->
+  <!--    <div class="profileInfoItem">-->
+  <!--      <span class="itemName" translate>profile-information.label.email</span>-->
+  <!--      <span class="itemContent">{{user.username}}</span>-->
+  <!--      <span></span>-->
+  <!--    </div>-->
+  <!--    <mat-divider></mat-divider>-->
+  <!--  </div>-->
+
+  <mat-card>
+    <div class="card-header">
+      <h2 translate>profile-information.title</h2>
+      <button mat-mini-fab color="primary" class="edit-button">
+        <mat-icon>create</mat-icon>
+      </button>
     </div>
-    <div class="profileInfoItem">
-      <span class="itemName" translate>profile-information.label.first-name</span>
-      <span class="itemContent">{{user.firstName}}</span>
-      <span></span>
+    <div class="info-container">
+      <img [src]=user.pictureUrl class="profile-img">
+      <div class="profileItems">
+        <div class="profileInfoItem">
+          <div class="info-detail-container">
+            <span class="itemName" translate>profile-information.label.first-name</span>
+            <span></span>
+            <span class="itemContent">{{user.firstName}}</span>
+          </div>
+        </div>
+        <div class="profileInfoItem">
+          <div class="info-detail-container">
+            <span class="itemName" translate>profile-information.label.last-name</span>
+            <span class="itemContent">{{user.lastName}}</span>
+          </div>
+        </div>
+        <div class="profileInfoItem">
+          <div class="info-detail-container">
+            <span class="itemName" translate>profile-information.label.email</span>
+            <span class="itemContent">{{user.username}}</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <mat-divider></mat-divider>
-    <div class="profileInfoItem">
-      <span class="itemName" translate>profile-information.label.last-name</span>
-      <span class="itemContent">{{user.lastName}}</span>
-      <span></span>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="profileInfoItem">
-      <span class="itemName" translate>profile-information.label.email</span>
-      <span class="itemContent">{{user.username}}</span>
-      <span></span>
-    </div>
-    <mat-divider></mat-divider>
-  </div>
+  </mat-card>
 </div>
