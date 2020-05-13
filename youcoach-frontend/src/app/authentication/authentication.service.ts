@@ -3,7 +3,7 @@ import {AuthenticationHttpService} from './authentication.http.service';
 import {tap} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import * as jwt_decode from 'jwt-decode';
-import {UserService} from "../user.service";
+import {UserService} from '../user.service';
 
 @Injectable({
   providedIn: 'root'
