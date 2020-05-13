@@ -25,10 +25,15 @@ public class Users {
     @Column(name = "lastName")
     private String lastName;
 
-    public Users(SecuredUser securedUser, String firstName, String lastName) {
+    @Column(name = "pictureUrl")
+    private String pictureUrl;
+
+
+    public Users(SecuredUser securedUser, String firstName, String lastName, String pictureUrl) {
         this.securedUser = securedUser;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.pictureUrl = pictureUrl;
     }
 
     public Users() {
@@ -45,4 +50,6 @@ public class Users {
     public String getLastName() {
         return lastName;
     }
+
+    public String getPictureUrl() {return pictureUrl; }
 }

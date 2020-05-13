@@ -14,12 +14,12 @@ public class UserMapper {
 
     public UserDto toDto(Users users) {
         System.out.println(users);
-        return new UserDto(users.getSecuredUser().getUsername(), users.getFirstName(), users.getLastName());
+        return new UserDto(users.getSecuredUser().getUsername(), users.getFirstName(), users.getLastName(), users.getPictureUrl());
     }
 
     public Users toUser(CreateUserDto createUserDto) {
         SecuredUser securedUser = new SecuredUser(createUserDto.getUsername(), createUserDto.getPassword()); //TODO CLEANUP
-        return new Users(securedUser, createUserDto.getFirstName(), createUserDto.getLastName());
+        return new Users(securedUser, createUserDto.getFirstName(), createUserDto.getLastName(), createUserDto.getPictureUrl());
     }
 
     public Collection<UserDto> toDto (Collection <Users> usersCollection) {

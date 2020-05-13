@@ -37,7 +37,7 @@ public class UsersService {
 
     public UserDto register(CreateUserDto newUser) {
         SecuredUser securedUser = securedUserRepository.save(new SecuredUser(newUser.getUsername(), passwordEncoder.encode(newUser.getPassword())));
-        Users user = usersRepository.save(new Users(securedUser,newUser.getFirstName(), newUser.getLastName()));
+        Users user = usersRepository.save(new Users(securedUser,newUser.getFirstName(), newUser.getLastName(), newUser.getPictureUrl()));
         return userMapper.toDto(user);
     }
 
