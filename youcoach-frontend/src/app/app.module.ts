@@ -21,6 +21,7 @@ import {RegisterComponent} from './register/register.component';
 import {MaterialModule} from './material/material.module';
 import {SignInComponent} from './sign-in/sign-in.component';
 import {UserComponent} from './user/user.component';
+import { ApplyBecomeCoachComponent } from './apply-become-coach/apply-become-coach.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -39,7 +40,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     RegisterComponent,
     SignInComponent,
-    UserComponent
+    UserComponent,
+    ApplyBecomeCoachComponent
   ],
   imports: [
     BrowserModule,
