@@ -1,25 +1,28 @@
 .container {
-  margin: 10px 10px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 10px 10px;
+}
+
+.link-container {
+  margin-right: 30px;
+}
+
+.profile-container {
+  display: flex;
+  flex: 1;
 }
 
 .profileItems {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
-.profileInfoItem {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-bottom: 20px;
-  padding-top: 20px;
-}
 
 .mat-card {
-  width: 60%;
+  width: 100%;
 }
 
 .card-header {
@@ -28,7 +31,8 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 3em;
-  border-bottom: 1px solid  black;
+  padding: 1em 0;
+  border-bottom: 1px solid black;
 }
 
 .edit-button {
@@ -36,7 +40,8 @@
 }
 
 .profile-img {
-  width: 50%;
+  width: 25%;
+  min-width: 150px;
   border-radius: 50%;
   margin-right: 3em;
 }
@@ -44,13 +49,28 @@
 .card-body {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
-info-detail-container{
+info-detail-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+
+.mat-button-toggle-checked {
+  background-color: #ffc107;
+}
+
+.mat-button-toggle-label-content {
+  text-align: left !important;
+}
+
+.full-screen-input {
+  width: 100%;
+}
+
+
 
 
 
