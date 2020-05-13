@@ -32,7 +32,6 @@ public class UsersService {
     }
 
     public UserDto getUserById(UUID id) {
-        System.out.println(usersRepository.findBySecuredUser_Id(id));
         return userMapper.toDto(usersRepository.findBySecuredUser_Id(id));
     }
 
