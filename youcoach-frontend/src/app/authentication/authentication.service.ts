@@ -3,6 +3,7 @@ import {AuthenticationHttpService} from './authentication.http.service';
 import {tap} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import * as jwt_decode from 'jwt-decode';
+import {UserService} from "../user.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,20 @@ export class AuthenticationService {
   private userLoggedInSource = new Subject<boolean>();
   userLoggedIn$ = this.userLoggedInSource.asObservable();
 
-  constructor(private loginService: AuthenticationHttpService) {
+  constructor(private loginService: AuthenticationHttpService, private userService: UserService) {
   }
 
   login(loginData: any) {
     return this.loginService.login(loginData)
+      .pipe(tap(response => {
+        sessionStorage.setItem(this.tokenKey, response.headers.get('Authorization').replace('Bearer', '').trim());
+        sessionStorage.setItem(this.usernameKey, this.getUserIdFromResponse(response));
+        this.userLoggedInSource.next(true);
+      }));
+  }
+
+  register(registerData: any) {
+    return this.userService.registerUser(registerData)
       .pipe(tap(response => {
         sessionStorage.setItem(this.tokenKey, response.headers.get('Authorization').replace('Bearer', '').trim());
         sessionStorage.setItem(this.usernameKey, this.getUserIdFromResponse(response));

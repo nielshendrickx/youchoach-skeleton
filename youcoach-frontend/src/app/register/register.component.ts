@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {environment} from '../../environments/environment';
 import {UserService} from '../user.service';
+import {AuthenticationService} from "../authentication/authentication.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -18,9 +20,10 @@ export class RegisterComponent implements OnInit {
       password: new FormControl('', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}')]),
       passwordAgain: new FormControl('', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}')]),
     });
+  error = false;
 
   constructor(
-    private userService: UserService
+    private userService: UserService, private authenticationService: AuthenticationService, private router: Router,
   ) {
   }
 
@@ -28,6 +31,15 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(): void {
-    this.userService.registerUser(this.userForm.value).subscribe();
+    this.authenticationService.register(this.userForm.value).subscribe(resp => {
+        this.goToUserProfile(this.authenticationService.getUserId());
+      },
+      error => {
+        this.error = true;
+      });
+  }
+
+  goToUserProfile(userId: string): void {
+    this.router.navigate([`users/${userId}`]);
   }
 }

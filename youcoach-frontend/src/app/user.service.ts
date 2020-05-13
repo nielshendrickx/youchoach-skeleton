@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {User} from './user';
 import {catchError} from 'rxjs/operators';
@@ -27,8 +27,8 @@ export class UserService {
   }
 
   /** POST: add a new user to the server */
-  registerUser(user: User): Observable<User> {
-    return this.http.post<User>(this.RegistrationUrl, user, this.httpOptions)
+  registerUser(registerData): Observable<HttpResponse<any>> {
+    return this.http.post<any>(this.RegistrationUrl, registerData, {observe: 'response'})
       .pipe(catchError(this.handleError<any>('registerUser')));
   }
 
