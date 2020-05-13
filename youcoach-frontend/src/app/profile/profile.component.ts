@@ -10,13 +10,13 @@ import {AuthenticationService} from '../authentication/authentication.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  @Input() user: User;
 
   constructor(
     private userService: UserService,
     private authenticationService: AuthenticationService,
     private route: ActivatedRoute) {
   }
+  @Input() user: User;
 
   ngOnInit(): void {
     this.getUser();
