@@ -10,6 +10,7 @@ body {
 
 main {
   flex: 1 0 auto;
+  margin-bottom: 400px !important;
 }
 
 .black-opacity {
@@ -83,3 +84,4 @@ p {
 .icon-block .material-icons {
   font-size: inherit;
 }
+

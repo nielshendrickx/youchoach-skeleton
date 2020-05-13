@@ -1,4 +1,4 @@
-/*!
+/*/
  * Materialize v1.0.0 (http://materializecss.com)
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
@@ -5625,7 +5625,7 @@ body.keyboard-focused .dropdown-content li:focus {
   cursor: pointer;
 }
 
-/*!
+/*/
  * Waves v0.6.0
  * http://fian.my.id/Waves
  *
@@ -5644,7 +5644,7 @@ body.keyboard-focused .dropdown-content li:focus {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   vertical-align: middle;
-  z-index: 1;
+  z-index: 0;
   -webkit-transition: .3s ease-out;
   transition: .3s ease-out;
 }
