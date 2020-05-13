@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
+import static com.switchfully.youcoach.service.validation.Validation.*;
+
 @Service
 @Transactional
 public class UsersService {
@@ -36,6 +38,7 @@ public class UsersService {
     }
 
     public UserDto register(CreateUserDto newUser) {
+        validateNewMember(newUser);
         SecuredUser securedUser = securedUserRepository.save(new SecuredUser(newUser.getUsername(), passwordEncoder.encode(newUser.getPassword())));
         Users user = usersRepository.save(new Users(securedUser,newUser.getFirstName(), newUser.getLastName(), newUser.getPictureUrl()));
         return userMapper.toDto(user);
@@ -45,5 +48,12 @@ public class UsersService {
         if (securedUserRepository.findByUsername(email) != null) {
             throw new UsernameAlreadyRegisteredException(email);
         }
+    }
+
+    private void validateNewMember(CreateUserDto newUser) {
+        isValidEmailAddress(newUser.getUsername());
+        isUsernameAvailable(newUser.getUsername());
+        isValidPassword(newUser.getPassword());
+        isPasswordMatch(newUser.getPassword(), newUser.getPasswordAgain());
     }
 }
