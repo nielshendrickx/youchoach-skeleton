@@ -40,7 +40,7 @@
           <input id="passwordAgain" matInput type="password" formControlName="passwordAgain">
         </label>
         <mat-error *ngIf="userForm.get('passwordAgain').hasError('required')">Password is required</mat-error>
-        <mat-error *ngIf="userForm.get('passwordAgain').hasError('pattern')" translate>register.message.password-match</mat-error>
+        <mat-error *ngIf="userForm.get('passwordAgain').hasError('mustMatch')" translate>register.message.password-match</mat-error>
       </mat-form-field>
       <div class="button-container">
         <button mat-raised-button color="primary" (click)="registerUser()" [disabled]="userForm.invalid"><span translate>menu.button.register</span>

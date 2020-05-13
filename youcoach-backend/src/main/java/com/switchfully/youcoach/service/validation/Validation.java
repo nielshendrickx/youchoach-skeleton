@@ -1,6 +1,7 @@
-package com.switchfully.youcoach.api.validation;
+package com.switchfully.youcoach.service.validation;
 
 import com.switchfully.youcoach.domain.exceptions.EmailNotValidException;
+import com.switchfully.youcoach.domain.exceptions.PasswordDoNotMatchException;
 import com.switchfully.youcoach.domain.exceptions.PasswordNotValidException;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,12 @@ public class Validation {
         java.util.regex.Matcher m = p.matcher(password);
         if (!m.matches()) {
             throw new PasswordNotValidException();
+        }
+    }
+
+    public static void isPasswordMatch(String password, String passwordAgain) {
+        if(!password.equals(passwordAgain)) {
+            throw new PasswordDoNotMatchException();
         }
     }
 }

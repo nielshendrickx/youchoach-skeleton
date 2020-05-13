@@ -3,6 +3,8 @@ package com.switchfully.youcoach.security.authentication.jwt;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.switchfully.youcoach.security.authentication.user.SecuredUser;
 import com.switchfully.youcoach.security.authentication.user.SecuredUserService;
+import com.switchfully.youcoach.service.dto.CreateUserDto;
+import com.switchfully.youcoach.service.services.UsersService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,33 +15,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+public class JwtRegistrationFilter extends UsernamePasswordAuthenticationFilter {
 
     private SecuredUserService securedUserService;
+    private UsersService usersService;
     private TokenService tokenService;
 
     private final AuthenticationManager authenticationManager;
     private final String jwtSecret;
 
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager, String jwtSecret, SecuredUserService securedUserService, TokenService tokenService) {
+    public JwtRegistrationFilter(AuthenticationManager authenticationManager, String jwtSecret, SecuredUserService securedUserService, UsersService usersService, TokenService tokenService) {
         this.authenticationManager = authenticationManager;
         this.jwtSecret = jwtSecret;
         this.securedUserService = securedUserService;
+        this.usersService = usersService;
         this.tokenService = tokenService;
 
-        setFilterProcessesUrl("/login");
+        setFilterProcessesUrl("/register");
     }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
-        SecuredUser securedUser = getSecuredUser(request);
-
-        return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(securedUser.getUsername(), securedUser.getPassword()));
+        CreateUserDto createUserDto = getRegistrationUser(request);
+        usersService.register(createUserDto);
+        return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(createUserDto.getUsername(), createUserDto.getPassword()));
     }
 
-    private SecuredUser getSecuredUser(HttpServletRequest request) {
+    private CreateUserDto getRegistrationUser(HttpServletRequest request) {
         try {
-            return new ObjectMapper().readValue(request.getInputStream(), SecuredUser.class);
+            return new ObjectMapper().readValue(request.getInputStream(), CreateUserDto.class);
         } catch (IOException e) {
             throw new RuntimeException("Could not read body from request", e);
         }
