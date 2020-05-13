@@ -1,0 +1,60 @@
+#profileInfo {
+  margin: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileItems {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileInfoItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.mat-card {
+  width: 60%;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3em;
+  border-bottom: 1px solid  black;
+}
+
+.edit-button {
+  color: white;
+}
+
+.profile-img {
+  width: 50%;
+  border-radius: 50%;
+  margin-right: 3em;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: row;
+}
+
+info-detail-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+
+
+
+

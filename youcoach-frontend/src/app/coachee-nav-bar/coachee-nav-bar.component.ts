@@ -11,5 +11,4 @@ export class CoacheeNavBarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

@@ -10,6 +10,7 @@ import {TranslateService} from '@ngx-translate/core';
 export class AppComponent implements OnInit {
   username;
   language = 'en';
+  loggedIn$;
 
   constructor(private authenticationService: AuthenticationService, public translate: TranslateService) {
   }
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
     this.authenticationService.userLoggedIn$.subscribe(_ => {
       this.username = this.authenticationService.getUserId();
     });
+    this.loggedIn$ = this.authenticationService.userLoggedIn$;
   }
 
   switchLanguage(language: string) {

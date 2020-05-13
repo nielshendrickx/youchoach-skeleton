@@ -32,8 +32,8 @@ export class SignInComponent implements OnInit {
   signIn(): void {
     this.error = false;
     this.authenticationService.login(this.signInForm.value)
-      .subscribe(resp => {
-          this.goToUserProfile(this.authenticationService.getUserId());
+      .subscribe(() => {
+          this.goToUserProfile();
         },
         error => {
           this.error = true;
@@ -41,8 +41,8 @@ export class SignInComponent implements OnInit {
       );
   }
 
-  goToUserProfile(userId: string): void {
-    this.router.navigate([`users/${userId}`]);
+  goToUserProfile(): void {
+    this.router.navigate([`myProfile`]);
   }
 
 }

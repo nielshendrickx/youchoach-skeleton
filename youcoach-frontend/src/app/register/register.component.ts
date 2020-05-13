@@ -46,6 +46,6 @@ export class RegisterComponent implements OnInit {
   }
 
   goToUserProfile(userId: string): void {
-    this.router.navigate([`users/${userId}`]);
+    this.router.navigate([`myProfile`]);
   }
 }
