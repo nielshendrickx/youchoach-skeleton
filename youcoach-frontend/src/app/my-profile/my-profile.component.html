@@ -1,13 +1,6 @@
 <div class="container">
-  <div class="link-container">
-    <p translate>my-profile-menu.title</p>
-    <mat-button-toggle-group vertical>
-      <mat-button-toggle checked="true"><span translate>my-profile-menu.link.profile-information</span></mat-button-toggle>
-      <mat-button-toggle><span translate>my-profile-menu.link.coaching-sessions</span></mat-button-toggle>
-      <mat-button-toggle><span translate>my-profile-menu.link.apply-to-become-a-coach</span></mat-button-toggle>
-    </mat-button-toggle-group>
-  </div>
-  <div class="profile-container" *ngIf="user">
+  <app-coachee-nav-bar></app-coachee-nav-bar>
+    <div class="profile-container" *ngIf="user">
     <mat-card>
       <div class="card-header">
         <h2 translate>profile-information.title</h2>
@@ -16,7 +9,7 @@
         </button>
       </div>
       <div class="card-body">
-        <img [src]=user.pictureUrl class="profile-img">
+        <img [src]=user.pictureUrl class="profile-img" alt="profile picture">
         <div class="profileItems">
           <mat-form-field class="full-screen-input">
             <mat-label translate>profile-information.label.first-name</mat-label>
