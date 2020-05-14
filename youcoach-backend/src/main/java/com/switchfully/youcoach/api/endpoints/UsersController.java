@@ -1,5 +1,6 @@
 package com.switchfully.youcoach.api.endpoints;
 
+import com.switchfully.youcoach.service.dto.UpdateUserDto;
 import com.switchfully.youcoach.service.dto.UserDto;
 import com.switchfully.youcoach.service.services.UsersService;
 import io.swagger.annotations.ApiOperation;
@@ -29,5 +30,12 @@ public class UsersController {
     public UserDto getUserByUsername(@PathVariable UUID id) {
         loggerUsers.info("Returning a user");
         return usersService.getUserById(id);
+    }
+
+    @PutMapping(produces = "application/json")
+    @ApiOperation(value = "Update a user", notes = "A user will be updated returned", response = UserDto.class)
+    @ResponseStatus(HttpStatus.CREATED)
+    public UserDto updateUser(@RequestBody UpdateUserDto updateUserDto){
+        return usersService.updateUser(updateUserDto);
     }
 }
