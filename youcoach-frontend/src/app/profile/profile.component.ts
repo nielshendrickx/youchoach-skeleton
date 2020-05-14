@@ -23,8 +23,8 @@ export class ProfileComponent implements OnInit {
   }
 
   getUser(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.authenticationService.getUserId();
     this.userService.getUserById(id)
-      .subscribe(user => this.user = user);
+      .subscribe(user => { this.user = user ; console.log(user); });
   }
 }

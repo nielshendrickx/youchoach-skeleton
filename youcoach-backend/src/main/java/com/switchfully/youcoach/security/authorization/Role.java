@@ -5,7 +5,6 @@ public enum Role {
     COACH("coach"),
     ADMINISTRATOR("administrator");
 
-
     private String label;
 
     Role(String label) {
