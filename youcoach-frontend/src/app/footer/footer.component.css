@@ -2948,9 +2948,10 @@ ul.staggered-list li {
   color: #fff;
   background-color: #ee6e73;
   /*position:fixed;*/
-  bottom:0px;
+  bottom: 0;
   width:100%;
-  font-size: 14px
+  font-size: 14px;
+  position: absolute;
 }
 
 .page-footer h5{
