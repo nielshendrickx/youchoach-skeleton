@@ -1,10 +1,8 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span class="coacheeToolbarButtons">
-        <nav>
-          <button mat-button routerLink="/myProfile"><span translate>my-profile-menu.title</span></button>
-          <button mat-button><span translate>menu.link.find-a-coach</span></button>
-        </nav>
-    </span>
-  </mat-toolbar-row>
-</mat-toolbar>
+<div class="link-container">
+  <p translate>my-profile-menu.title</p>
+  <mat-button-toggle-group vertical>
+    <mat-button-toggle checked="true"><span translate>my-profile-menu.link.profile-information</span></mat-button-toggle>
+    <mat-button-toggle><span translate>my-profile-menu.link.coaching-sessions</span></mat-button-toggle>
+    <mat-button-toggle (click)="goToApplyBecomeCoach()"><span translate>my-profile-menu.link.apply-to-become-a-coach</span></mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
