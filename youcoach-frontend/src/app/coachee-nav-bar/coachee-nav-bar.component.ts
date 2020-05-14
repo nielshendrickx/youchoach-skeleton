@@ -18,4 +18,8 @@ export class CoacheeNavBarComponent implements OnInit {
   goToApplyBecomeCoach(): void {
     this.router.navigate(['/applyBecomeCoach']);
   }
+
+  goToMyProfile(): void {
+    this.router.navigate(['/myProfile']);
+  }
 }
