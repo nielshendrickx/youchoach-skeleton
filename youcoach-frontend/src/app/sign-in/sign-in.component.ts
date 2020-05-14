@@ -35,7 +35,7 @@ export class SignInComponent implements OnInit {
       .subscribe(() => {
           this.goToUserProfile();
         },
-        error => {
+        () => {
           this.error = true;
         }
       );

@@ -38,10 +38,10 @@ export class RegisterComponent implements OnInit {
 
   registerUser(): void {
     this.error = false;
-    this.authenticationService.register(this.userForm.value).subscribe(resp => {
+    this.authenticationService.register(this.userForm.value).subscribe(() => {
         this.goToUserProfile();
       },
-      error => {
+      () => {
         this.error = true;
       });
   }
