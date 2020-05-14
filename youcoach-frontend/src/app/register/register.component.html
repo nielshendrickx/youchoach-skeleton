@@ -8,14 +8,16 @@
           <label for="firstName">
             <input id="firstName" matInput type="text" formControlName="firstName">
           </label>
-          <mat-error *ngIf="userForm.get('firstName').hasError('required')">First name is required</mat-error>
+          <mat-error *ngIf="userForm.get('firstName').hasError('required')" translate>register.message.first-name-required</mat-error>
+          <mat-error *ngIf="userForm.get('firstName').hasError('maxlength')">First name max character length is 50</mat-error>
         </mat-form-field>
         <mat-form-field style="flex: 1">
           <mat-label translate>register.label.last-name</mat-label>
           <label for="lastName">
             <input id="lastName" matInput type="text" formControlName="lastName">
           </label>
-          <mat-error *ngIf="userForm.get('lastName').hasError('required')">Last name is required</mat-error>
+          <mat-error *ngIf="userForm.get('lastName').hasError('required')" translate>register.message.last-name-required</mat-error>
+          <mat-error *ngIf="userForm.get('lastName').hasError('maxlength')">Last name max character length is 50</mat-error>
         </mat-form-field>
       </div>
       <mat-form-field class="full-screen-input">
@@ -23,7 +25,7 @@
         <label for="username">
           <input id="username" matInput type="email" formControlName="username" placeholder="{{'register.label.email-placeholder' | translate}}">
         </label>
-        <mat-error *ngIf="userForm.get('username').hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="userForm.get('username').hasError('required')" translate>register.message.email-required</mat-error>
         <mat-error *ngIf="userForm.get('username').hasError('pattern')" translate>register.message.email-wrong-format</mat-error>
       </mat-form-field>
       <mat-form-field class="full-screen-input">
@@ -31,7 +33,7 @@
         <label for="password">
           <input id="password" matInput type="password" formControlName="password">
         </label>
-        <mat-error *ngIf="userForm.get('password').hasError('required')">Password is required</mat-error>
+        <mat-error *ngIf="userForm.get('password').hasError('required')" translate>register.message.password-required</mat-error>
         <mat-error *ngIf="userForm.get('password').hasError('pattern')" translate>register.message.password-policy</mat-error>
       </mat-form-field>
       <mat-form-field class="full-screen-input">
@@ -39,7 +41,7 @@
         <label for="passwordAgain">
           <input id="passwordAgain" matInput type="password" formControlName="passwordAgain">
         </label>
-        <mat-error *ngIf="userForm.get('passwordAgain').hasError('required')">Password is required</mat-error>
+        <mat-error *ngIf="userForm.get('passwordAgain').hasError('required')" translate>register.message.password2-required</mat-error>
         <mat-error *ngIf="userForm.get('passwordAgain').hasError('mustMatch')" translate>register.message.password-match</mat-error>
       </mat-form-field>
       <div class="button-container">
