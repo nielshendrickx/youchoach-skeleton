@@ -1,11 +1,13 @@
 package com.switchfully.youcoach.service.services;
 
+import com.switchfully.youcoach.domain.exceptions.UserNotFoundException;
 import com.switchfully.youcoach.domain.exceptions.UsernameAlreadyRegisteredException;
 import com.switchfully.youcoach.domain.user.Users;
 import com.switchfully.youcoach.domain.user.UsersRepository;
 import com.switchfully.youcoach.security.authentication.user.SecuredUser;
 import com.switchfully.youcoach.security.authentication.user.SecuredUserRepository;
 import com.switchfully.youcoach.service.dto.CreateUserDto;
+import com.switchfully.youcoach.service.dto.UpdateUserDto;
 import com.switchfully.youcoach.service.dto.UserDto;
 import com.switchfully.youcoach.service.mappers.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,10 +52,29 @@ public class UsersService {
         }
     }
 
+    public UserDto updateUser(UpdateUserDto updateUserDto){
+         validateUpdateMember(updateUserDto);
+         Users user = usersRepository.findBySecuredUser_Id(updateUserDto.getUserId());
+         if(user == null){
+             throw new UserNotFoundException();
+         }
+         user.setFirstName(updateUserDto.getFirstName());
+         user.setLastName(updateUserDto.getLastName());
+         user.setPictureUrl(updateUserDto.getPictureUrl());
+         user.getSecuredUser().setUsername(updateUserDto.getUsername());
+         user.getSecuredUser().setRole(updateUserDto.getRole());;
+         return userMapper.toDto(user);
+    }
+
     private void validateNewMember(CreateUserDto newUser) {
         isValidEmailAddress(newUser.getUsername());
         isUsernameAvailable(newUser.getUsername());
         isValidPassword(newUser.getPassword());
         isPasswordMatch(newUser.getPassword(), newUser.getPasswordAgain());
+    }
+
+    private void validateUpdateMember(UpdateUserDto updateUser) {
+        isValidEmailAddress(updateUser.getUsername());
+        isUsernameAvailable(updateUser.getUsername());
     }
 }
