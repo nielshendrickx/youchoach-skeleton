@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -32,10 +33,12 @@ public class UsersController {
         return usersService.getUserById(id);
     }
 
+    @PreAuthorize("hasAuthority('UPDATE_USER')")
     @PutMapping(produces = "application/json")
     @ApiOperation(value = "Update a user", notes = "A user will be updated returned", response = UserDto.class)
     @ResponseStatus(HttpStatus.CREATED)
     public UserDto updateUser(@RequestBody UpdateUserDto updateUserDto){
+        loggerUsers.info("Updated a user");
         return usersService.updateUser(updateUserDto);
     }
 }

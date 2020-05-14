@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static com.switchfully.youcoach.security.authorization.Feature.ACCEPT_SESSION;
-import static com.switchfully.youcoach.security.authorization.Feature.REQUEST_SESSION;
+import static com.switchfully.youcoach.security.authorization.Feature.*;
 
 @Component
 public class RoleToFeatureMapper {
@@ -16,7 +15,7 @@ public class RoleToFeatureMapper {
     public List<Feature> mapRoleToFeature(Role role) {
         switch (role) {
             case COACH:
-                return newArrayList(ACCEPT_SESSION);
+                return newArrayList(ACCEPT_SESSION, UPDATE_USER);
             case STUDENT:
                 return newArrayList(REQUEST_SESSION);
         }
