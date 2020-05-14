@@ -2,7 +2,8 @@ package com.switchfully.youcoach.security.authorization;
 
 public enum Role {
     STUDENT("student"),
-    COACH("coach");
+    COACH("coach"),
+    ADMINISTRATOR("administrator");
 
     private String label;
 
