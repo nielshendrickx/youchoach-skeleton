@@ -26,14 +26,14 @@ public class Users {
     private String lastName;
 
     @Column(name = "pictureUrl")
-    private String pictureUrl;
+    private String pictureUrl ;
 
 
     public Users(SecuredUser securedUser, String firstName, String lastName, String pictureUrl) {
         this.securedUser = securedUser;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.pictureUrl = pictureUrl;
+        this.pictureUrl = "http://cology.be/profile-picture.jpg";
     }
 
     public Users() {
