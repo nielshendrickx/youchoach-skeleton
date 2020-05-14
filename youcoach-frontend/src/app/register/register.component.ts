@@ -37,15 +37,16 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(): void {
+    this.error = false;
     this.authenticationService.register(this.userForm.value).subscribe(resp => {
-        this.goToUserProfile(this.authenticationService.getUserId());
+        this.goToUserProfile();
       },
       error => {
         this.error = true;
       });
   }
 
-  goToUserProfile(userId: string): void {
+  goToUserProfile(): void {
     this.router.navigate([`myProfile`]);
   }
 }

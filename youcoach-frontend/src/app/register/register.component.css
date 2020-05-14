@@ -39,3 +39,8 @@ h1{
   display: flex;
   justify-content: flex-end;
 }
+
+.error-container{
+  margin-top: 20px;
+  color: red;
+}
