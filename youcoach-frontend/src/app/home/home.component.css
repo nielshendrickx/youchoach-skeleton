@@ -3,18 +3,6 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
-
-.question-button {
-  height: 50px;
-  text-transform: uppercase;
-  margin: 10px 10px;
-}
-
-.question-button a {
-  color: black;
-}
-
-
 .materialize-red {
   background-color: #e51c23 !important;
 }
