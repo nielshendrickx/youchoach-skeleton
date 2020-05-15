@@ -1,5 +1,6 @@
 package com.switchfully.youcoach.security;
 
+import com.google.common.collect.ImmutableList;
 import com.switchfully.youcoach.security.authentication.jwt.JwtAuthenticationFilter;
 import com.switchfully.youcoach.security.authentication.jwt.JwtAuthorizationFilter;
 import com.switchfully.youcoach.security.authentication.jwt.JwtRegistrationFilter;
@@ -53,8 +54,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
-        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        // Modify allowed origins if you run the client at a different endpoint
+        config.addAllowedOrigin("http://localhost:4200");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config);
         return source;
     }
 
