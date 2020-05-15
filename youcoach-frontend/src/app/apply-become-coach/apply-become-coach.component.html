@@ -1,68 +1,20 @@
-<!--Original self created html:-->
-<!--<div id="applyBecomeCoach" >-->
-<!--  <mat-card>-->
-<!--    <div class="card-header">-->
-<!--      <h2 translate>become-a-coach.title</h2>-->
-<!--    </div>-->
-<!--    <div class="card-body">-->
-<!--      <img src="/src/assets/images/under_construction.png">-->
-<!--      <div translate>become-a-coach.text.under-construction</div>-->
-<!--    </div>-->
-<!--    <button mat-mini-fab color="primary" class="edit-button" translate>become-a-coach.button.send-email-->
-<!--      <mat-icon>send</mat-icon>-->
-<!--    </button>-->
-<!--  </mat-card>-->
-<!--</div>-->
-
-<!--Copied html from design folder:-->
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>-->
-<!--  <meta name="viewport" content="width=device-width, initial-scale=1"/>-->
-<!--  <title>You-Coach | My Profile</title>-->
-
-<!--  &lt;!&ndash; CSS  &ndash;&gt;-->
-<!--&lt;!&ndash;  todo: fix style links&ndash;&gt;-->
-<!--  <link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>-->
-<!--  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
-<!--&lt;!&ndash;  <link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>&ndash;&gt;-->
-<!--</head>-->
-<main>
-  <div class="row">
-    <app-coachee-left-nav-bar></app-coachee-left-nav-bar>
-    <div class="col s12 m10">
-      <div class="content-container">
-        <section class="card-panel grey lighten-5">
-          <h5>Apply to become a coach</h5>
-          <div class="divider"></div>
-          <div class="row">
-            <div class="col l2 m2 s12">
-              <img src="../../assets/images/under_construction.png" width="400" class="responsive-img"
-                   alt="Under Construction">
-            </div>
-            <div class="col l10 m10 s12">
-              <p class="grey-text text-darken-3">This part of the application is currently still under
-                construction. In order to become a coach please send an email to your administrator with
-                the following information: </p>
-              <ul>
-                <li>Your full name</li>
-                <li>Your motivation to become a coach</li>
-                <li>The list of topics (topic + grade) on which you would like to coach</li>
-              </ul>
-              <div class="row right-align">
-                <a href="mailto:admin@youcoach.be?subject=Apply to become a coach" class="waves-effect waves-light yellow darken-2 btn-large black-text">Send Email <i
-                  class="material-icons right">send</i></a>
-              </div>
-            </div>
-          </div>
-        </section>
+<div class="container">
+  <app-coachee-left-nav-bar></app-coachee-left-nav-bar>
+  <div class="profile-container">
+    <mat-card>
+      <div class="card-header">
+        <h2 translate>become-a-coach.title</h2>
       </div>
-    </div>
+      <div class="card-body">
+        <img src="../../assets/images/under_construction.png"
+             alt="Under construction"
+             class="profile-img">
+        <div class="becomeCoachText" translate>become-a-coach.text.under-construction</div>
+      </div>
+      <button mat-raised-button color="primary" class="sendMailButton" (click)="mail()">
+        <span translate>become-a-coach.button.send-email  </span>
+        <mat-icon>send</mat-icon>
+      </button>
+    </mat-card>
   </div>
-</main>
-<app-footer></app-footer>
-
-
-<!--</html>-->
+</div>

@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 10px 10px;
+}
+
+.profile-container {
+  display: flex;
+  flex: 1;
+}
+
+.becomeCoachText {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  flex-wrap: wrap;
+  white-space: pre-wrap;
+}
+
+.mat-card {
+  width: 100%;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3em;
+  padding: 1em 0;
+  border-bottom: 1px solid black;
+}
+
+.profile-img {
+  width: 12%;
+  min-width: 100px;
+  margin-right: 3em;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.sendMailButton {
+  float: right;
+}
+
+

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-apply-become-coach',
@@ -12,4 +12,7 @@ export class ApplyBecomeCoachComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  mail() {
+    location.href = 'mailto:admin@youcoach.be?subject=Apply to become a coach&body=Write your name, motivation, and topic list';
+  }
 }
