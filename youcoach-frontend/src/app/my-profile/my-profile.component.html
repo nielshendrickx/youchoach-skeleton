@@ -2,13 +2,13 @@
   <app-coachee-left-nav-bar></app-coachee-left-nav-bar>
   <div class="profile-container" *ngIf="user">
     <mat-card>
-      <div class="card-header">
+      <mat-card-title class="card-header">
         <h2 translate>profile-information.title</h2>
         <button mat-mini-fab color="primary" class="edit-button">
           <mat-icon>create</mat-icon>
         </button>
-      </div>
-      <div class="card-body">
+      </mat-card-title>
+      <mat-card-content class="card-body">
         <img [src]=user.pictureUrl class="profile-img" alt="profile picture">
         <div class="profileItems">
           <mat-form-field class="full-screen-input">
@@ -32,11 +32,19 @@
           <mat-form-field>
             <mat-label translate>profile-information.label.role</mat-label>
             <label for="role">
-              <input id="role" matInput type="role" readonly value="{{user.role| titlecase}}">
+              <input id="role" matInput type="text" readonly value="{{user.role| titlecase}}">
             </label>
           </mat-form-field>
         </div>
-      </div>
+      </mat-card-content>
+      <mat-card-footer>
+        <button mat-raised-button color="primary"><span>save</span>
+          <mat-icon>save</mat-icon>
+        </button>
+        <button mat-raised-button color="accent"><span>cancel</span>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-card-footer>
     </mat-card>
   </div>
 </div>

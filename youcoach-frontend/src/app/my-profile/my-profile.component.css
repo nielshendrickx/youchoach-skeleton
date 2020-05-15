@@ -52,6 +52,24 @@
   flex-wrap: wrap;
 }
 
+.mat-card-footer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.mat-card-footer button{
+  margin: 10px 10px;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  color: black;
+}
+
+.mat-card-footer button mat-icon{
+  padding: 0 14px;
+}
+
 info-detail-container {
   display: flex;
   flex-direction: column;
@@ -69,6 +87,7 @@ info-detail-container {
 .full-screen-input {
   width: 100%;
 }
+
 
 
 
