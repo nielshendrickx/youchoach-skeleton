@@ -1,6 +1,5 @@
 package com.switchfully.youcoach.security.authorization;
 
-import com.google.common.collect.Lists;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
