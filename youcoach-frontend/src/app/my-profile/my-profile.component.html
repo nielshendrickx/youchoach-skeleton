@@ -29,6 +29,12 @@
               <input id="email" matInput type="email" readonly value="{{user.username}}">
             </label>
           </mat-form-field>
+          <mat-form-field>
+            <mat-label translate>profile-information.label.role</mat-label>
+            <label for="role">
+              <input id="role" matInput type="role" readonly value="{{user.role| titlecase}}">
+            </label>
+          </mat-form-field>
         </div>
       </div>
     </mat-card>
