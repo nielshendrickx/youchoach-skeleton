@@ -1,54 +1,57 @@
-<!--Original self created html:-->
-<div id="applyBecomeCoach" >
-  <mat-card>
-    <div class="card-header">
-      <h2 translate>become-a-coach.title</h2>
-    </div>
-    <app-coachee-left-nav-bar></app-coachee-left-nav-bar>
-    <div class="card-body">
+<div class="container">
+  <app-coachee-left-nav-bar></app-coachee-left-nav-bar>
+  <div class="profile-container">
+    <mat-card>
+      <div class="card-header">
+        <h2 translate>become-a-coach.title</h2>
+      </div>
+      <div class="card-body">
+        <img src="../../assets/images/under_construction.png"
+             alt="Under construction"
+             class="profile-img">
+        <div class="becomeCoachText">
+          <pre translate>become-a-coach.text.under-construction</pre>
+        </div>
+      </div>
 
-      <img src="../../assets/images/under_construction.png" alt="Under construction" width="300">
-      <pre translate>become-a-coach.text.under-construction</pre>
-    </div>
+      <button mat-raised-button color="primary" class="sendMailButton" (click)="mail()">
+        <span translate>become-a-coach.button.send-email</span>
+        <mat-icon>send</mat-icon>
+      </button>
+    </mat-card>
+  </div>
 
-    <button mat-raised-button color="primary" class="sendMailButton" (click)="mail()">
-      <span translate>become-a-coach.button.send-email</span>
-      <mat-icon>send</mat-icon>
-    </button>
-  </mat-card>
-</div>
+  <!--Copied html from design folder:-->
+  <!--<main>-->
+  <!--  <div class="row">-->
 
-<!--Copied html from design folder:-->
-<!--<main>-->
-<!--  <div class="row">-->
-
-<!--    <div class="col s12 m10">-->
-<!--      <div class="content-container">-->
-<!--        <section class="card-panel grey lighten-5">-->
-<!--          <h5 translate>become-a-coach.title</h5>-->
-<!--          <div class="divider"></div>-->
-<!--          <div class="row">-->
-<!--            <div class="col l2 m2 s12">-->
-<!--              <img src="../../assets/images/under_construction.png" width="400" class="responsive-img"-->
-<!--                   alt="Under Construction">-->
-<!--            </div>-->
-<!--            <div class="col l10 m10 s12">-->
-<!--              <p class="grey-text text-darken-3" translate>become-a-coach.text.under-construction</p>-->
-<!--&lt;!&ndash;              <p " translate>become-a-coach.text</p>&ndash;&gt;-->
-<!--&lt;!&ndash;              <ul>&ndash;&gt;-->
-<!--&lt;!&ndash;                <li>Your full name</li>&ndash;&gt;-->
-<!--&lt;!&ndash;                <li>Your motivation to become a coach</li>&ndash;&gt;-->
-<!--&lt;!&ndash;                <li>The list of topics (topic + grade) on which you would like to coach</li>&ndash;&gt;-->
-<!--&lt;!&ndash;              </ul>&ndash;&gt;-->
-<!--              <div class="row right-align">-->
-<!--                <a href="mailto:admin@youcoach.be?subject=Apply to become a coach&body=Write your name, motivation, and topic list" class="waves-effect waves-light yellow darken-2 btn-large black-text">Send Email <i-->
-<!--                  class="material-icons right" translate>become-a-coach.button.send-email</i></a>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </section>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</main>-->
-<!--</html>-->
+  <!--    <div class="col s12 m10">-->
+  <!--      <div class="content-container">-->
+  <!--        <section class="card-panel grey lighten-5">-->
+  <!--          <h5 translate>become-a-coach.title</h5>-->
+  <!--          <div class="divider"></div>-->
+  <!--          <div class="row">-->
+  <!--            <div class="col l2 m2 s12">-->
+  <!--              <img src="../../assets/images/under_construction.png" width="400" class="responsive-img"-->
+  <!--                   alt="Under Construction">-->
+  <!--            </div>-->
+  <!--            <div class="col l10 m10 s12">-->
+  <!--              <p class="grey-text text-darken-3" translate>become-a-coach.text.under-construction</p>-->
+  <!--&lt;!&ndash;              <p " translate>become-a-coach.text</p>&ndash;&gt;-->
+  <!--&lt;!&ndash;              <ul>&ndash;&gt;-->
+  <!--&lt;!&ndash;                <li>Your full name</li>&ndash;&gt;-->
+  <!--&lt;!&ndash;                <li>Your motivation to become a coach</li>&ndash;&gt;-->
+  <!--&lt;!&ndash;                <li>The list of topics (topic + grade) on which you would like to coach</li>&ndash;&gt;-->
+  <!--&lt;!&ndash;              </ul>&ndash;&gt;-->
+  <!--              <div class="row right-align">-->
+  <!--                <a href="mailto:admin@youcoach.be?subject=Apply to become a coach&body=Write your name, motivation, and topic list" class="waves-effect waves-light yellow darken-2 btn-large black-text">Send Email <i-->
+  <!--                  class="material-icons right" translate>become-a-coach.button.send-email</i></a>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </section>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</main>-->
+  <!--</html>-->

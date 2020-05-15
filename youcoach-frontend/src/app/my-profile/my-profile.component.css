@@ -20,7 +20,6 @@
   flex: 1;
 }
 
-
 .mat-card {
   width: 100%;
 }
@@ -52,12 +51,6 @@
   flex-wrap: wrap;
 }
 
-info-detail-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .mat-button-toggle-checked {
   background-color: #ffc107;
 }
@@ -69,7 +62,6 @@ info-detail-container {
 .full-screen-input {
   width: 100%;
 }
-
 
 
 

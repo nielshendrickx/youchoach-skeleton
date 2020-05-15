@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 10px 10px;
+}
+
+.profile-container {
+  display: flex;
+  flex: 1;
+}
+
+.becomeCoachText {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.mat-card {
+  width: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3em;
+  padding: 1em 0;
+  border-bottom: 1px solid black;
+}
+
+.profile-img {
+  width: 25%;
+  min-width: 150px;
+  margin-right: 3em;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.mat-button-toggle-checked {
+  background-color: #ffc107;
+}
+
+.mat-button-toggle-label-content {
+  text-align: left !important;
+}
