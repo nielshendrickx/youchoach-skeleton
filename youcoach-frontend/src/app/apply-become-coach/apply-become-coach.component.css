@@ -53,4 +53,8 @@
   text-align: left !important;
 }
 
+.sendMailButton {
+  float: right;
+}
+
 
