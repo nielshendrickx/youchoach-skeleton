@@ -4,6 +4,7 @@ import {Observable, of} from 'rxjs';
 import {User} from './user';
 import {catchError} from 'rxjs/operators';
 import {environment} from '../environments/environment';
+import {UpdateUser} from './updateUser';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,12 @@ export class UserService {
   registerUser(registerData): Observable<HttpResponse<any>> {
     return this.http.post<any>(this.RegistrationUrl, registerData, {observe: 'response'})
       .pipe(catchError(this.handleError<any>('registerUser')));
+  }
+
+  /** PUT: update the user on the server. Returns the updated user upon success. */
+  updateUser(updateUser: UpdateUser): Observable<any> {
+    return this.http.put(`${this.UsersUrl}`, updateUser, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('updateItem')));
   }
 
   /**

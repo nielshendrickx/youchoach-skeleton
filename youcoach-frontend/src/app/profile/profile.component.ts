@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
 import {User} from '../user';
-import {ActivatedRoute} from '@angular/router';
 import {AuthenticationService} from '../authentication/authentication.service';
 
 @Component({
@@ -13,8 +12,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private authenticationService: AuthenticationService,
-    private route: ActivatedRoute) {
+    private authenticationService: AuthenticationService) {
   }
   @Input() user: User;
 
@@ -25,6 +23,6 @@ export class ProfileComponent implements OnInit {
   getUser(): void {
     const id = this.authenticationService.getUserId();
     this.userService.getUserById(id)
-      .subscribe(user => { this.user = user ; console.log(user); });
+      .subscribe(user => this.user = user);
   }
 }
