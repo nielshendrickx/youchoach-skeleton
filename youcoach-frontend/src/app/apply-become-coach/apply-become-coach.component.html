@@ -10,8 +10,9 @@
       <img src="../../assets/images/under_construction.png" alt="Under construction" width="300">
       <pre translate>become-a-coach.text.under-construction</pre>
     </div>
-    <button mat-raised-button color="primary" class="sendMailButton">
-      <a href="mailto:admin@youcoach.be?subject=Apply&body=Apply with all info" translate>become-a-coach.button.send-email</a>
+
+    <button mat-raised-button color="primary" class="sendMailButton" (click)="mail()">
+      <span translate>become-a-coach.button.send-email</span>
       <mat-icon>send</mat-icon>
     </button>
   </mat-card>

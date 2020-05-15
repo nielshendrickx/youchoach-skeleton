@@ -12,7 +12,7 @@ export class ApplyBecomeCoachComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openMailService() {
-    'mailto:admin@youcoach.be?subject=Apply to become a coach&body=Write your name, motivation, and topic list';
+  mail() {
+    location.href = 'mailto:admin@youcoach.be?subject=Apply to become a coach&body=Write your name, motivation, and topic list';
   }
 }
