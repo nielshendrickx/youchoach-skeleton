@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="navigation">
   <mat-toolbar-row>
     <span><a routerLink="">You-Coach</a></span>
     <span class="spacer"></span>
@@ -17,4 +17,32 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-
+<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="mobile-nav">
+  <mat-icon>menu</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="">
+    <mat-icon>home</mat-icon>
+    <span translate>menu.link.home</span>
+  </button>
+  <button mat-menu-item routerLink="">
+    <mat-icon>emoji_people</mat-icon>
+    <span translate>menu.link.about-us</span>
+  </button>
+  <button mat-menu-item routerLink="">
+    <mat-icon>contact_support</mat-icon>
+    <span translate>menu.link.contact</span>
+  </button>
+  <button mat-menu-item *ngIf="userId" (click)="signOut()">
+    <mat-icon>person</mat-icon>
+    <span translate>sign out</span>
+  </button>
+  <button mat-menu-item *ngIf="!userId" (click)="goToSignIn()">
+    <mat-icon>person</mat-icon>
+    <span translate>menu.button.sign-in</span>
+  </button>
+  <button mat-menu-item *ngIf="!userId" (click)="goToRegister()">
+    <mat-icon>person_add</mat-icon>
+    <span translate>menu.button.register</span>
+  </button>
+</mat-menu>

@@ -32,3 +32,19 @@ a{
 .sign-out-button{
   background-color: lightgray;
 }
+
+
+/*RESPONSIVE DESIGN*/
+@media only screen and (min-width: 451px) {
+  .mobile-nav{
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .mat-toolbar{
+    display: none !important;
+  }
+}
+
+
