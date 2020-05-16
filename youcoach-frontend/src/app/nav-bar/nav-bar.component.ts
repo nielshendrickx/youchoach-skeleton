@@ -8,7 +8,9 @@ import {AuthenticationService} from '../authentication/authentication.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  loggedIn$;
+  userId;
+
+  // loggedIn$;
 
   constructor(
     private router: Router,
@@ -17,7 +19,11 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loggedIn$ = this.authenticationService.userLoggedIn$;
+    // this.loggedIn$ = this.authenticationService.userLoggedIn$;
+    this.userId = this.authenticationService.getUserId();
+    this.authenticationService.userLoggedIn$.subscribe(_ => {
+      this.userId = this.authenticationService.getUserId();
+    });
   }
 
   goToSignIn(): void {
@@ -35,11 +41,6 @@ export class NavBarComponent implements OnInit {
 
   goToHomePage(): void {
     this.router.navigate(['/']);
-  }
-
-  isLoggedIn(): void {
-    console.log(this.authenticationService.isLoggedIn());
-    console.log(this.loggedIn$);
   }
 }
 
