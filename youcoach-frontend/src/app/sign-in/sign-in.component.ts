@@ -13,7 +13,7 @@ export class SignInComponent implements OnInit {
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   });
-  error = false;
+  error: boolean;
 
   constructor(
     private router: Router,
@@ -22,6 +22,7 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.resetError();
   }
 
   resetPassword(): void {
@@ -30,19 +31,24 @@ export class SignInComponent implements OnInit {
   }
 
   signIn(): void {
-    this.error = false;
+    this.resetError();
     this.authenticationService.login(this.signInForm.value)
       .subscribe(() => {
+          console.log('response received');
           this.goToUserProfile();
         },
-        () => {
+        (error) => {
+          console.error('error caught in component');
           this.error = true;
-        }
-      );
+        });
   }
 
   goToUserProfile(): void {
     this.router.navigate([`myProfile`]);
+  }
+
+  resetError(): void {
+    this.error = false;
   }
 
 }

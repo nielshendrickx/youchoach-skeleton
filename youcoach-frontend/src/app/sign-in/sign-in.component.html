@@ -7,14 +7,14 @@
         <label for="username">
           <input id="username" matInput type="email" formControlName="username">
         </label>
-        <mat-error *ngIf="signInForm.get('username').hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="signInForm.get('username').hasError('required')" translate>register.message.email-required</mat-error>
       </mat-form-field>
       <mat-form-field class="full-screen-input">
         <mat-label translate>sign-in.label.password</mat-label>
         <label for="password">
           <input id="password" matInput type="password" formControlName="password">
         </label>
-        <mat-error *ngIf="signInForm.get('password').hasError('required')">Password is required</mat-error>
+        <mat-error *ngIf="signInForm.get('password').hasError('required')" translate>register.message.password-required</mat-error>
       </mat-form-field>
       <div class="button-container">
         <button mat-raised-button color="primary" (click)="signIn()" [disabled]="signInForm.invalid"><span translate>sign-in.button.sign-in</span>

@@ -51,14 +51,14 @@
   flex-wrap: wrap;
 }
 
-.mat-card-footer{
+.button-container{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
 
-.mat-card-footer button{
+.button-container button{
   margin: 10px 10px;
   flex-shrink: 0;
   text-transform: uppercase;
@@ -66,7 +66,7 @@
   visibility: hidden;
 }
 
-.mat-card-footer button mat-icon{
+.button-container button mat-icon{
   padding: 0 14px;
 }
 
@@ -86,6 +86,11 @@ info-detail-container {
 
 .full-screen-input {
   width: 100%;
+}
+
+.error-container{
+  margin-top: 20px;
+  color: red;
 }
 
 

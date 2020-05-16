@@ -12,7 +12,7 @@ import {MustMatch} from '../must-match.validators';
 })
 export class RegisterComponent implements OnInit {
   userForm: FormGroup;
-  error = false;
+  error: boolean;
 
   constructor(
     private userService: UserService,
@@ -34,19 +34,26 @@ export class RegisterComponent implements OnInit {
       {
         validator: MustMatch('password', 'passwordAgain')
       });
+    this.resetError();
   }
 
   registerUser(): void {
-    this.error = false;
+    this.resetError();
     this.authenticationService.register(this.userForm.value).subscribe(() => {
+        console.log('response received');
         this.goToUserProfile();
       },
-      () => {
+      (error) => {
+        console.error('error caught in component');
         this.error = true;
       });
   }
 
   goToUserProfile(): void {
     this.router.navigate([`myProfile`]);
+  }
+
+  resetError(): void {
+    this.error = false;
   }
 }

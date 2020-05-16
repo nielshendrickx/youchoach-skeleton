@@ -20,9 +20,9 @@ export class MyProfileComponent implements OnInit {
   });
 
   roles: string[] = ['STUDENT', 'COACH', 'ADMINISTRATOR'];
-
-  @Input() user: User;
-
+  error: boolean;
+  errorMessage: string;
+  user: User;
 
   constructor(
     private userService: UserService,
@@ -32,6 +32,7 @@ export class MyProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+    this.resetError();
   }
 
   getUser(): void {
@@ -49,23 +50,46 @@ export class MyProfileComponent implements OnInit {
   }
 
   editForm() {
-    this.userForm.enable();
+    if (this.authenticationService.getRoles().some(role => role.authority === 'ADMINISTRATOR')) {
+      this.userForm.enable();
+    }
+    this.userForm.get('firstName').enable();
+    this.userForm.get('lastName').enable();
+    this.userForm.get('username').enable();
+    this.userForm.get('pictureUrl').enable();
     document.getElementById('save-button').style.visibility = 'visible';
     document.getElementById('cancel-button').style.visibility = 'visible';
     document.getElementById('edit-button').style.visibility = 'hidden';
   }
 
   cancel(): void {
+    this.resetError();
     this.userForm.disable();
     document.getElementById('save-button').style.visibility = 'hidden';
     document.getElementById('cancel-button').style.visibility = 'hidden';
     document.getElementById('edit-button').style.visibility = 'visible';
+    this.initializeForm(this.user);
   }
 
   save(): void {
+    this.resetError();
     const updateUser = this.userForm.value;
+    updateUser.role = this.userForm.get('role').value;
     updateUser.userId = this.authenticationService.getUserId();
-    updateUser.pictureUrl = this.user.pictureUrl;
-    this.userService.updateUser(updateUser).subscribe(() => console.log('user is updated'));
+    this.userService.updateUser(updateUser).subscribe((response) => {
+        console.log('response received');
+        this.user = response;
+        this.cancel();
+      },
+      (error) => {
+        console.error('error caught in component');
+        this.errorMessage = error.error.message;
+        this.error = true;
+      });
+  }
+
+  resetError(): void {
+    this.errorMessage = '';
+    this.error = false;
   }
 }

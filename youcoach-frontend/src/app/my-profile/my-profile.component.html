@@ -34,8 +34,10 @@
             </mat-error>
           </mat-form-field>
           <mat-form-field>
-            <mat-label >{{'profile-information.label.email' | translate}}
-              <span style="font-weight: bold; margin-left: 10px">  {{'profile-information.message.change-email' | translate}}</span></mat-label>
+            <mat-label>{{'profile-information.label.email' | translate}}
+              <span
+                style="font-weight: bold; margin-left: 10px">  {{'profile-information.message.change-email' | translate}}</span>
+            </mat-label>
             <label for="username">
               <input id="username" matInput type="email" formControlName="username">
             </label>
@@ -47,9 +49,9 @@
           </mat-form-field>
           <mat-form-field>
             <mat-label translate>profile-information.label.role</mat-label>
-              <mat-select formControlName="role">
-                <mat-option *ngFor="let role of roles" [value]="role">{{role}}</mat-option>
-              </mat-select>
+            <mat-select formControlName="role">
+              <mat-option *ngFor="let role of roles" [value]="role">{{role}}</mat-option>
+            </mat-select>
           </mat-form-field>
           <mat-form-field>
             <mat-label translate>profile-information.label.profile-picture</mat-label>
@@ -59,14 +61,15 @@
           </mat-form-field>
         </form>
       </mat-card-content>
-      <mat-card-footer>
+      <div class="button-container">
         <button mat-raised-button color="primary" id="save-button" (click)=save() [disabled]="userForm.invalid"><span>save</span>
           <mat-icon>save</mat-icon>
         </button>
         <button mat-raised-button color="accent" id="cancel-button" (click)="cancel()"><span>cancel</span>
           <mat-icon>cancel</mat-icon>
         </button>
-      </mat-card-footer>
+      </div>
+      <div class="error-container" *ngIf="error">{{errorMessage}}</div>
     </mat-card>
   </div>
 </div>

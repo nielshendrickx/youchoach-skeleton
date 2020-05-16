@@ -42,7 +42,7 @@ public class UsersService {
     public UserDto register(CreateUserDto newUser) {
         validateNewMember(newUser);
         SecuredUser securedUser = securedUserRepository.save(new SecuredUser(newUser.getUsername(), passwordEncoder.encode(newUser.getPassword())));
-        Users user = usersRepository.save(new Users(securedUser,newUser.getFirstName(), newUser.getLastName(), newUser.getPictureUrl()));
+        Users user = usersRepository.save(new Users(securedUser, newUser.getFirstName(), newUser.getLastName(), newUser.getPictureUrl()));
         return userMapper.toDto(user);
     }
 
@@ -52,18 +52,19 @@ public class UsersService {
         }
     }
 
-    public UserDto updateUser(UpdateUserDto updateUserDto){
-         validateUpdateMember(updateUserDto);
-         Users user = usersRepository.findBySecuredUser_Id(updateUserDto.getUserId());
-         if(user == null){
-             throw new UserNotFoundException();
-         }
-         user.setFirstName(updateUserDto.getFirstName());
-         user.setLastName(updateUserDto.getLastName());
-         user.setPictureUrl(updateUserDto.getPictureUrl());
-         user.getSecuredUser().setUsername(updateUserDto.getUsername());
-         user.getSecuredUser().setRole(updateUserDto.getRole());;
-         return userMapper.toDto(user);
+    public UserDto updateUser(UpdateUserDto updateUserDto) {
+        validateUpdateMember(updateUserDto);
+        Users user = usersRepository.findBySecuredUser_Id(updateUserDto.getUserId());
+        if (user == null) {
+            throw new UserNotFoundException();
+        }
+        user.setFirstName(updateUserDto.getFirstName());
+        user.setLastName(updateUserDto.getLastName());
+        user.setPictureUrl(updateUserDto.getPictureUrl());
+        user.getSecuredUser().setUsername(updateUserDto.getUsername());
+        user.getSecuredUser().setRole(updateUserDto.getRole());
+        ;
+        return userMapper.toDto(user);
     }
 
     private void validateNewMember(CreateUserDto newUser) {
@@ -73,8 +74,15 @@ public class UsersService {
         isPasswordMatch(newUser.getPassword(), newUser.getPasswordAgain());
     }
 
-    private void validateUpdateMember(UpdateUserDto updateUser) {
-        isValidEmailAddress(updateUser.getUsername());
-        isUsernameAvailable(updateUser.getUsername());
+    private void validateUpdateMember(UpdateUserDto updateUserDto) {
+        isValidEmailAddress(updateUserDto.getUsername());
+        if (userHasNewUserName(updateUserDto)) {
+            isUsernameAvailable(updateUserDto.getUsername());
+        }
+    }
+
+    private boolean userHasNewUserName(UpdateUserDto updateUserDto) {
+        Users user = usersRepository.findBySecuredUser_Id(updateUserDto.getUserId());
+        return !updateUserDto.getUsername().equals(user.getSecuredUser().getUsername());
     }
 }

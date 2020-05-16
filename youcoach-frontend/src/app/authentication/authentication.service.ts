@@ -59,4 +59,8 @@ export class AuthenticationService {
     return decoded.sub;
   }
 
+  getRoles(): any[] {
+    const decoded = jwt_decode(this.getToken());
+    return decoded.roles;
+  }
 }
