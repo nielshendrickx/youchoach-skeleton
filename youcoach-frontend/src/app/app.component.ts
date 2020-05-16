@@ -8,25 +8,24 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  username;
+  userId;
   language = 'en';
-  loggedIn$;
 
   constructor(private authenticationService: AuthenticationService, public translate: TranslateService) {
   }
 
   ngOnInit(): void {
-    this.username = this.authenticationService.getUserId();
+    this.userId = this.authenticationService.getUserId();
     this.authenticationService.userLoggedIn$.subscribe(_ => {
-      this.username = this.authenticationService.getUserId();
+      this.userId = this.authenticationService.getUserId();
     });
-    this.loggedIn$ = this.authenticationService.userLoggedIn$;
   }
 
   switchLanguage(language: string) {
     this.translate.use(language);
     this.language = language;
   }
+
   currentLanguage() {
     return this.language;
   }

@@ -10,8 +10,6 @@ import {AuthenticationService} from '../authentication/authentication.service';
 export class NavBarComponent implements OnInit {
   userId;
 
-  // loggedIn$;
-
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
@@ -19,7 +17,6 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.loggedIn$ = this.authenticationService.userLoggedIn$;
     this.userId = this.authenticationService.getUserId();
     this.authenticationService.userLoggedIn$.subscribe(_ => {
       this.userId = this.authenticationService.getUserId();
