@@ -8,7 +8,8 @@
     <button mat-raised-button class="sign-out-button" *ngIf="userId" (click)="signOut()"><span translate>sign out</span>
       <mat-icon>person</mat-icon>
     </button>
-    <button mat-raised-button color="primary" *ngIf="!userId" (click)="goToSignIn()"><span translate>menu.button.sign-in</span>
+    <button mat-raised-button color="primary" *ngIf="!userId" (click)="goToSignIn()"><span
+      translate>menu.button.sign-in</span>
       <mat-icon>person</mat-icon>
     </button>
     <button mat-raised-button color="accent" *ngIf="!userId" (click)="goToRegister()"><span translate>menu.button.register</span>
@@ -17,9 +18,14 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="mobile-nav">
-  <mat-icon>menu</mat-icon>
-</button>
+
+<!--MOBILE NAVBAR-->
+<div class="mobile-nav">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span><a routerLink="">You-Coach</a></span>
+</div>
 <mat-menu #menu="matMenu">
   <button mat-menu-item routerLink="">
     <mat-icon>home</mat-icon>
