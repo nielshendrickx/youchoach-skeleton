@@ -48,4 +48,30 @@
   float: right;
 }
 
+@media only screen and (max-width: 450px) {
+  .container{
+    flex-direction: column;
+  }
+
+  .profile-container{
+    margin: 10px 0 0 0;
+  }
+
+  .mat-card-title{
+    margin: 0 0 10px 0;
+  }
+
+  .profile-img {
+    margin: 10px 0 20px 0;
+  }
+
+  .card-body{
+    flex-direction: column;
+  }
+
+  .sendMailButton{
+    margin: 20px 0;
+  }
+}
+
 

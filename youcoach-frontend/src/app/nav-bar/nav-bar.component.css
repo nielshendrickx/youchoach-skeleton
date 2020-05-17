@@ -46,14 +46,6 @@ a{
     display: none !important;
   }
 
-  .mobile-nav{
-    background-color: #ffc107;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-  }
-
   .mobile-nav span {
     margin: 0 30% 0 30%;
   }
