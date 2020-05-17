@@ -19,7 +19,7 @@ export class MyProfileComponent implements OnInit {
     pictureUrl: new FormControl(''),
   });
 
-  roles: string[] = ['STUDENT', 'COACH', 'ADMINISTRATOR'];
+  roles: string[];
   error: boolean;
   errorMessage: string;
   user: User;
@@ -32,6 +32,7 @@ export class MyProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+    this.getRoles();
     this.resetError();
   }
 
@@ -42,6 +43,10 @@ export class MyProfileComponent implements OnInit {
         this.initializeForm(user);
         this.user = user;
       });
+  }
+
+  getRoles(): void {
+    this.userService.getRoles().subscribe(roles => this.roles = roles);
   }
 
   initializeForm(user: User): void {

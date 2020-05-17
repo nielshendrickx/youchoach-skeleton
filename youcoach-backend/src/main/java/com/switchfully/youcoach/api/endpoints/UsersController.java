@@ -1,5 +1,6 @@
 package com.switchfully.youcoach.api.endpoints;
 
+import com.switchfully.youcoach.security.authorization.Role;
 import com.switchfully.youcoach.service.dto.UpdateUserDto;
 import com.switchfully.youcoach.service.dto.UserDto;
 import com.switchfully.youcoach.service.services.UsersService;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.UUID;
 
 @RestController
@@ -38,5 +40,13 @@ public class UsersController {
     public UserDto updateUser(@RequestBody UpdateUserDto updateUserDto){
         loggerUsers.info("Updated a user");
         return usersService.updateUser(updateUserDto);
+    }
+
+    @GetMapping(produces = "application/json", path = "/roles")
+    @ApiOperation(value = "Get roles of user", notes = "")
+    @ResponseStatus(HttpStatus.OK)
+    public Collection<Role> getRoles(){
+        loggerUsers.info("Returned roles");
+        return usersService.getRoles();
     }
 }

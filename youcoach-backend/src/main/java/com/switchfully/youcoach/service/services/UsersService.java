@@ -6,6 +6,7 @@ import com.switchfully.youcoach.domain.user.Users;
 import com.switchfully.youcoach.domain.user.UsersRepository;
 import com.switchfully.youcoach.security.authentication.user.SecuredUser;
 import com.switchfully.youcoach.security.authentication.user.SecuredUserRepository;
+import com.switchfully.youcoach.security.authorization.Role;
 import com.switchfully.youcoach.service.dto.CreateUserDto;
 import com.switchfully.youcoach.service.dto.UpdateUserDto;
 import com.switchfully.youcoach.service.dto.UserDto;
@@ -15,6 +16,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.UUID;
 
 import static com.switchfully.youcoach.service.validation.Validation.*;
@@ -84,5 +87,9 @@ public class UsersService {
     private boolean userHasNewUserName(UpdateUserDto updateUserDto) {
         Users user = usersRepository.findBySecuredUser_Id(updateUserDto.getUserId());
         return !updateUserDto.getUsername().equals(user.getSecuredUser().getUsername());
+    }
+
+    public Collection<Role> getRoles(){
+        return Arrays.asList(Role.values());
     }
 }

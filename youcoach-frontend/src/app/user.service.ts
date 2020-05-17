@@ -27,6 +27,12 @@ export class UserService {
       .pipe(catchError(this.handleError('getUserById')));
   }
 
+  /** GET: get roles of user from the server */
+  getRoles(): Observable<any> {
+    return this.http.get<any>(`${this.UsersUrl}/roles`)
+      .pipe(catchError(this.handleError('getRoles')));
+  }
+
   /** POST: add a new user to the server */
   registerUser(registerData): Observable<HttpResponse<any>> {
     return this.http.post<any>(this.RegistrationUrl, registerData, {observe: 'response'})
