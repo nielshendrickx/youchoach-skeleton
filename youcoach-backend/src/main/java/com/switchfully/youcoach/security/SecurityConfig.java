@@ -58,6 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         config.setAllowCredentials(true);
         // Modify allowed origins if you run the client at a different endpoint
         config.addAllowedOrigin("http://localhost:4200");
+        config.addAllowedOrigin("https://youcoach-frontend-north.herokuapp.com");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
