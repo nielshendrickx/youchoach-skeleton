@@ -2,6 +2,8 @@ package com.switchfully.youcoach.security.authentication.user;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface SecuredUserRepository extends CrudRepository<SecuredUser, Long> {
+import java.util.UUID;
+
+public interface SecuredUserRepository extends CrudRepository<SecuredUser, UUID> {
     SecuredUser findByUsername(String username);
 }

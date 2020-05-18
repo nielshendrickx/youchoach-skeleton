@@ -1,7 +1,7 @@
 package com.switchfully.youcoach.domain.user;
 
+import com.switchfully.youcoach.domain.topic.Topic;
 import com.switchfully.youcoach.security.authentication.user.SecuredUser;
-import com.switchfully.youcoach.security.authorization.Role;
 
 import javax.persistence.*;
 import java.util.List;
@@ -26,13 +26,33 @@ public class Users {
     private String lastName;
 
     @Column(name = "pictureUrl")
-    private String pictureUrl ;
+    private String pictureUrl;
+
+    @Column(name = "introduction")
+    private String introduction;
+
+    @Column(name = "availability")
+    private String availability;
+
+    @OneToMany
+    @JoinColumn(name = "fk_user_id")
+    private List<Topic> topics;
 
 
     public Users(SecuredUser securedUser, String firstName, String lastName, String pictureUrl) {
         this.securedUser = securedUser;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.pictureUrl = "http://cology.be/profile-picture.jpg";
+    }
+
+    public Users(SecuredUser securedUser, String firstName, String lastName, String pictureUrl, String introduction, String availability, List<Topic> topics) {
+        this.securedUser = securedUser;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.introduction = introduction;
+        this.availability = availability;
+        this.topics = topics;
         this.pictureUrl = "http://cology.be/profile-picture.jpg";
     }
 
@@ -51,7 +71,17 @@ public class Users {
         return lastName;
     }
 
-    public String getPictureUrl() {return pictureUrl; }
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public String getAvailability() {
+        return availability;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -63,5 +93,9 @@ public class Users {
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+    }
+
+    public List<Topic> getTopics() {
+        return topics;
     }
 }
