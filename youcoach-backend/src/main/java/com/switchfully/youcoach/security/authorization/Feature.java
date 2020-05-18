@@ -3,7 +3,8 @@ package com.switchfully.youcoach.security.authorization;
 public enum Feature {
     REQUEST_SESSION("requestsession"),
     ACCEPT_SESSION("acceptsession"),
-    UPDATE_USER("updateUser");
+    VIEW_USER("viewuser"),
+    UPDATE_USER("updateuser");
 
     private String label;
 

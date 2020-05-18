@@ -18,7 +18,7 @@ public class RoleToFeatureMapper {
             case STUDENT:
                 return newArrayList(REQUEST_SESSION);
             case ADMINISTRATOR:
-                return newArrayList(UPDATE_USER);
+                return newArrayList(VIEW_USER, UPDATE_USER);
         }
         return new ArrayList<>();
     }

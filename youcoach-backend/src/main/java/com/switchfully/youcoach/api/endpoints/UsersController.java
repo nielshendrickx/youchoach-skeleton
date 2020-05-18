@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -28,17 +29,17 @@ public class UsersController {
         this.usersService = usersService;
     }
 
-    @PreAuthorize("(#id == principal) or (hasAuthority('UPDATE_USER'))")
+    @PreAuthorize("#id.toString() == principal or hasAuthority('viewuser')")
     @GetMapping(produces = "application/json", path = "/{id}")
     @ApiOperation(value = "Get a user by username", notes = "A user will be returned", response = UserDto.class)
     @ResponseStatus(HttpStatus.OK)
-    public UserDto getUserByUsername(@PathVariable UUID id) {
-
-        System.out.println(id);
+    public UserDto getUserByUsername(@PathVariable UUID id, Authentication authentication) {
+        System.out.println(authentication.getAuthorities());
         loggerUsers.info("Returning a user");
         return usersService.getUserById(id);
     }
 
+    @PreAuthorize("#updateUserDto.userId.toString() == principal or hasAuthority('updateuser')")
     @PutMapping(produces = "application/json")
     @ApiOperation(value = "Update a user", notes = "A user will be updated returned", response = UserDto.class)
     @ResponseStatus(HttpStatus.CREATED)
