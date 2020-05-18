@@ -43,7 +43,7 @@ public class UsersController {
     }
 
     @GetMapping(produces = "application/json", path = "/roles")
-    @ApiOperation(value = "Get roles of user", notes = "")
+    @ApiOperation(value = "Get roles of user", notes = "All the roles a user of the system can have", response = Role.class)
     @ResponseStatus(HttpStatus.OK)
     public Collection<Role> getRoles(){
         loggerUsers.info("Returned roles");
