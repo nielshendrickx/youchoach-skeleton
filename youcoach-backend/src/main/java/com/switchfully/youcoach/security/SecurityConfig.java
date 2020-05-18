@@ -1,6 +1,5 @@
 package com.switchfully.youcoach.security;
 
-import com.google.common.collect.ImmutableList;
 import com.switchfully.youcoach.security.authentication.jwt.JwtAuthenticationFilter;
 import com.switchfully.youcoach.security.authentication.jwt.JwtAuthorizationFilter;
 import com.switchfully.youcoach.security.authentication.jwt.JwtRegistrationFilter;
@@ -22,7 +21,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled=true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final PasswordEncoder passwordEncoder;
     private String jwtSecret;
