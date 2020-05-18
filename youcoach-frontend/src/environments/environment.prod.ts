@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backendUrl: 'https://youcoach-backend.herokuapp.com'
+  backendUrl: 'https://youcoach-backend.herokuapp.com/api'
 };
