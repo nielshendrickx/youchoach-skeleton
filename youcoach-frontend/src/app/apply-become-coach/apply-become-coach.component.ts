@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-apply-become-coach',
@@ -7,12 +8,16 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ApplyBecomeCoachComponent implements OnInit {
 
-  constructor() { }
+  constructor(public translateService: TranslateService) {
+  }
 
   ngOnInit(): void {
   }
 
-  mail() {
-    location.href = 'mailto:admin@youcoach.be?subject=Apply to become a coach&body=Write your name, motivation, and topic list';
+  mail(mailRef: string) {
+    this.translateService.get(mailRef).subscribe((text: string) => {
+      /*location.href = text; */
+      location.href = 'mailto:admin@youcoach.be?subject=Apply to become a coach&body=Write your name, motivation, and topic list';
+    });
   }
 }
