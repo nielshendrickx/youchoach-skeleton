@@ -18,7 +18,6 @@ import {HomeComponent} from './home/home.component';
 import {RegisterComponent} from './register/register.component';
 import {MaterialModule} from './material/material.module';
 import {SignInComponent} from './sign-in/sign-in.component';
-import {UserComponent} from './user/user.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ApplyBecomeCoachComponent } from './apply-become-coach/apply-become-coach.component';
 
@@ -37,9 +36,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     RegisterComponent,
     SignInComponent,
-    UserComponent,
     ApplyBecomeCoachComponent,
-    UserComponent,
     MyProfileComponent,
   ],
   imports: [
