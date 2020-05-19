@@ -38,7 +38,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterComponent,
     SignInComponent,
     ApplyBecomeCoachComponent,
-    MyProfileComponent,
+    MyProfileComponent,-
     MyCoachProfileComponent,
   ],
   imports: [
