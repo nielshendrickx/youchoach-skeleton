@@ -100,12 +100,4 @@ export class ProfileComponent implements OnInit {
     this.errorMessage = '';
     this.error = false;
   }
-
-  goToApplyBecomeCoach(): void {
-    this.router.navigate(['/applyBecomeCoach']);
-  }
-
-  goToMyProfile(): void {
-    this.router.navigate(['/myProfile']);
-  }
 }
