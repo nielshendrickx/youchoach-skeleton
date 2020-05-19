@@ -10,10 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -33,8 +31,7 @@ public class UsersController {
     @GetMapping(produces = "application/json", path = "/{id}")
     @ApiOperation(value = "Get a user by username", notes = "A user will be returned", response = UserDto.class)
     @ResponseStatus(HttpStatus.OK)
-    public UserDto getUserByUsername(@PathVariable UUID id, Authentication authentication) {
-        System.out.println(authentication.getAuthorities());
+    public UserDto getUserById(@PathVariable UUID id) {
         loggerUsers.info("Returning a user");
         return usersService.getUserById(id);
     }
