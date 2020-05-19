@@ -23,7 +23,6 @@ import {SignInComponent} from './sign-in/sign-in.component';
 import {UserComponent} from './user/user.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ApplyBecomeCoachComponent } from './apply-become-coach/apply-become-coach.component';
-import { CoacheeLeftNavBarComponent } from './coachee-left-nav-bar/coachee-left-nav-bar.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -46,7 +45,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ApplyBecomeCoachComponent,
     UserComponent,
     MyProfileComponent,
-    CoacheeLeftNavBarComponent
   ],
   imports: [
     BrowserModule,

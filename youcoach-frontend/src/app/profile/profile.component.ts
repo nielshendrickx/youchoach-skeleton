@@ -4,6 +4,7 @@ import {User} from '../user';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {ActivatedRoute} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -29,7 +30,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private authenticationService: AuthenticationService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -98,5 +100,13 @@ export class ProfileComponent implements OnInit {
   resetError(): void {
     this.errorMessage = '';
     this.error = false;
+  }
+
+  goToApplyBecomeCoach(): void {
+    this.router.navigate(['/applyBecomeCoach']);
+  }
+
+  goToMyProfile(): void {
+    this.router.navigate(['/myProfile']);
   }
 }

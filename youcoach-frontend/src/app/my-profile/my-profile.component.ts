@@ -3,6 +3,7 @@ import {UserService} from '../user.service';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../user';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-my-profile',
@@ -26,7 +27,8 @@ export class MyProfileComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) {
   }
 
@@ -96,5 +98,13 @@ export class MyProfileComponent implements OnInit {
   resetError(): void {
     this.errorMessage = '';
     this.error = false;
+  }
+
+  goToApplyBecomeCoach(): void {
+    this.router.navigate(['/applyBecomeCoach']);
+  }
+
+  goToMyProfile(): void {
+    this.router.navigate(['/myProfile']);
   }
 }

@@ -1,75 +1,78 @@
 <div class="container">
-  <app-coachee-left-nav-bar></app-coachee-left-nav-bar>
+  <div class="link-container">
+    <p translate>my-profile-menu.title</p>
+    <mat-button-toggle-group vertical>
+      <mat-button-toggle (click)="goToMyProfile()" checked="true"><span translate>my-profile-menu.link.profile-information</span>
+      </mat-button-toggle>
+      <mat-button-toggle><span translate>my-profile-menu.link.coaching-sessions</span></mat-button-toggle>
+      <mat-button-toggle (click)="goToApplyBecomeCoach()"><span
+        translate>my-profile-menu.link.apply-to-become-a-coach</span></mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
   <div class="profile-container" *ngIf="user">
     <mat-card>
-      <mat-card-title class="card-header">
+      <div class="card-header">
         <h2 translate>profile-information.title</h2>
-        <button mat-mini-fab color="primary" id="edit-button" (click)="editForm()">
+        <button mat-mini-fab color="primary" class="edit-button">
           <mat-icon>create</mat-icon>
         </button>
-      </mat-card-title>
-      <mat-card-content class="card-body">
-        <img [src]=user.pictureUrl class="profile-img" alt="profile picture">
-        <form class="profileItems" [formGroup]="userForm">
+      </div>
+      <div class="card-body">
+        <img [src]=user.pictureUrl class="profile-img">
+        <div class="profileItems">
           <mat-form-field class="full-screen-input">
             <mat-label translate>profile-information.label.first-name</mat-label>
             <label for="firstName">
-              <input id="firstName" matInput type="text" formControlName="firstName">
+              <input id="firstName" matInput type="text" readonly value="{{user.firstName}}">
             </label>
-            <mat-error *ngIf="userForm.get('firstName').hasError('required')" translate>
-              register.message.first-name-required
-            </mat-error>
-            <mat-error *ngIf="userForm.get('firstName').hasError('maxlength')">First name max character length is 50
-            </mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label translate>profile-information.label.last-name</mat-label>
             <label for="lastName">
-              <input id="lastName" matInput type="text" formControlName="lastName">
-            </label>
-            <mat-error *ngIf="userForm.get('lastName').hasError('required')" translate>
-              register.message.last-name-required
-            </mat-error>
-            <mat-error *ngIf="userForm.get('lastName').hasError('maxlength')">Last name max character length is 50
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>{{'profile-information.label.email' | translate}}
-              <span
-                style="font-weight: bold; margin-left: 10px">  {{'profile-information.message.change-email' | translate}}</span>
-            </mat-label>
-            <label for="username">
-              <input id="username" matInput type="email" formControlName="username">
-            </label>
-            <mat-error *ngIf="userForm.get('username').hasError('required')" translate>register.message.email-required
-            </mat-error>
-            <mat-error *ngIf="userForm.get('username').hasError('pattern')" translate>
-              register.message.email-wrong-format
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label translate>profile-information.label.role</mat-label>
-            <mat-select formControlName="role">
-              <mat-option *ngFor="let role of roles" [value]="role">{{role}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label translate>profile-information.label.profile-picture</mat-label>
-            <label for="pictureUrl">
-              <input id="pictureUrl" matInput type="text" formControlName="pictureUrl">
+              <input id="lastName" matInput type="text" readonly value="{{user.lastName}}">
             </label>
           </mat-form-field>
-        </form>
-      </mat-card-content>
-      <div class="button-container">
-        <button mat-raised-button color="primary" id="save-button" (click)=save() [disabled]="userForm.invalid"><span>save</span>
-          <mat-icon>save</mat-icon>
-        </button>
-        <button mat-raised-button color="accent" id="cancel-button" (click)="cancel()"><span>cancel</span>
-          <mat-icon>cancel</mat-icon>
-        </button>
+          <mat-form-field>
+            <mat-label translate>profile-information.label.email</mat-label>
+            <label for="email">
+              <input id="email" matInput type="email" readonly value="{{user.username}}">
+            </label>
+          </mat-form-field>
+        </div>
       </div>
-      <div class="error-container" *ngIf="error">{{errorMessage}}</div>
     </mat-card>
   </div>
 </div>
+
+
+  <!--  <div class="profileHeader">-->
+  <!--    <h1>Profile Information</h1>-->
+  <!--    <img src="assets/editProfileButton.png">-->
+  <!--  </div>-->
+  <!--  <mat-divider></mat-divider>-->
+
+
+  <!--  <div class="profileItems">-->
+  <!--    <div class="profileImage">-->
+  <!--      <img [src]=user.pictureUrl height="200">-->
+  <!--    </div>-->
+  <!--    <div class="profileInfoItem">-->
+  <!--      <span class="itemName" translate>profile-information.label.first-name</span>-->
+  <!--      <span class="itemContent">{{user.firstName}}</span>-->
+  <!--      <span></span>-->
+  <!--    </div>-->
+  <!--    <mat-divider></mat-divider>-->
+  <!--    <div class="profileInfoItem">-->
+  <!--      <span class="itemName" translate>profile-information.label.last-name</span>-->
+  <!--      <span class="itemContent">{{user.lastName}}</span>-->
+  <!--      <span></span>-->
+  <!--    </div>-->
+  <!--    <mat-divider></mat-divider>-->
+  <!--    <div class="profileInfoItem">-->
+  <!--      <span class="itemName" translate>profile-information.label.email</span>-->
+  <!--      <span class="itemContent">{{user.username}}</span>-->
+  <!--      <span></span>-->
+  <!--    </div>-->
+  <!--    <mat-divider></mat-divider>-->
+  <!--  </div>-->
+

@@ -5,10 +5,6 @@
   margin: 10px 10px;
 }
 
-.link-container {
-  margin-right: 30px;
-}
-
 .profile-container {
   display: flex;
   flex: 1;
@@ -70,12 +66,6 @@
   padding: 0 14px;
 }
 
-info-detail-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .mat-button-toggle-checked {
   background-color: #ffc107;
 }
@@ -86,6 +76,10 @@ info-detail-container {
 
 .full-screen-input {
   width: 100%;
+}
+
+.link-container {
+  margin-right: 30px;
 }
 
 .error-container{
