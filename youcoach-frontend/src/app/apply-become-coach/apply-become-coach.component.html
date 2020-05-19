@@ -1,5 +1,14 @@
 <div class="container">
-  <app-coachee-left-nav-bar></app-coachee-left-nav-bar>
+  <div class="link-container">
+    <p translate>my-profile-menu.title</p>
+    <mat-button-toggle-group vertical>
+      <mat-button-toggle (click)="goToMyProfile()"><span translate>my-profile-menu.link.profile-information</span>
+      </mat-button-toggle>
+      <mat-button-toggle><span translate>my-profile-menu.link.coaching-sessions</span></mat-button-toggle>
+      <mat-button-toggle (click)="goToApplyBecomeCoach()" checked="true"><span
+        translate>my-profile-menu.link.apply-to-become-a-coach</span></mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
   <div class="profile-container">
     <mat-card>
       <div class="card-header">

@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
 import {User} from '../user';
 import {AuthenticationService} from '../authentication/authentication.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -14,8 +14,10 @@ export class ProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private authenticationService: AuthenticationService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router) {
   }
+
   @Input() user: User;
 
   ngOnInit(): void {
@@ -26,5 +28,13 @@ export class ProfileComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.userService.getUserById(id)
       .subscribe(user => this.user = user);
+  }
+
+  goToApplyBecomeCoach(): void {
+    this.router.navigate(['/applyBecomeCoach']);
+  }
+
+  goToMyProfile(): void {
+    this.router.navigate(['/myProfile']);
   }
 }

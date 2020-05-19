@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-apply-become-coach',
@@ -8,7 +9,9 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class ApplyBecomeCoachComponent implements OnInit {
 
-  constructor(public translateService: TranslateService) {
+  constructor(
+    public translateService: TranslateService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -19,5 +22,13 @@ export class ApplyBecomeCoachComponent implements OnInit {
       /*location.href = text; */
       location.href = 'mailto:admin@youcoach.be?subject=Apply to become a coach&body=Write your name, motivation, and topic list';
     });
+  }
+
+  goToApplyBecomeCoach(): void {
+    this.router.navigate(['/applyBecomeCoach']);
+  }
+
+  goToMyProfile(): void {
+    this.router.navigate(['/myProfile']);
   }
 }

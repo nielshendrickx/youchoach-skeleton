@@ -48,16 +48,32 @@
   float: right;
 }
 
+.link-container {
+  margin-right: 30px;
+}
+
+.mat-button-toggle-checked {
+  background-color: #ffc107;
+}
+
+.mat-button-toggle-label-content {
+  text-align: left !important;
+}
+
+.full-screen-input {
+  width: 100%;
+}
+
 @media only screen and (max-width: 450px) {
-  .container{
+  .container {
     flex-direction: column;
   }
 
-  .profile-container{
+  .profile-container {
     margin: 10px 0 0 0;
   }
 
-  .mat-card-title{
+  .mat-card-title {
     margin: 0 0 10px 0;
   }
 
@@ -65,11 +81,11 @@
     margin: 10px 0 20px 0;
   }
 
-  .card-body{
+  .card-body {
     flex-direction: column;
   }
 
-  .sendMailButton{
+  .sendMailButton {
     margin: 20px 0;
   }
 }
