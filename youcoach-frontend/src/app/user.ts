@@ -1,3 +1,5 @@
+import {Topic} from './topic';
+
 export interface User {
   firstName: string;
   lastName: string;
@@ -6,4 +8,7 @@ export interface User {
   passwordAgain: string;
   pictureUrl: string;
   role: string;
+  introduction: string;
+  availability: string;
+  topics: Topic[];
 }

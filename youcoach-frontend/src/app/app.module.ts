@@ -24,6 +24,7 @@ import {UserComponent} from './user/user.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ApplyBecomeCoachComponent } from './apply-become-coach/apply-become-coach.component';
 import { CoacheeLeftNavBarComponent } from './coachee-left-nav-bar/coachee-left-nav-bar.component';
+import { MyCoachProfileComponent } from './my-coach-profile/my-coach-profile.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -46,7 +47,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ApplyBecomeCoachComponent,
     UserComponent,
     MyProfileComponent,
-    CoacheeLeftNavBarComponent
+    CoacheeLeftNavBarComponent,
+    MyCoachProfileComponent
   ],
   imports: [
     BrowserModule,
