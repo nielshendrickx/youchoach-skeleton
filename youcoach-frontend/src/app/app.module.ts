@@ -4,9 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
-import {LoginComponent} from './login/login.component';
 import {AppRoutingModule} from './app-routing.module';
-import {HelloWorldComponent} from './hello-world/hello-world.component';
 import {AuthenticationInterceptor} from './authentication/authentication.interceptor';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -32,8 +30,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    HelloWorldComponent,
     NavBarComponent,
     FooterComponent,
     ProfileComponent,
