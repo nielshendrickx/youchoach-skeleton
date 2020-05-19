@@ -21,8 +21,9 @@ import {RegisterComponent} from './register/register.component';
 import {MaterialModule} from './material/material.module';
 import {SignInComponent} from './sign-in/sign-in.component';
 import {UserComponent} from './user/user.component';
-import { MyProfileComponent } from './my-profile/my-profile.component';
-import { ApplyBecomeCoachComponent } from './apply-become-coach/apply-become-coach.component';
+import {MyProfileComponent} from './my-profile/my-profile.component';
+import {ApplyBecomeCoachComponent} from './apply-become-coach/apply-become-coach.component';
+import {MyCoachProfileComponent} from './my-coach-profile/my-coach-profile.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -45,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ApplyBecomeCoachComponent,
     UserComponent,
     MyProfileComponent,
+    MyCoachProfileComponent,
   ],
   imports: [
     BrowserModule,

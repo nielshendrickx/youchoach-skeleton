@@ -1,4 +1,16 @@
 <div class="container">
+
+  <div class="link-container">
+    <p translate>my-coach-profile-menu.title</p>
+    <mat-button-toggle-group vertical>
+      <mat-button-toggle checked="true"><span translate>my-coach-profile-menu.link.profile-information</span>
+      </mat-button-toggle>
+      <!--      UNCOMMENT WHEN FEATURE IS ADDED-->
+      <!--      <mat-button-toggle><span translate>my-coach-profile-menu.link.coaching-sessions</span></mat-button-toggle>-->
+      <!--      <mat-button-toggle><span-->
+      <!--        translate>my-coach-profile-menu.link.request-profile-change</span></mat-button-toggle>-->
+    </mat-button-toggle-group>
+  </div>
   <div class="profile-container" *ngIf="user">
 
     <mat-card class="card">
@@ -26,30 +38,36 @@
               <input id="username" matInput type="email" formControlName="username">
             </label>
           </mat-form-field>
+          <mat-form-field>
+            <mat-label translate>coach-profile-information.label.role</mat-label>
+            <label for="role">
+              <input id="role" matInput type="email" formControlName="role">
+            </label>
+          </mat-form-field>
         </form>
       </mat-card-content>
     </mat-card>
 
     <mat-card class="card">
-        <mat-card-title class="card-header">
-          <h2 translate>coach-information.title</h2>
-        </mat-card-title>
-        <mat-card-content>
-          <form class="profileItems" [formGroup]="userForm">
-            <mat-form-field>
-              <mat-label translate>coach-information.label.introduction</mat-label>
-              <label for="introduction">
-                <input id="introduction" matInput type="text" formControlName="introduction">
-              </label>
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label translate>coach-information.label.availability</mat-label>
-              <label for="availability">
-                <input id="availability" matInput type="text" formControlName="availability">
-              </label>
-            </mat-form-field>
-          </form>
-        </mat-card-content>
+      <mat-card-title class="card-header">
+        <h2 translate>coach-information.title</h2>
+      </mat-card-title>
+      <mat-card-content>
+        <form class="profileItems" [formGroup]="userForm">
+          <mat-form-field>
+            <mat-label translate>coach-information.label.introduction</mat-label>
+            <label for="introduction">
+              <input id="introduction" matInput type="text" formControlName="introduction">
+            </label>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label translate>coach-information.label.availability</mat-label>
+            <label for="availability">
+              <input id="availability" matInput type="text" formControlName="availability">
+            </label>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
     </mat-card>
 
     <mat-card class="card">
@@ -57,14 +75,17 @@
         <h2 translate>coaching-topics.title</h2>
       </mat-card-title>
       <mat-card-content>
-        <form class="profileItems" [formGroup]="userForm">
-          <mat-form-field *ngFor="let topic of user.topics">
-            <mat-label></mat-label>
-            <label for="topic">
-              <input id="topic" matInput type="text" value="{{topic.name}}"/>
-            </label>
-          </mat-form-field>
-        </form>
+        <table style="width:100%">
+          <tr *ngFor="let topic of user.topics">
+            <td>{{topic.name}}</td>
+            <td>
+              <button mat-mini-fab color="accent" aria-label="Example icon button with a menu icon"
+                      *ngFor="let grade of topic.grade" style="margin-left: 5px">{{grade.year}}
+              </button>
+            </td>
+            <mat-divider></mat-divider>
+          </tr>
+        </table>
       </mat-card-content>
     </mat-card>
   </div>

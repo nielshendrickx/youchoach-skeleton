@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 import {User} from '../user';
 import {UserService} from '../user.service';
 import {AuthenticationService} from '../authentication/authentication.service';
@@ -14,6 +14,7 @@ export class MyCoachProfileComponent implements OnInit {
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     username: new FormControl(''),
+    role: new FormControl(''),
     pictureUrl: new FormControl(''),
     introduction: new FormControl(''),
     availability: new FormControl(''),

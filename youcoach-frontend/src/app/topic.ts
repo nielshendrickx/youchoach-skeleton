@@ -1,4 +1,6 @@
+import {Grade} from './grade';
+
 export interface Topic {
-  grade: [];
+  grade: Grade[];
   name: string;
 }
