@@ -5,7 +5,7 @@
     <span><a routerLink="" translate>menu.link.home</a></span>
     <span translate>menu.link.about-us</span>
     <span translate>menu.link.contact</span>
-    <button mat-raised-button class="sign-out-button" *ngIf="userId" (click)="signOut()"><span translate>sign out</span>
+    <button mat-raised-button class="sign-out-button" *ngIf="userId" (click)="signOut()"><span translate>menu.button.log-out</span>
       <mat-icon>person</mat-icon>
     </button>
     <button mat-raised-button color="primary" *ngIf="!userId" (click)="goToSignIn()"><span
@@ -50,7 +50,7 @@
   </button>
   <button mat-menu-item *ngIf="userId" (click)="signOut()">
     <mat-icon>person</mat-icon>
-    <span translate>sign out</span>
+    <span translate>menu.button.log-out</span>
   </button>
   <button mat-menu-item *ngIf="!userId" (click)="goToSignIn()">
     <mat-icon>person</mat-icon>
