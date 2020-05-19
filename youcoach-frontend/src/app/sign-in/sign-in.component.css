@@ -44,8 +44,8 @@ h1{
 
 .button-container button{
   margin-top: 10px;
-  /*flex-shrink: 0;*/
 }
+
 .reset-button{
   margin-left: 10px;
 }
