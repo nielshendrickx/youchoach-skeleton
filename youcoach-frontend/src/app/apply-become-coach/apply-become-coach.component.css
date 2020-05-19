@@ -20,7 +20,6 @@
 
 .mat-card {
   width: 100%;
-  padding-bottom: 100px;
 }
 
 .card-header {
@@ -47,6 +46,7 @@
 
 .sendMailButton {
   float: right;
+  margin-top: 100px;
 }
 
 .link-container {
