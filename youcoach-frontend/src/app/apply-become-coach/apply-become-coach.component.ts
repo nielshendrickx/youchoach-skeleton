@@ -19,8 +19,8 @@ export class ApplyBecomeCoachComponent implements OnInit {
 
   mail(mailRef: string) {
     this.translateService.get(mailRef).subscribe((text: string) => {
-      /*location.href = text; */
-      location.href = 'mailto:admin@youcoach.be?subject=Apply to become a coach&body=Write your name, motivation, and topic list';
+      location.href = text;
+      // location.href = 'mailto:admin@youcoach.be?subject=Apply to become a coach&body=Write your name, motivation, and topic list';
     });
   }
 

@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" class="navigation">
   <mat-toolbar-row>
-    <span><a routerLink="">You-Coach</a></span>
+    <span><a routerLink="">You-Coach - Team North</a></span>
     <span class="spacer"></span>
     <span><a routerLink="" translate>menu.link.home</a></span>
     <span translate>menu.link.about-us</span>
@@ -15,6 +15,15 @@
     <button mat-raised-button color="accent" *ngIf="!userId" (click)="goToRegister()"><span translate>menu.button.register</span>
       <mat-icon>person_add</mat-icon>
     </button>
+    <button mat-menu-item [matMenuTriggerFor]="subMenu">
+      <mat-icon>language</mat-icon>
+      <span translate>menu.link.language</span>
+    </button>
+    <mat-menu #subMenu="matMenu">
+      <button mat-menu-item [class.active]="currentLanguage() === 'en'" (click)="switchLanguage('en')">English</button>
+      <button mat-menu-item [class.active]="currentLanguage() === 'nl'" (click)="switchLanguage('nl')">Nederlands</button>
+      <button mat-menu-item [class.active]="currentLanguage() === 'fr'" (click)="switchLanguage('fr')">Français</button>
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -51,4 +60,13 @@
     <mat-icon>person_add</mat-icon>
     <span translate>menu.button.register</span>
   </button>
+  <button mat-menu-item [matMenuTriggerFor]="subMenu">
+    <mat-icon>language</mat-icon>
+    <span translate>menu.link.language</span>
+  </button>
+  <mat-menu #subMenu="matMenu">
+    <button mat-menu-item [class.active]="currentLanguage() === 'en'" (click)="switchLanguage('en')">English</button>
+    <button mat-menu-item [class.active]="currentLanguage() === 'nl'" (click)="switchLanguage('nl')">Nederlands</button>
+    <button mat-menu-item [class.active]="currentLanguage() === 'fr'" (click)="switchLanguage('fr')">Français</button>
+  </mat-menu>
 </mat-menu>
