@@ -4,9 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
-import {LoginComponent} from './login/login.component';
 import {AppRoutingModule} from './app-routing.module';
-import {HelloWorldComponent} from './hello-world/hello-world.component';
 import {AuthenticationInterceptor} from './authentication/authentication.interceptor';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -20,10 +18,8 @@ import {HomeComponent} from './home/home.component';
 import {RegisterComponent} from './register/register.component';
 import {MaterialModule} from './material/material.module';
 import {SignInComponent} from './sign-in/sign-in.component';
-import {UserComponent} from './user/user.component';
-import {MyProfileComponent} from './my-profile/my-profile.component';
-import {ApplyBecomeCoachComponent} from './apply-become-coach/apply-become-coach.component';
-import {MyCoachProfileComponent} from './my-coach-profile/my-coach-profile.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { ApplyBecomeCoachComponent } from './apply-become-coach/apply-become-coach.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -33,8 +29,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    HelloWorldComponent,
     NavBarComponent,
     FooterComponent,
     ProfileComponent,
@@ -42,9 +36,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     RegisterComponent,
     SignInComponent,
-    UserComponent,
     ApplyBecomeCoachComponent,
-    UserComponent,
     MyProfileComponent,
     MyCoachProfileComponent,
   ],

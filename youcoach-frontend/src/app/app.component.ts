@@ -20,5 +20,4 @@ export class AppComponent implements OnInit {
       this.userId = this.authenticationService.getUserId();
     });
   }
-
 }
