@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
@@ -36,6 +36,7 @@ export class MyProfileComponent implements OnInit {
     this.getUser();
     this.getRoles();
     this.resetError();
+    this.setBackgroundColor();
   }
 
   getUser(): void {
@@ -106,5 +107,12 @@ export class MyProfileComponent implements OnInit {
 
   goToMyProfile(): void {
     this.router.navigate(['/myProfile']);
+  }
+
+  setBackgroundColor(): void {
+    if (document.getElementById('coachee-nav-bar') !== null) {
+      document.getElementById('coachee-nav-bar').style.backgroundColor = '#ffc107';
+    }
+    document.getElementById('footer').style.backgroundColor = '#ffc107';
   }
 }

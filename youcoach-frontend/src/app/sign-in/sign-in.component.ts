@@ -23,6 +23,7 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetError();
+    this.setBackgroundColor();
   }
 
   resetPassword(): void {
@@ -51,4 +52,10 @@ export class SignInComponent implements OnInit {
     this.error = false;
   }
 
+  setBackgroundColor(): void {
+    if (document.getElementById('coachee-nav-bar') !== null) {
+      document.getElementById('coachee-nav-bar').style.backgroundColor = '#ffc107';
+    }
+    document.getElementById('footer').style.backgroundColor = '#ffc107';
+  }
 }

@@ -26,10 +26,12 @@ export class MyCoachProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private authenticationService: AuthenticationService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.getUser();
+    this.setBackgroundColor();
   }
 
   getUser(): void {
@@ -45,6 +47,13 @@ export class MyCoachProfileComponent implements OnInit {
   initializeForm(user: User): void {
     this.userForm.patchValue(user);
     this.userForm.disable();
+  }
+
+  setBackgroundColor(): void {
+    if (document.getElementById('coachee-nav-bar') !== null) {
+      document.getElementById('coachee-nav-bar').style.backgroundColor = '#009688';
+    }
+    document.getElementById('footer').style.backgroundColor = '#009688';
   }
 
 }

@@ -35,6 +35,7 @@ export class RegisterComponent implements OnInit {
         validator: MustMatch('password', 'passwordAgain')
       });
     this.resetError();
+    this.setBackgroundColor();
   }
 
   registerUser(): void {
@@ -55,5 +56,12 @@ export class RegisterComponent implements OnInit {
 
   resetError(): void {
     this.error = false;
+  }
+
+  setBackgroundColor(): void {
+    if (document.getElementById('coachee-nav-bar') !== null) {
+      document.getElementById('coachee-nav-bar').style.backgroundColor = '#ffc107';
+    }
+    document.getElementById('footer').style.backgroundColor = '#ffc107';
   }
 }

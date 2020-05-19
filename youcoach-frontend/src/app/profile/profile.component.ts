@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
 import {User} from '../user';
 import {AuthenticationService} from '../authentication/authentication.service';
@@ -37,6 +37,7 @@ export class ProfileComponent implements OnInit {
     this.getUser();
     this.getRoles();
     this.resetError();
+    this.setBackgroundColor();
   }
 
   getUser(): void {
@@ -99,5 +100,12 @@ export class ProfileComponent implements OnInit {
   resetError(): void {
     this.errorMessage = '';
     this.error = false;
+  }
+
+  setBackgroundColor(): void {
+    if (document.getElementById('coachee-nav-bar') !== null) {
+      document.getElementById('coachee-nav-bar').style.backgroundColor = '#ffc107';
+    }
+    document.getElementById('footer').style.backgroundColor = '#ffc107';
   }
 }

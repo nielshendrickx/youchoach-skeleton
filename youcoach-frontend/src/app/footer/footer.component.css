@@ -1427,9 +1427,9 @@
   color: #aeea00 !important;
 }
 
-.yellow {
-  background-color: #ffeb3b !important;
-}
+/*.yellow {*/
+/*  background-color: #ffeb3b !important;*/
+/*}*/
 
 .yellow-text {
   color: #ffeb3b !important;
@@ -1484,7 +1484,7 @@
 }
 
 .yellow.darken-2 {
-  background-color: #fbc02d !important;
+  background-color: #fbc02d;
 }
 
 .yellow-text.text-darken-2 {
