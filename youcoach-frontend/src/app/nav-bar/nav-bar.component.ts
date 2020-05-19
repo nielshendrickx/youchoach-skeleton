@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../authentication/authentication.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,10 +10,12 @@ import {AuthenticationService} from '../authentication/authentication.service';
 })
 export class NavBarComponent implements OnInit {
   userId;
+  language = 'en';
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    public translate: TranslateService
   ) {
   }
 
@@ -38,6 +41,15 @@ export class NavBarComponent implements OnInit {
 
   goToHomePage(): void {
     this.router.navigate(['/']);
+  }
+
+  switchLanguage(language: string) {
+    this.translate.use(language);
+    this.language = language;
+  }
+
+  currentLanguage() {
+    return this.language;
   }
 }
 
