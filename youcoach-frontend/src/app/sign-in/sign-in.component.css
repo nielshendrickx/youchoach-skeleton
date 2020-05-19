@@ -23,6 +23,7 @@ h1{
 .mat-raised-button{
   text-transform: uppercase;
   color: black;
+  overflow: hidden;
 }
 
 .full-screen-input{
