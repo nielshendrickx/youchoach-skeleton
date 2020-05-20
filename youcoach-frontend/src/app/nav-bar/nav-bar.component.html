@@ -21,8 +21,8 @@
     </button>
     <mat-menu #subMenu="matMenu">
       <button mat-menu-item [class.active]="currentLanguage() === 'en'" (click)="switchLanguage('en')">English</button>
-      <button mat-menu-item [class.active]="currentLanguage() === 'nl'" (click)="switchLanguage('nl')">Nederlands</button>
       <button mat-menu-item [class.active]="currentLanguage() === 'fr'" (click)="switchLanguage('fr')">Français</button>
+      <button mat-menu-item [class.active]="currentLanguage() === 'nl'" (click)="switchLanguage('nl')">Nederlands</button>
     </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
@@ -66,7 +66,7 @@
   </button>
   <mat-menu #subMenu="matMenu">
     <button mat-menu-item [class.active]="currentLanguage() === 'en'" (click)="switchLanguage('en')">English</button>
-    <button mat-menu-item [class.active]="currentLanguage() === 'nl'" (click)="switchLanguage('nl')">Nederlands</button>
     <button mat-menu-item [class.active]="currentLanguage() === 'fr'" (click)="switchLanguage('fr')">Français</button>
+    <button mat-menu-item [class.active]="currentLanguage() === 'nl'" (click)="switchLanguage('nl')">Nederlands</button>
   </mat-menu>
 </mat-menu>
