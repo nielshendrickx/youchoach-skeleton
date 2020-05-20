@@ -5,24 +5,16 @@
   margin: 10px 10px;
 }
 
-.link-container {
-  margin-right: 30px;
-}
-
-.profile-container {
-  display: flex;
-  flex: 1;
-}
-
 .profile-container {
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
-
-.mat-card {
-  width: 100%;
+.profileItems {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .card-header {
@@ -33,10 +25,6 @@
   margin-bottom: 3em;
   padding: 1em 0;
   border-bottom: 1px solid black;
-}
-
-.edit-button {
-  color: white;
 }
 
 .card-body {
@@ -61,13 +49,7 @@
 }
 
 .button-container button mat-icon{
-  padding: 0 14px;
-}
-
-info-detail-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  margin: 0 0 0 5px
 }
 
 .mat-button-toggle-checked {
@@ -80,6 +62,10 @@ info-detail-container {
 
 .full-screen-input {
   width: 100%;
+}
+
+.link-container {
+  margin-right: 30px;
 }
 
 .error-container{
