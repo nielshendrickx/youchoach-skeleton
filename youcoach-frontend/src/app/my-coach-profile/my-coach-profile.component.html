@@ -79,7 +79,7 @@
           <tr *ngFor="let topic of user.topics">
             <td>{{topic.name}}</td>
             <td>
-              <button mat-mini-fab color="accent" aria-label="Example icon button with a menu icon"
+              <button mat-mini-fab disabled color="accent" class="disabled"
                       *ngFor="let grade of topic.grade" style="margin-left: 5px">{{grade.year}}
               </button>
             </td>

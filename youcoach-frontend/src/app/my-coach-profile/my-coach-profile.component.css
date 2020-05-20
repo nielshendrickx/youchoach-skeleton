@@ -35,9 +35,6 @@
   border-bottom: 1px solid black;
 }
 
-#edit-button {
-  color: white;
-}
 
 .card-body {
   display: flex;
@@ -45,34 +42,15 @@
   flex-wrap: wrap;
 }
 
-.button-container{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
 
-.button-container button{
-  margin: 10px 10px;
-  flex-shrink: 0;
-  text-transform: uppercase;
-  color: black;
-  visibility: hidden;
-}
-
-.button-container button mat-icon{
-  padding: 0 14px;
-}
-
-info-detail-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+/*info-detail-container {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: space-between;*/
+/*}*/
 
 .mat-button-toggle-checked {
-  background-color: #029486
-;
+  background-color: #029486;
 }
 
 .full-screen-input {
@@ -90,6 +68,11 @@ info-detail-container {
 
 th, td {
   padding: 10px;
+}
+
+.disabled{
+  background-color: #029486 !important;
+  color: black !important;
 }
 
 
