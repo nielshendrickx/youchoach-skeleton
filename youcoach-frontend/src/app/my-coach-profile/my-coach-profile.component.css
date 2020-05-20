@@ -70,7 +70,7 @@ th, td {
   padding: 10px;
 }
 
-.disabled{
+.disabled-button{
   background-color: #029486 !important;
   color: black !important;
 }
