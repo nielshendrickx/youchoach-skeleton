@@ -23,25 +23,25 @@
           <mat-form-field class="full-screen-input">
             <mat-label translate>coach-profile-information.label.first-name</mat-label>
             <label for="firstName">
-              <input id="firstName" matInput type="text" formControlName="firstName">
+              <input id="firstName" matInput type="text" formControlName="firstName" [readonly]="!editable">
             </label>
           </mat-form-field>
           <mat-form-field>
             <mat-label translate>coach-profile-information.label.last-name</mat-label>
             <label for="lastName">
-              <input id="lastName" matInput type="text" formControlName="lastName">
+              <input id="lastName" matInput type="text" formControlName="lastName" [readonly]="!editable">
             </label>
           </mat-form-field>
           <mat-form-field>
             <mat-label translate>coach-profile-information.label.email</mat-label>
             <label for="username">
-              <input id="username" matInput type="email" formControlName="username">
+              <input id="username" matInput type="email" formControlName="username" [readonly]="!editable">
             </label>
           </mat-form-field>
           <mat-form-field>
             <mat-label translate>profile-information.label.role</mat-label>
             <label for="role">
-              <input id="role" matInput type="email" formControlName="role">
+              <input id="role" matInput type="email" formControlName="role" [readonly]="!editable">
             </label>
           </mat-form-field>
         </form>
@@ -57,13 +57,13 @@
           <mat-form-field>
             <mat-label translate>coach-information.label.introduction</mat-label>
             <label for="introduction">
-              <input id="introduction" matInput type="text" formControlName="introduction">
+              <textarea id="introduction" matInput type="text" formControlName="introduction" [readonly]="!editable"></textarea>
             </label>
           </mat-form-field>
           <mat-form-field>
             <mat-label translate>coach-information.label.availability</mat-label>
             <label for="availability">
-              <input id="availability" matInput type="text" formControlName="availability">
+              <textarea id="availability" matInput type="text" formControlName="availability" [readonly]="!editable"></textarea>
             </label>
           </mat-form-field>
         </form>

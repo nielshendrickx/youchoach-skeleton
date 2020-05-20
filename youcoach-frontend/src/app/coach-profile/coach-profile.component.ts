@@ -22,6 +22,7 @@ export class CoachProfileComponent implements OnInit {
   });
 
   user: User;
+  editable: boolean;
 
   constructor(
     private userService: UserService,
@@ -51,7 +52,7 @@ export class CoachProfileComponent implements OnInit {
 
   initializeForm(user: User): void {
     this.userForm.patchValue(user);
-    this.userForm.disable();
+    this.editable = false;
   }
 
   setBackgroundColor(): void {
