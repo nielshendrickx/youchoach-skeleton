@@ -14,7 +14,7 @@
   flex: 1;
 }
 
-.profileItems {
+.profile-container {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -37,13 +37,6 @@
 
 .edit-button {
   color: white;
-}
-
-.profile-img {
-  width: 25%;
-  min-width: 150px;
-  border-radius: 50%;
-  margin-right: 3em;
 }
 
 .card-body {

@@ -33,9 +33,7 @@
 }
 
 .profile-img {
-  width: 12%;
-  min-width: 100px;
-  margin-right: 3em;
+  border-radius: 0;
 }
 
 .card-body {
