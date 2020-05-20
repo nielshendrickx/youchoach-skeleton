@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="profile-container" *ngIf="user">
+    <mat-card class="card">
+      <mat-card-title class="card-header">
+        <h2 translate>profile-information.title</h2>
+      </mat-card-title>
+      <mat-card-content class="card-body">
+        <img [src]=user.pictureUrl class="profile-img" alt="profile picture">
+        <form class="profileItems" [formGroup]="userForm">
+          <mat-form-field class="full-screen-input">
+            <mat-label translate>coach-profile-information.label.first-name</mat-label>
+            <label for="firstName">
+              <input id="firstName" matInput type="text" formControlName="firstName">
+            </label>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label translate>coach-profile-information.label.last-name</mat-label>
+            <label for="lastName">
+              <input id="lastName" matInput type="text" formControlName="lastName">
+            </label>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label translate>coach-profile-information.label.email</mat-label>
+            <label for="username">
+              <input id="username" matInput type="email" formControlName="username">
+            </label>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label translate>profile-information.label.role</mat-label>
+            <label for="role">
+              <input id="role" matInput type="email" formControlName="role">
+            </label>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-title class="card-header">
+        <h2 translate>coach-information.title</h2>
+      </mat-card-title>
+      <mat-card-content>
+        <form class="profileItems" [formGroup]="userForm">
+          <mat-form-field>
+            <mat-label translate>coach-information.label.introduction</mat-label>
+            <label for="introduction">
+              <input id="introduction" matInput type="text" formControlName="introduction">
+            </label>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label translate>coach-information.label.availability</mat-label>
+            <label for="availability">
+              <input id="availability" matInput type="text" formControlName="availability">
+            </label>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-title class="card-header">
+        <h2 translate>coaching-topics.title</h2>
+      </mat-card-title>
+      <mat-card-content>
+        <table style="width:100%">
+          <tr *ngFor="let topic of user.topics">
+            <td>{{topic.name}}</td>
+            <td>
+              <button mat-mini-fab disabled color="accent" class="disabled-button"
+                      *ngFor="let grade of topic.grade" style="margin-left: 5px">{{grade.year}}
+              </button>
+            </td>
+            <mat-divider></mat-divider>
+          </tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

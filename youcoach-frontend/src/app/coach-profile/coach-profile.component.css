@@ -1,0 +1,112 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 10px 10px;
+}
+
+.link-container {
+  margin-right: 30px;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.profileItems {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.mat-card {
+  margin: 0 0 50px 0;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3em;
+  padding: 1em 0;
+  border-bottom: 1px solid black;
+}
+
+
+.card-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+/*info-detail-container {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: space-between;*/
+/*}*/
+
+.mat-button-toggle-checked {
+  background-color: #029486;
+}
+
+.full-screen-input {
+  width: 100%;
+}
+
+.error-container{
+  margin-top: 20px;
+  color: #ff0000;
+}
+
+::ng-deep .mat-button-toggle-label-content{
+  text-align: left;
+}
+
+th, td {
+  padding: 10px;
+}
+
+.disabled-button{
+  background-color: #029486 !important;
+  color: black !important;
+}
+
+
+@media only screen and (max-width: 450px) {
+  h2{
+    margin: 0;
+  }
+
+  .container{
+    flex-direction: column;
+  }
+
+  .profile-container{
+    margin: 10px 0 0 0;
+  }
+
+  .mat-card-title{
+    margin: 0 0 10px 0;
+  }
+
+  .profile-img {
+    margin: 10px 0 20px 0;
+  }
+
+  .card-body{
+    flex-direction: column;
+  }
+}
+
+
+
+
+
+
+
+
+

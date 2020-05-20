@@ -21,6 +21,7 @@ import {SignInComponent} from './sign-in/sign-in.component';
 import {MyProfileComponent} from './my-profile/my-profile.component';
 import {ApplyBecomeCoachComponent} from './apply-become-coach/apply-become-coach.component';
 import {MyCoachProfileComponent} from './my-coach-profile/my-coach-profile.component';
+import { CoachProfileComponent } from './coach-profile/coach-profile.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -40,6 +41,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ApplyBecomeCoachComponent,
     MyProfileComponent,
     MyCoachProfileComponent,
+    CoachProfileComponent,
   ],
   imports: [
     BrowserModule,
