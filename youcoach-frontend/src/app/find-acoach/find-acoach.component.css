@@ -1,0 +1,11 @@
+/*.coach-card-body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}*/
+
+.disabled-button{
+  background-color: #029486 !important;
+  color: black !important;
+
+}

@@ -1,0 +1,17 @@
+<mat-card *ngFor="let user of CoachList">
+ <mat-card-header>
+   <h2>{{user.firstName}} {{user.lastName}}</h2>
+ </mat-card-header>
+  <mat-card-content class="coach-card-body">
+    <img [src]=user.pictureUrl class="profile-img" alt="profile picture">
+    <tr *ngFor="let topic of user.topics">
+      <td>{{topic.name}}</td>
+      <td>
+        <button mat-mini-fab disabled color="accent" class="disabled-button"
+                *ngFor="let grade of topic.grade" style="margin-left: 5px">{{grade.year}}
+        </button>
+      </td>
+
+
+  </mat-card-content>
+</mat-card>
