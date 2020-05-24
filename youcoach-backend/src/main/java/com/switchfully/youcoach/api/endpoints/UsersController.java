@@ -3,6 +3,7 @@ package com.switchfully.youcoach.api.endpoints;
 import com.switchfully.youcoach.security.authorization.Role;
 import com.switchfully.youcoach.service.dto.UpdateUserDto;
 import com.switchfully.youcoach.service.dto.UserDto;
+import com.switchfully.youcoach.service.services.CoachService;
 import com.switchfully.youcoach.service.services.UsersService;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -21,10 +22,12 @@ public class UsersController {
     public static final String USERS_RESOURCE_PATH = "/users";
     private final Logger loggerUsers = LoggerFactory.getLogger(UsersController.class);
     private final UsersService usersService;
+    private final CoachService coachService;
 
     @Autowired
-    public UsersController(UsersService usersService) {
+    public UsersController(UsersService usersService, CoachService coachService) {
         this.usersService = usersService;
+        this.coachService = coachService;
     }
 
     @PreAuthorize("#id.toString() == principal or hasAuthority('viewuser')")
@@ -51,5 +54,12 @@ public class UsersController {
     public Collection<Role> getRoles(){
         loggerUsers.info("Returned roles");
         return usersService.getRoles();
+    }
+
+    @GetMapping(produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public Collection<UserDto> giveListAllCoach(){
+        loggerUsers.info("Returned list of all coaches");
+        return coachService.getAllCoach();
     }
 }

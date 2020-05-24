@@ -12,6 +12,7 @@ import {UpdateUser} from './updateUser';
 export class UserService {
   private UsersUrl = `${environment.backendUrl}/users`;
   private RegistrationUrl = `${environment.backendUrl}/register`;
+
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
@@ -51,5 +52,10 @@ export class UserService {
       console.error(error);
       return throwError(error);
     };
+  }
+
+  getAllCoach(): Observable<any> {
+    console.log('get coaches');
+    return this.http.get(this.UsersUrl);
   }
 }
