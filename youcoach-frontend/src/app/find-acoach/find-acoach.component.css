@@ -1,0 +1,193 @@
+.disabled-button{
+  background-color: #029486 !important;
+  color: black !important;
+}
+
+.page-card {
+  margin: 10px 10px 50px 10px;
+  background: #fafafa;
+}
+
+/*.coachCard {
+  display: flex;
+  min-width: 25%;
+  margin: 1%;
+}
+;
+}*/
+
+.card-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card-header {
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+ /* align-items: flex-start;*/
+  background: transparent;
+}
+
+
+/*.card.horizontal {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}*/
+
+.card-image {
+  width: 33%;
+  height: 33%;
+
+}
+
+.card.horizontal .card-stacked {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  position: relative;
+}
+
+.card.horizontal .card-stacked .card-content {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+/*.profile-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}*/
+
+/* table.tr{
+   border-bottom: 1px black;
+ }*/
+
+.profileItems {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.full-screen-input {
+  width: 100%;
+}
+
+@media (min-width: 993px) {
+  .coachCard {
+    display: flex;
+    max-width: 23%;
+    margin: 1%;
+
+  }
+
+}
+
+@media (max-width: 992px) and (min-width: 800px) {
+  .coachCard {
+    display: flex;
+    max-width: 30%;
+    min-width: 25%;
+    margin: 1%;
+
+  }
+}
+
+@media (max-width: 799px) and (min-width: 501px) {
+  .coachCard {
+    display: flex;
+    max-width: 48%;
+    min-width: 25%;
+    margin: 1%;
+
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  table.responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: block;
+    position: relative;
+    /* sort out borders */
+  }
+
+  table.responsive-table td:empty:before {
+    content: '\00a0';
+  }
+
+  table.responsive-table th,
+  table.responsive-table td {
+    margin: 0;
+    vertical-align: top;
+  }
+
+  table.responsive-table th {
+    text-align: left;
+  }
+
+  table.responsive-table thead {
+    display: block;
+    float: left;
+  }
+
+  table.responsive-table thead tr {
+    display: block;
+    padding: 0 10px 0 0;
+  }
+
+  table.responsive-table thead tr th::before {
+    content: "\00a0";
+  }
+
+  table.responsive-table tbody {
+    display: block;
+    width: auto;
+    position: relative;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  table.responsive-table tbody tr {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  table.responsive-table th {
+    display: block;
+    text-align: right;
+  }
+
+  table.responsive-table td {
+    display: block;
+    min-height: 1.25em;
+    text-align: left;
+  }
+
+  table.responsive-table tr {
+    border-bottom: none;
+    padding: 0 10px;
+  }
+
+  table.responsive-table thead {
+    border: 0;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+  }
+}

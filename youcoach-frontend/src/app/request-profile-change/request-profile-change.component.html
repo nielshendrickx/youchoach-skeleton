@@ -1,0 +1,30 @@
+<div class="container">
+<!--  left side menu:-->
+  <div class="link-container">
+    <p translate>my-coach-profile-menu.title</p>
+    <mat-button-toggle-group vertical>
+      <mat-button-toggle (click)="goToCoachProfile()"><span translate>my-coach-profile-menu.link.profile-information</span></mat-button-toggle>
+      <mat-button-toggle><span translate>my-coach-profile-menu.link.coaching-sessions</span></mat-button-toggle>
+      <mat-button-toggle  checked="true"><span translate>my-coach-profile-menu.link.request-profile-change</span></mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+<!--  actual page:-->
+  <div class="profile-container">
+    <mat-card class="card">
+      <div class="card-header">
+        <h2 translate>request-profile-change.title</h2>
+      </div>
+      <div class="card-body">
+        <img src="../../assets/images/under_construction.png"
+             alt="Under construction"
+             class="construction-img">
+        <div class="requestProfileChangeText" translate>request-profile-change.text.under-construction</div>
+      </div>
+      <button mat-raised-button color="primary" class="sendMailButton" (click)="mail('request-profile-change.email-service')">
+        <span translate>request-profile-change.button.send-email  </span>
+        <mat-icon>send</mat-icon>
+      </button>
+    </mat-card>
+  </div>
+</div>
