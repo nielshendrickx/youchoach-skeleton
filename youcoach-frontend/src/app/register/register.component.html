@@ -21,7 +21,9 @@
         </mat-form-field>
       </div>
       <mat-form-field class="full-screen-input">
-        <mat-label translate>register.label.email</mat-label>
+        <mat-label translate>register.label.email
+          <span
+            style="font-weight: bold; font-size: smaller; margin-left: 10px">  {{'profile-information.message.change-email' | translate}}</span></mat-label>
         <label for="username">
           <input id="username" matInput type="email" formControlName="username" placeholder="{{'register.label.email-placeholder' | translate}}">
         </label>
