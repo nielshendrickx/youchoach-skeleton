@@ -15,6 +15,14 @@ export class RequestProfileChangeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setBackgroundColor();
+  }
+
+  setBackgroundColor(): void {
+    if (document.getElementById('coachee-nav-bar') !== null) {
+      document.getElementById('coachee-nav-bar').style.backgroundColor = '#009688';
+    }
+    document.getElementById('footer').style.backgroundColor = '#009688';
   }
 
   mail(mailRef: string) {
