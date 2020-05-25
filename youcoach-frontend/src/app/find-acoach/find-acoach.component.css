@@ -8,10 +8,6 @@
   background: #fafafa;
 }
 
-.wrapContainer{
-  background: #fafafa;
-}
-
 /*.coachCard {
   display: flex;
   min-width: 25%;
@@ -43,7 +39,7 @@
   display: flex;
 }*/
 
-.card-body .card-image {
+.card-image {
   width: 33%;
   height: 33%;
 
