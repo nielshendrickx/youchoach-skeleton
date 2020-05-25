@@ -3,6 +3,7 @@ package com.switchfully.youcoach.api.endpoints;
 import com.switchfully.youcoach.security.authorization.Role;
 import com.switchfully.youcoach.service.dto.UpdateUserDto;
 import com.switchfully.youcoach.service.dto.UserDto;
+import com.switchfully.youcoach.service.services.CoachService;
 import com.switchfully.youcoach.service.services.UsersService;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -52,4 +53,5 @@ public class UsersController {
         loggerUsers.info("Returned roles");
         return usersService.getRoles();
     }
+
 }
