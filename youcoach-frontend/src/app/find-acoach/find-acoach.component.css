@@ -1,4 +1,4 @@
-.disabled-button{
+.disabled-button {
   background-color: #029486 !important;
   color: black !important;
 }
@@ -20,16 +20,20 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  min-height: 210px;
 }
 
 .card-header {
-
-  overflow: hidden;
   display: flex;
   flex-direction: row;
- /* align-items: flex-start;*/
-  background: transparent;
+  align-items: center;
+  margin: 0;
 }
+
+::ng-deep .mat-card-header-text {
+  margin: 0 !important;
+}
+
 
 
 /*.card.horizontal {

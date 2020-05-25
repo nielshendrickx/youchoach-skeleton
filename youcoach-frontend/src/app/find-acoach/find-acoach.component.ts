@@ -30,7 +30,7 @@ export class FindACoachComponent implements OnInit {
 
   getListOfAllCoaches() {
     this.userService.getAllCoach()
-      .subscribe(coaches => this.CoachList = coaches);
+      .subscribe(coaches => {this.CoachList = coaches; console.log(coaches); });
   }
 
 }

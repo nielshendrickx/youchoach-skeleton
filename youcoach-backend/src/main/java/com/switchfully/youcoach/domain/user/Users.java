@@ -98,4 +98,13 @@ public class Users {
     public List<Topic> getTopics() {
         return topics;
     }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public void setAvailability(String availability) {
+        this.availability = availability;
+    }
+
 }

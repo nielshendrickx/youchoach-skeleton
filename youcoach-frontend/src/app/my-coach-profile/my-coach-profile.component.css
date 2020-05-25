@@ -75,6 +75,29 @@ th, td {
   color: black !important;
 }
 
+.button-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.button-container button{
+  margin: 10px 10px;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  color: black;
+  visibility: hidden;
+}
+
+.button-container button mat-icon{
+  margin: 0 0 0 5px
+}
+
+#edit-button{
+  color: black;
+}
+
 
 @media only screen and (max-width: 450px) {
   h2{
