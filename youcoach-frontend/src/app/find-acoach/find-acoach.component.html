@@ -8,6 +8,43 @@
               <h2>{{user.firstName}} {{user.lastName}}</h2>
             </mat-card-header>
             <mat-card-content class="card-body">
+              <div class="imageBox">
+              <img [src]=user.pictureUrl class="card-image" alt="profile picture">
+              </div>
+              <div class="topicsBox">
+                <table>
+                  <tr *ngFor="let topic of user.topics">
+                    <td>{{topic.name}}</td>
+                    <td>
+                      <button mat-mini-fab disabled color="accent" class="disabled-button"
+                              *ngFor="let grade of topic.grade" style="margin-left: 5px">{{grade.year}}
+                      </button>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+<ng-template #message><p>No coaches</p></ng-template>
+
+<!--below here, get back if fails-->
+
+
+<!--<div *ngIf="CoachList.length !== 0; else message">
+  <mat-card class="page-card">
+    <div fxLayout="row wrap" fxLayoutGap="0.1%">
+      <div class="coachCard" *ngFor="let user of CoachList; ">
+        <div class="profile-container">
+          <mat-card>
+            <mat-card-header class="card-header">
+              <h2>{{user.firstName}} {{user.lastName}}</h2>
+            </mat-card-header>
+            <mat-card-content class="card-body">
               <img [src]=user.pictureUrl class="card-image" alt="profile picture">
               <div class="profileItems">
                 <table>
@@ -28,33 +65,6 @@
     </div>
   </mat-card>
 </div>
-<ng-template #message><p>No coaches</p></ng-template>
+<ng-template #message><p>No coaches</p></ng-template>-->
 
-<!--<mat-grid-list cols="3">
-  <mat-grid-tile *ngFor="let user of CoachList">
-    <h5 class="header">{{user.firstName}} {{user.lastName}}</h5>
-    <div class="card horizontal">
-      <div class="card-image">
-        <<img [src]=user.pictureUrl class="profile-img" alt="profile picture">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <table class="highlight responsive-table">
-            <tbody>
-            <tr *ngFor="let topic of user.topics">
-              <td><strong>{{topic.name}}</strong></td>
-              <td>
-                <button mat-mini-fab disabled color="accent" class="disabled-button"
-                        *ngFor="let grade of topic.grade" style="margin-left: 5px">{{grade.year}}
-                </button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-        <a class="btn-floating halfway-fab waves-effect waves-light yellow darken-2 btn-large"><i
-          class="material-icons">send</i></a>
-      </div>
-    </div>
-  </mat-grid-tile>
-</mat-grid-list>-->
+
