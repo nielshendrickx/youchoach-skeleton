@@ -3,7 +3,7 @@
     "id": 1,
     "username": "student",
     "password": "student",
-    "roles": ["STUDENT"]
+    "roles": ["COACHEE"]
   },
   {
     "id": 2,
