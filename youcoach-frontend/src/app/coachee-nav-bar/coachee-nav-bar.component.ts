@@ -18,7 +18,7 @@ export class CoacheeNavBarComponent implements OnInit {
   }
 
   hideMyCoachProfileButtonWhenStudent(): void {
-    if (this.authenticationService.getRoles().some(role => role.authority === 'STUDENT')) {
+    if (this.authenticationService.getRoles().some(role => role.authority === 'COACHEE')) {
       document.getElementById('my-coach-profile-button').style.visibility = 'hidden';
     }
   }
