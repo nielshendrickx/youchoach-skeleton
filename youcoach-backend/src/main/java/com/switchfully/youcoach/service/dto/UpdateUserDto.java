@@ -11,14 +11,18 @@ public class UpdateUserDto {
     private String lastName;
     private Role role;
     private String pictureUrl;
+    private String introduction;
+    private String availability;
 
-    public UpdateUserDto(UUID userId, String username, String firstName, String lastName, Role role, String pictureUrl) {
+    public UpdateUserDto(UUID userId, String username, String firstName, String lastName, Role role, String pictureUrl, String introduction, String availability) {
         this.userId = userId;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.role = role;
         this.pictureUrl = pictureUrl;
+        this.introduction = introduction;
+        this.availability = availability;
     }
 
     public UpdateUserDto(){}
@@ -47,6 +51,14 @@ public class UpdateUserDto {
         return pictureUrl;
     }
 
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public String getAvailability() {
+        return availability;
+    }
+
     @Override
     public String toString() {
         return "UpdateUserDto{" +
@@ -56,6 +68,8 @@ public class UpdateUserDto {
                 ", lastName='" + lastName + '\'' +
                 ", role=" + role +
                 ", pictureUrl='" + pictureUrl + '\'' +
+                ", introduction='" + introduction + '\'' +
+                ", availability='" + availability + '\'' +
                 '}';
     }
 }

@@ -66,7 +66,8 @@ public class UsersService {
         user.setPictureUrl(updateUserDto.getPictureUrl());
         user.getSecuredUser().setUsername(updateUserDto.getUsername());
         user.getSecuredUser().setRole(updateUserDto.getRole());
-        ;
+        user.setIntroduction(updateUserDto.getIntroduction());
+        user.setAvailability(updateUserDto.getAvailability());
         return userMapper.toDto(user);
     }
 
