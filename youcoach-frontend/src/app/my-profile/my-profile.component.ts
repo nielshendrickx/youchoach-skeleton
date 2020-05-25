@@ -37,6 +37,7 @@ export class MyProfileComponent implements OnInit {
     this.getRoles();
     this.resetError();
     this.setBackgroundColor();
+    this.hideApplyBecomeCoachButtonWhenCoach();
   }
 
   getUser(): void {
@@ -114,5 +115,10 @@ export class MyProfileComponent implements OnInit {
       document.getElementById('coachee-nav-bar').style.backgroundColor = '#ffc107';
     }
     document.getElementById('footer').style.backgroundColor = '#ffc107';
+  }
+  hideApplyBecomeCoachButtonWhenCoach(): void {
+    if (this.authenticationService.getRoles().some(role => role.authority === 'COACH')) {
+      document.getElementById('apply-become-coach-button').style.visibility = 'hidden';
+    }
   }
 }
