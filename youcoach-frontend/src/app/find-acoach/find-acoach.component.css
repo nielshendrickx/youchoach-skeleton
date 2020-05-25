@@ -1,11 +1,15 @@
 .disabled-button{
   background-color: #029486 !important;
   color: black !important;
-
 }
-.wrapContainer{
-  background: lightgray;
 
+.page-card {
+  margin: 10px 10px 50px 10px;
+  background: #fafafa;
+}
+
+.wrapContainer{
+  background: #fafafa;
 }
 
 /*.coachCard {
