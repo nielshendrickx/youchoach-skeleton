@@ -8,10 +8,6 @@
   background: #fafafa;
 }
 
-.wrapContainer{
-  background: #fafafa;
-}
-
 /*.coachCard {
   display: flex;
   min-width: 25%;
@@ -28,9 +24,9 @@
 
 .card-header {
 
-  object-position: left;
+  overflow: hidden;
   display: flex;
- /* flex-direction: row;*/
+  flex-direction: row;
  /* align-items: flex-start;*/
   background: transparent;
 }
@@ -43,7 +39,7 @@
   display: flex;
 }*/
 
-.card-body .card-image {
+.card-image {
   width: 33%;
   height: 33%;
 
@@ -71,6 +67,26 @@
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
+}
+
+/*.profile-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}*/
+
+/* table.tr{
+   border-bottom: 1px black;
+ }*/
+
+.profileItems {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.full-screen-input {
+  width: 100%;
 }
 
 @media (min-width: 993px) {
