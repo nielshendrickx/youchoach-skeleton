@@ -23,6 +23,7 @@ import {ApplyBecomeCoachComponent} from './apply-become-coach/apply-become-coach
 import {MyCoachProfileComponent} from './my-coach-profile/my-coach-profile.component';
 import { CoachProfileComponent } from './coach-profile/coach-profile.component';
 import { FindACoachComponent } from './find-acoach/find-acoach.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -61,7 +62,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true}

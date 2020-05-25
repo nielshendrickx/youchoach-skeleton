@@ -22,12 +22,10 @@ public class UsersController {
     public static final String USERS_RESOURCE_PATH = "/users";
     private final Logger loggerUsers = LoggerFactory.getLogger(UsersController.class);
     private final UsersService usersService;
-    private final CoachService coachService;
 
     @Autowired
-    public UsersController(UsersService usersService, CoachService coachService) {
+    public UsersController(UsersService usersService) {
         this.usersService = usersService;
-        this.coachService = coachService;
     }
 
     @PreAuthorize("#id.toString() == principal or hasAuthority('viewuser')")
@@ -56,10 +54,4 @@ public class UsersController {
         return usersService.getRoles();
     }
 
-    @GetMapping(produces = "application/json")
-    @ResponseStatus(HttpStatus.OK)
-    public Collection<UserDto> giveListAllCoach(){
-        loggerUsers.info("Returned list of all coaches");
-        return coachService.getAllCoach();
-    }
 }

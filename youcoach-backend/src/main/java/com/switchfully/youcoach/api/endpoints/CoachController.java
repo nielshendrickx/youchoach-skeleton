@@ -2,8 +2,10 @@ package com.switchfully.youcoach.api.endpoints;
 
 import com.switchfully.youcoach.service.dto.UserDto;
 import com.switchfully.youcoach.service.services.CoachService;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,15 +21,18 @@ public class CoachController {
     private final Logger loggerUsers = LoggerFactory.getLogger(CoachController.class);
     private CoachService coachService;
 
+    @Autowired
+    public CoachController(CoachService coachService) {
+        this.coachService = coachService;
+    }
 
 
-/*Why does the method below gives a null in JWTAuthorization filter line 54 but works in another controller?
-    Also works if i simply return a string here, not if i return string in coachservice*/
-
-/*    @GetMapping(produces = "application/json")
+    @GetMapping(produces = "application/json")
+    @ApiOperation(value = "Get list of coaches", notes = "A list of all the coaches", response = UserDto.class)
     @ResponseStatus(HttpStatus.OK)
     public Collection<UserDto> giveListAllCoach(){
+        loggerUsers.info("Returned list of all coaches");
         return coachService.getAllCoach();
-    }*/
+    }
 
 }

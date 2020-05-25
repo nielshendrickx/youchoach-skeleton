@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
 import {User} from '../user';
+import {FlexLayoutModule} from '@angular/flex-layout';
+
 
 @Component({
   selector: 'app-find-acoach',
@@ -11,7 +13,7 @@ export class FindACoachComponent implements OnInit {
   CoachList: User[];
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
   ) {
   }
 
