@@ -3,18 +3,18 @@
   color: black !important;
 
 }
-
-
 .wrapContainer{
   background: lightgray;
 
 }
 
-.coachCard {
+/*.coachCard {
   display: flex;
   min-width: 25%;
   margin: 1%;
 }
+;
+}*/
 
 .card-body {
   display: flex;
@@ -23,9 +23,11 @@
 }
 
 .card-header {
+
+  object-position: left;
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+ /* flex-direction: row;*/
+ /* align-items: flex-start;*/
   background: transparent;
 }
 
@@ -67,7 +69,37 @@
   flex-grow: 1;
 }
 
-@media only screen and (max-width: 992px) {
+@media (min-width: 993px) {
+  .coachCard {
+    display: flex;
+    max-width: 23%;
+    margin: 1%;
+
+  }
+
+}
+
+@media (max-width: 992px) and (min-width: 800px) {
+  .coachCard {
+    display: flex;
+    max-width: 30%;
+    min-width: 25%;
+    margin: 1%;
+
+  }
+}
+
+@media (max-width: 799px) and (min-width: 501px) {
+  .coachCard {
+    display: flex;
+    max-width: 48%;
+    min-width: 25%;
+    margin: 1%;
+
+  }
+}
+
+@media only screen and (max-width: 500px) {
   table.responsive-table {
     width: 100%;
     border-collapse: collapse;
