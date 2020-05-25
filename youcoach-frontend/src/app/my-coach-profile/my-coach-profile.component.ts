@@ -18,12 +18,10 @@ export class MyCoachProfileComponent implements OnInit {
     role: new FormControl(''),
     pictureUrl: new FormControl(''),
     introduction: new FormControl(''),
-    availability: new FormControl(''),
-    topics: new FormControl(''),
+    availability: new FormControl('')
   });
 
   user: User;
-  editable: boolean;
 
   constructor(
     private userService: UserService,
@@ -49,7 +47,7 @@ export class MyCoachProfileComponent implements OnInit {
 
   initializeForm(user: User): void {
     this.userForm.patchValue(user);
-    this.editable = false;
+    this.userForm.disable();
   }
 
   setBackgroundColor(): void {
@@ -60,19 +58,35 @@ export class MyCoachProfileComponent implements OnInit {
   }
 
   editCoachInformation() {
+    this.userForm.get('introduction').enable();
+    this.userForm.get('availability').enable();
     document.getElementById('save-button').style.visibility = 'visible';
     document.getElementById('cancel-button').style.visibility = 'visible';
     document.getElementById('edit-button').style.visibility = 'hidden';
   }
 
   cancelCoachInformation(): void {
+    this.initializeForm(this.user);
     document.getElementById('save-button').style.visibility = 'hidden';
     document.getElementById('cancel-button').style.visibility = 'hidden';
     document.getElementById('edit-button').style.visibility = 'visible';
   }
 
   saveCoachInformation(): void {
-    this.cancelCoachInformation();
+    this.userForm.disable();
+    const updateUser = this.userForm.value;
+    updateUser.introduction = this.userForm.get('introduction').value;
+    updateUser.availability = this.userForm.get('availability').value;
+    updateUser.userId = this.authenticationService.getUserId();
+    console.log(updateUser);
+    this.userService.updateUser(updateUser).subscribe((response) => {
+        console.log('response received');
+        this.user = response;
+        this.cancelCoachInformation();
+      },
+      () => {
+        console.error('error caught in component');
+      });
   }
 
   goToRequestProfileChange(): void {
