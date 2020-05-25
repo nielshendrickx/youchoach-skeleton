@@ -1,33 +1,34 @@
-<mat-card class="page-card">
-<div fxLayout="row wrap" fxLayoutGap="0.1%">
-  <div class="coachCard" *ngFor="let user of CoachList">
-    <div class="profile-container">
-    <mat-card>
-      <mat-card-header class="card-header">
-        <h5>{{user.firstName}} {{user.lastName}}</h5>
-      </mat-card-header>
-      <mat-card-content class="card-body">
-        <img [src]=user.pictureUrl class="card-image" alt="profile picture">
-
-          <div class="profileItems">
-            <table>
-              <tr class="full-screen-input" *ngFor="let topic of user.topics">
-                <td>{{topic.name}}</td>
-                <td>
-                  <button mat-mini-fab disabled color="accent" class="disabled-button"
-                          *ngFor="let grade of topic.grade" style="margin-left: 5px">{{grade.year}}
-                  </button>
-                </td>
-              </tr>
-            </table>
-          </div>
-
-      </mat-card-content>
-    </mat-card>
+<div *ngIf="CoachList.length !== 0; else message">
+  <mat-card class="page-card">
+    <div fxLayout="row wrap" fxLayoutGap="0.1%">
+      <div class="coachCard" *ngFor="let user of CoachList; ">
+        <div class="profile-container">
+          <mat-card>
+            <mat-card-header class="card-header">
+              <h2>{{user.firstName}} {{user.lastName}}</h2>
+            </mat-card-header>
+            <mat-card-content class="card-body">
+              <img [src]=user.pictureUrl class="card-image" alt="profile picture">
+              <div class="profileItems">
+                <table>
+                  <tr class="full-screen-input" *ngFor="let topic of user.topics">
+                    <td>{{topic.name}}</td>
+                    <td>
+                      <button mat-mini-fab disabled color="accent" class="disabled-button"
+                              *ngFor="let grade of topic.grade" style="margin-left: 5px">{{grade.year}}
+                      </button>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
     </div>
-  </div>
+  </mat-card>
 </div>
-</mat-card>
+<ng-template #message><p>No coaches</p></ng-template>
 
 <!--<mat-grid-list cols="3">
   <mat-grid-tile *ngFor="let user of CoachList">
