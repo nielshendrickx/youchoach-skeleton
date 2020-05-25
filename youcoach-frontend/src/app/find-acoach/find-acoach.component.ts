@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
 import {User} from '../user';
-import {FlexLayoutModule} from '@angular/flex-layout';
-
 
 @Component({
   selector: 'app-find-acoach',

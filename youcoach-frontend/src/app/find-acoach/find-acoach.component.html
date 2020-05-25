@@ -1,30 +1,30 @@
 <mat-card class="page-card">
-  <div fxLayout="row wrap" fxLayoutGap="0.5%" class="wrapContainer">
-    <div class="coachCard" *ngFor="let user of CoachList">
-      <mat-card>
-        <mat-card-header class="card-header">
-          <h5>{{user.firstName}} {{user.lastName}}</h5>
-        </mat-card-header>
-        <mat-card-content class="card-body">
-          <img [src]=user.pictureUrl class="card-image" alt="profile picture">
+<div fxLayout="row wrap" fxLayoutGap="0.1%" class="wrapContainer">
+  <div class="coachCard" *ngFor="let user of CoachList">
+    <mat-card>
+      <mat-card-header class="card-header">
+        <h5>{{user.firstName}} {{user.lastName}}</h5>
+      </mat-card-header>
+      <mat-card-content class="card-body">
+        <img [src]=user.pictureUrl class="card-image" alt="profile picture">
+        <div>
           <div>
-            <div>
-              <table>
-                <tr *ngFor="let topic of user.topics">
-                  <td>{{topic.name}}</td>
-                  <td>
-                    <button mat-mini-fab disabled color="accent" class="disabled-button"
-                            *ngFor="let grade of topic.grade" style="margin-left: 5px">{{grade.year}}
-                    </button>
-                  </td>
-                </tr>
-              </table>
-            </div>
+            <table>
+              <tr *ngFor="let topic of user.topics">
+                <td>{{topic.name}}</td>
+                <td>
+                  <button mat-mini-fab disabled color="accent" class="disabled-button"
+                          *ngFor="let grade of topic.grade" style="margin-left: 5px">{{grade.year}}
+                  </button>
+                </td>
+              </tr>
+            </table>
           </div>
-        </mat-card-content>
-      </mat-card>
-    </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
+</div>
 </mat-card>
 
 <!--<mat-grid-list cols="3">
