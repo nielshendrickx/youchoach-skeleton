@@ -15,7 +15,7 @@ public class RoleToFeatureMapper {
         switch (role) {
             case COACH:
                 return newArrayList(ACCEPT_SESSION);
-            case STUDENT:
+            case COACHEE:
                 return newArrayList(REQUEST_SESSION);
             case ADMINISTRATOR:
                 return newArrayList(VIEW_USER, UPDATE_USER);

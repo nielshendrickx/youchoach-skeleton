@@ -41,7 +41,7 @@ export class CoachProfileComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.userService.getUserById(id)
       .subscribe(user => {
-        if (user.role === 'STUDENT') {
+        if (user.role === 'COACHEE') {
           this.router.navigate(['/myProfile']);
         }
         this.initializeForm(user);

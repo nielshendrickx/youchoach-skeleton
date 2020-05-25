@@ -27,7 +27,7 @@ public class SecuredUser {
     public SecuredUser(String username, String password) {
         this.username = username;
         this.password = password;
-        this.role = Role.STUDENT;
+        this.role = Role.COACHEE;
     }
 
     public SecuredUser() {

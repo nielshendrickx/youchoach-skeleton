@@ -14,11 +14,11 @@ export class CoacheeNavBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.hideMyCoachProfileButtonWhenStudent();
+    this.hideMyCoachProfileButtonWhenCoachee();
   }
 
-  hideMyCoachProfileButtonWhenStudent(): void {
-    if (this.authenticationService.getRoles().some(role => role.authority === 'STUDENT')) {
+  hideMyCoachProfileButtonWhenCoachee(): void {
+    if (this.authenticationService.getRoles().some(role => role.authority === 'COACHEE')) {
       document.getElementById('my-coach-profile-button').style.visibility = 'hidden';
     }
   }
