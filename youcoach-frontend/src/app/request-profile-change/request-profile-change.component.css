@@ -1,14 +1,3 @@
-/*Classes:*/
-/*.container*/
-/*.link-container*/
-/*.profile-container*/
-/*.card-header*/
-/*.card-body*/
-/*.construction-img*/
-/*.requestProfileChangeText*/
-/*.sendMailButton*/
-
-
 .container {
   display: flex;
   flex-direction: row;
@@ -52,6 +41,8 @@
   height: 15%;
   width: 15%;
   margin-right: 15px;
+  min-height: 100px;
+  min-width: 100px;
 }
 
 .card-body {
@@ -70,8 +61,8 @@
   background-color: #029486;
 }
 
-.mat-button-toggle-label-content {
-  text-align: left !important;
+::ng-deep .mat-button-toggle-label-content{
+  text-align: left;
 }
 
 .full-screen-input {
