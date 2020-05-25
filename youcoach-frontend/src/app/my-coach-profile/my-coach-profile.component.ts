@@ -24,6 +24,7 @@ export class MyCoachProfileComponent implements OnInit {
 
   user: User;
   editable: boolean;
+  isAdmin = false;
 
   constructor(
     private userService: UserService,
@@ -43,9 +44,11 @@ export class MyCoachProfileComponent implements OnInit {
       .subscribe(user => {
         this.initializeForm(user);
         this.user = user;
+        if (user.role === 'ADMINISTRATOR') {
+          this.isAdmin = true;
+        }
       });
   }
-
 
   initializeForm(user: User): void {
     this.userForm.patchValue(user);
@@ -61,5 +64,9 @@ export class MyCoachProfileComponent implements OnInit {
 
   goToRequestProfileChange(): void {
     this.router.navigate(['/requestProfileChange']);
+  }
+
+  editTopics() {
+
   }
 }

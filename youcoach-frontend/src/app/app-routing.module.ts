@@ -21,7 +21,6 @@ const routes: Routes = [
   {path: 'applyBecomeCoach', component: ApplyBecomeCoachComponent},
   {path: 'mycoachprofile', component: MyCoachProfileComponent},
   {path: 'findACoach', component: FindACoachComponent},
-  {path: 'mycoachprofile', component: MyCoachProfileComponent},
   {path: 'requestProfileChange', component: RequestProfileChangeComponent}
 ];
 

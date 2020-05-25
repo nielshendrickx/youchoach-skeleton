@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {User} from '../user';
 import {UserService} from '../user.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {AuthenticationService} from '../authentication/authentication.service';
 
 @Component({
   selector: 'app-coach-profile',
@@ -10,6 +11,17 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./coach-profile.component.css']
 })
 export class CoachProfileComponent implements OnInit {
+
+  isAdmin = false;
+
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private authenticationService: AuthenticationService
+  ) {
+  }
+
   userForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -23,13 +35,6 @@ export class CoachProfileComponent implements OnInit {
 
   user: User;
   editable: boolean;
-
-  constructor(
-    private userService: UserService,
-    private router: Router,
-    private route: ActivatedRoute,
-  ) {
-  }
 
   ngOnInit(): void {
     this.getUser();
@@ -46,9 +51,11 @@ export class CoachProfileComponent implements OnInit {
         }
         this.initializeForm(user);
         this.user = user;
+        if (user.role === 'ADMINISTRATOR') {
+          this.isAdmin = true;
+        }
       });
   }
-
 
   initializeForm(user: User): void {
     this.userForm.patchValue(user);
@@ -60,5 +67,9 @@ export class CoachProfileComponent implements OnInit {
       document.getElementById('coachee-nav-bar').style.backgroundColor = '#009688';
     }
     document.getElementById('footer').style.backgroundColor = '#009688';
+  }
+
+  editTopics() {
+
   }
 }

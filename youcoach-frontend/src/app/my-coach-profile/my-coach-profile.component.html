@@ -3,9 +3,11 @@
   <div class="link-container">
     <p translate>my-coach-profile-menu.title</p>
     <mat-button-toggle-group vertical>
-      <mat-button-toggle checked="true"><span translate>my-coach-profile-menu.link.profile-information</span></mat-button-toggle>
+      <mat-button-toggle checked="true"><span translate>my-coach-profile-menu.link.profile-information</span>
+      </mat-button-toggle>
       <mat-button-toggle><span translate>my-coach-profile-menu.link.coaching-sessions</span></mat-button-toggle>
-      <mat-button-toggle (click)="goToRequestProfileChange()"><span translate>my-coach-profile-menu.link.request-profile-change</span></mat-button-toggle>
+      <mat-button-toggle (click)="goToRequestProfileChange()"><span translate>my-coach-profile-menu.link.request-profile-change</span>
+      </mat-button-toggle>
     </mat-button-toggle-group>
   </div>
   <div class="profile-container" *ngIf="user">
@@ -54,13 +56,15 @@
           <mat-form-field>
             <mat-label translate>coach-information.label.introduction</mat-label>
             <label for="introduction">
-              <textarea id="introduction" matInput type="text" formControlName="introduction" [readonly]="!editable"></textarea>
+              <textarea id="introduction" matInput type="text" formControlName="introduction"
+                        [readonly]="!editable"></textarea>
             </label>
           </mat-form-field>
           <mat-form-field>
             <mat-label translate>coach-information.label.availability</mat-label>
             <label for="availability">
-              <textarea id="availability" matInput type="text" formControlName="availability" [readonly]="!editable"></textarea>
+              <textarea id="availability" matInput type="text" formControlName="availability"
+                        [readonly]="!editable"></textarea>
             </label>
           </mat-form-field>
         </form>
@@ -70,6 +74,9 @@
     <mat-card class="card">
       <mat-card-title class="card-header">
         <h2 translate>coaching-topics.title</h2>
+          <button *ngIf="isAdmin" mat-mini-fab color="secondary" (click)="editTopics()">
+            <mat-icon>create</mat-icon>
+          </button>
       </mat-card-title>
       <mat-card-content>
         <table style="width:100%">
