@@ -57,4 +57,20 @@ export class MyCoachProfileComponent implements OnInit {
     document.getElementById('footer').style.backgroundColor = '#009688';
   }
 
+  editCoachInformation() {
+    document.getElementById('save-button').style.visibility = 'visible';
+    document.getElementById('cancel-button').style.visibility = 'visible';
+    document.getElementById('edit-button').style.visibility = 'hidden';
+  }
+
+  cancelCoachInformation(): void {
+    document.getElementById('save-button').style.visibility = 'hidden';
+    document.getElementById('cancel-button').style.visibility = 'hidden';
+    document.getElementById('edit-button').style.visibility = 'visible';
+  }
+
+  saveCoachInformation(): void {
+    this.cancelCoachInformation();
+  }
+
 }

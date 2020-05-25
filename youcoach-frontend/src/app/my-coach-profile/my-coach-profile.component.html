@@ -51,7 +51,7 @@
     <mat-card class="card">
       <mat-card-title class="card-header">
         <h2 translate>coach-information.title</h2>
-        <button mat-mini-fab color="accent" id="edit-button">
+        <button mat-mini-fab color="accent" id="edit-button" (click)="editCoachInformation()">
           <mat-icon>create</mat-icon>
         </button>
       </mat-card-title>
@@ -72,10 +72,10 @@
         </form>
       </mat-card-content>
       <div class="button-container">
-        <button mat-raised-button color="primary" id="save-button"><span translate>profile-information.button.save</span>
+        <button mat-raised-button color="primary" id="save-button" (click)="saveCoachInformation()"><span translate>profile-information.button.save</span>
           <mat-icon>save</mat-icon>
         </button>
-        <button mat-raised-button color="accent" id="cancel-button"><span translate>profile-information.button.cancel</span>
+        <button mat-raised-button color="accent" id="cancel-button" (click)="cancelCoachInformation()"><span translate>profile-information.button.cancel</span>
           <mat-icon>cancel</mat-icon>
         </button>
       </div>

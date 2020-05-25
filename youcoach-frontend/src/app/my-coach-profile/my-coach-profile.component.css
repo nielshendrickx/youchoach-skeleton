@@ -87,7 +87,7 @@ th, td {
   flex-shrink: 0;
   text-transform: uppercase;
   color: black;
-  /*visibility: hidden;*/
+  visibility: hidden;
 }
 
 .button-container button mat-icon{
