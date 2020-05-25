@@ -23,9 +23,9 @@
 
 .card-header {
 
-  object-position: left;
+  overflow: hidden;
   display: flex;
- /* flex-direction: row;*/
+  flex-direction: row;
  /* align-items: flex-start;*/
   background: transparent;
 }
@@ -66,6 +66,12 @@
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 @media (min-width: 993px) {

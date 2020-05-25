@@ -1,5 +1,6 @@
-<div fxLayout="row wrap" fxLayoutGap="0.5%" class="wrapContainer">
+<div fxLayout="row wrap"  class="wrapContainer">
   <div class="coachCard" *ngFor="let user of CoachList">
+    <div class="profile-container">
     <mat-card>
       <mat-card-header class="card-header">
         <h5>{{user.firstName}} {{user.lastName}}</h5>
@@ -22,6 +23,7 @@
         </div>
       </mat-card-content>
     </mat-card>
+    </div>
   </div>
 </div>
 
