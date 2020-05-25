@@ -1,16 +1,32 @@
+/*Classes:*/
+/*.container*/
+/*.link-container*/
+/*.profile-container*/
+/*.card-header*/
+/*.card-body*/
+/*.construction-img*/
+/*.requestProfileChangeText*/
+/*.sendMailButton*/
+
+
 .container {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin: 10px 10px 160px ;
+  margin: 10px 10px;
+}
+
+.link-container {
+  margin-right: 30px;
 }
 
 .profile-container {
   display: flex;
+  flex-direction: column;
   flex: 1;
 }
 
-.becomeCoachText {
+.requestProfileChangeText {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -19,7 +35,7 @@
 }
 
 .mat-card {
-  width: 100%;
+  margin: 0 0 50px 0;
 }
 
 .card-header {
@@ -33,7 +49,9 @@
 }
 
 .construction-img {
-  border-radius: 0;
+  height: 15%;
+  width: 15%;
+  margin-right: 15px;
 }
 
 .card-body {
@@ -44,15 +62,12 @@
 
 .sendMailButton {
   float: right;
-  margin-top: 100px;
-}
-
-.link-container {
-  margin-right: 30px;
+  margin-top: -50px;
+  background-color: #029486;
 }
 
 .mat-button-toggle-checked {
-  background-color: #ffc107;
+  background-color: #029486;
 }
 
 .mat-button-toggle-label-content {
@@ -86,6 +101,11 @@
 
   .sendMailButton {
     margin: 20px 0;
+  }
+
+  .construction-img {
+    height: 50%;
+    width: 50%;
   }
 }
 
