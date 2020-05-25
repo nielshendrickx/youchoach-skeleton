@@ -69,10 +69,24 @@
   flex-grow: 1;
 }
 
-.profile-container {
+/*.profile-container {
   display: flex;
   flex-direction: column;
   flex: 1;
+}*/
+
+/* table.tr{
+   border-bottom: 1px black;
+ }*/
+
+.profileItems {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.full-screen-input {
+  width: 100%;
 }
 
 @media (min-width: 993px) {

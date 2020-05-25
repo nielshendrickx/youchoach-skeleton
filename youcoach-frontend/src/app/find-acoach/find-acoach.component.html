@@ -7,10 +7,10 @@
       </mat-card-header>
       <mat-card-content class="card-body">
         <img [src]=user.pictureUrl class="card-image" alt="profile picture">
-        <div>
-          <div>
+
+          <div class="profileItems">
             <table>
-              <tr *ngFor="let topic of user.topics">
+              <tr class="full-screen-input" *ngFor="let topic of user.topics">
                 <td>{{topic.name}}</td>
                 <td>
                   <button mat-mini-fab disabled color="accent" class="disabled-button"
@@ -20,7 +20,7 @@
               </tr>
             </table>
           </div>
-        </div>
+
       </mat-card-content>
     </mat-card>
     </div>
