@@ -23,9 +23,9 @@
       <mat-form-field class="full-screen-input">
         <mat-label translate>register.label.email
           <span
-            style="font-weight: bold; font-size: smaller; margin-left: 10px">  {{'profile-information.message.change-email' | translate}}</span></mat-label>
+            style="font-weight: bold; font-size: small; margin-left: 10px">  {{'register.label.email-placeholder' | translate}}</span></mat-label>
         <label for="username">
-          <input id="username" matInput type="email" formControlName="username" placeholder="{{'register.label.email-placeholder' | translate}}">
+          <input id="username" matInput type="email" formControlName="username">
         </label>
         <mat-error *ngIf="userForm.get('username').hasError('required')" translate>register.message.email-required</mat-error>
         <mat-error *ngIf="userForm.get('username').hasError('pattern')" translate>register.message.email-wrong-format</mat-error>
