@@ -21,9 +21,10 @@ import {SignInComponent} from './sign-in/sign-in.component';
 import {MyProfileComponent} from './my-profile/my-profile.component';
 import {ApplyBecomeCoachComponent} from './apply-become-coach/apply-become-coach.component';
 import {MyCoachProfileComponent} from './my-coach-profile/my-coach-profile.component';
-import { CoachProfileComponent } from './coach-profile/coach-profile.component';
-import { FindACoachComponent } from './find-acoach/find-acoach.component';
+import {CoachProfileComponent} from './coach-profile/coach-profile.component';
+import {FindACoachComponent} from './find-acoach/find-acoach.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {RequestProfileChangeComponent} from './request-profile-change/request-profile-change.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -45,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MyCoachProfileComponent,
     CoachProfileComponent,
     FindACoachComponent,
+    RequestProfileChangeComponent,
   ],
   imports: [
     BrowserModule,

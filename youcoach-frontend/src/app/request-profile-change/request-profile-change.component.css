@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 10px 10px 160px ;
+}
+
+.profile-container {
+  display: flex;
+  flex: 1;
+}
+
+.becomeCoachText {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  flex-wrap: wrap;
+  white-space: pre-wrap;
+}
+
+.mat-card {
+  width: 100%;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3em;
+  padding: 1em 0;
+  border-bottom: 1px solid black;
+}
+
+.construction-img {
+  border-radius: 0;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.sendMailButton {
+  float: right;
+  margin-top: 100px;
+}
+
+.link-container {
+  margin-right: 30px;
+}
+
+.mat-button-toggle-checked {
+  background-color: #ffc107;
+}
+
+.mat-button-toggle-label-content {
+  text-align: left !important;
+}
+
+.full-screen-input {
+  width: 100%;
+}
+
+@media only screen and (max-width: 450px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .profile-container {
+    margin: 10px 0 0 0;
+  }
+
+  .mat-card-title {
+    margin: 0 0 10px 0;
+  }
+
+  .construction-img {
+    margin: 10px 0 20px 0;
+  }
+
+  .card-body {
+    flex-direction: column;
+  }
+
+  .sendMailButton {
+    margin: 20px 0;
+  }
+}
+
+

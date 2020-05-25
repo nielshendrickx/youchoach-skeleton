@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {User} from '../user';
 import {UserService} from '../user.service';
 import {AuthenticationService} from '../authentication/authentication.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-my-coach-profile',
@@ -26,7 +27,8 @@ export class MyCoachProfileComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) {
   }
 
@@ -57,4 +59,7 @@ export class MyCoachProfileComponent implements OnInit {
     document.getElementById('footer').style.backgroundColor = '#009688';
   }
 
+  goToRequestProfileChange(): void {
+    this.router.navigate(['/requestProfileChange']);
+  }
 }
