@@ -10,7 +10,7 @@
         (+{{topics.value.length - 1}} {{topics.value?.length === 2 ? 'other' : 'others'}})
       </span>
           </mat-select-trigger>
-          <mat-option *ngFor="let topping of topicList" [value]="topping">{{topping}}</mat-option>
+          <mat-option *ngFor="let topic of topicList" [value]="topic">{{topic}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>

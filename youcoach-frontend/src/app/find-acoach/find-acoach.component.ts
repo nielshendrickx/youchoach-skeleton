@@ -13,7 +13,7 @@ export class FindACoachComponent implements OnInit {
   topics = new FormControl();
   topicList = [];
   years = new FormControl();
-  yearList = ['1', '2', '3'];
+  yearList = [];
 
   constructor(
     private userService: UserService,
@@ -53,7 +53,7 @@ export class FindACoachComponent implements OnInit {
 
   getAllYears(coaches: User[]): void {
     const years = [];
-    const print = coaches
+    coaches
       .filter(coach => coach.topics.length !== 0)
       .map(coach => coach.topics)
       .map(o => o.forEach(topic => topic.grade.forEach(grade => years.push(grade.year))));
