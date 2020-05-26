@@ -116,12 +116,13 @@
             </mat-form-field>
             <mat-form-field>
               <mat-label>Grades</mat-label>
-              <mat-select id="grades1" formControlName="grades1" multiple required>
+              <mat-select [(value)]="selectedGrades1" multiple required>
                 <mat-option *ngFor="let grade of gradesList" [value]="grade">{{grade.year}}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
           <div>
+            <div>
             <mat-form-field>
               <mat-label translate>coach-information.label.topic2</mat-label>
               <label for="topic2">
@@ -133,6 +134,13 @@
                 </mat-autocomplete>
               </label>
             </mat-form-field>
+              <mat-form-field>
+                <mat-label>Grades</mat-label>
+                <mat-select [(value)]="selectedGrades2" multiple required>
+                  <mat-option *ngFor="let grade of gradesList" [value]="grade">{{grade.year}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
           </div>
         </form>
       </mat-card-content>

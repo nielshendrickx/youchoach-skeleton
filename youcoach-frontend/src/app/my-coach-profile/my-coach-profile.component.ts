@@ -31,6 +31,9 @@ export class MyCoachProfileComponent implements OnInit {
     grades1: new FormControl('')
   });
 
+  selectedGrades1: Grade[] = [];
+  selectedGrades2: Grade[] = [];
+
   gradesList: Grade[];
 
   user: User;
@@ -77,9 +80,14 @@ export class MyCoachProfileComponent implements OnInit {
     this.gradesList = [{year: 1}, {year: 2}, {year: 3}, {year: 4}, {year: 5}, {year: 6}, {year: 7}];
     this.topicsForm.controls.topic1.setValue(user.topics[0].name);
     this.topicsForm.controls.topic2.setValue(user.topics[1].name);
-    this.topicsForm.controls.grades1.setValue(user.topics[0].grade);
-    console.log(user.topics[0].grade);
-    console.log(this.gradesList);
+    user.topics[0].grade.forEach(grade => {
+      const gradeHelp: Grade = this.gradesList.find(gradeItem => gradeItem.year === grade.year);
+      this.selectedGrades1.push(gradeHelp);
+    });
+    user.topics[1].grade.forEach(grade => {
+      const gradeHelp: Grade = this.gradesList.find(gradeItem => gradeItem.year === grade.year);
+      this.selectedGrades2.push(gradeHelp);
+    });
     this.topicsForm.disable();
   }
 
@@ -161,23 +169,13 @@ export class MyCoachProfileComponent implements OnInit {
     const updateUser = this.userForm.value;
     updateUser.introduction = this.user.introduction;
     updateUser.availability = this.user.availability;
-    const gradestopic1: Grade[] = [
-      {year: 1},
-      {year: 2},
-      {year: 3}
-    ];
-    const gradestopic2: Grade[] = [
-      {year: 1},
-      {year: 2},
-      {year: 3}
-    ];
 
     const topic1Update: Topic = {
-      grade: gradestopic1,
+      grade: this.selectedGrades1,
       name: this.topicsForm.get('topic1').value
     };
     const topic2Update: Topic = {
-      grade: gradestopic2,
+      grade: this.selectedGrades2,
       name: this.topicsForm.get('topic2').value
     };
     updateUser.topics = [
