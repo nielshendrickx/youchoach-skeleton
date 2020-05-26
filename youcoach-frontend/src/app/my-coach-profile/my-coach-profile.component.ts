@@ -6,6 +6,8 @@ import {AuthenticationService} from '../authentication/authentication.service';
 import {Router} from '@angular/router';
 import {Topic} from '../topic';
 import {Grade} from '../grade';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-my-coach-profile',
@@ -25,7 +27,7 @@ export class MyCoachProfileComponent implements OnInit {
 
   topicsForm = new FormGroup({
     topic1: new FormControl(''),
-    topic2: new FormControl('')
+    topic2: new FormControl(''),
   });
 
   gradesSelect = new FormControl();
@@ -34,6 +36,10 @@ export class MyCoachProfileComponent implements OnInit {
   user: User;
   isAdmin = false;
   topicEditMode = false;
+  topicList1: string[] = ['physics', 'sports', 'maths', 'french'];
+  topicList2: string[] = ['physics', 'sports', 'maths', 'french'];
+  filteredTopicList1: Observable<string[]>;
+  filteredTopicList2: Observable<string[]>;
 
   constructor(
     private userService: UserService,
@@ -45,6 +51,34 @@ export class MyCoachProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.setBackgroundColor();
+    // this.getTopicsList();
+    this.filterTopicList1();
+    this.filterTopicList2();
+  }
+
+  filterTopicList1(): void {
+    this.filteredTopicList1 = this.topicsForm.get('topic1').valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter1(value))
+      );
+  }
+
+  filterTopicList2(): void {
+    this.filteredTopicList2 = this.topicsForm.get('topic2').valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter2(value))
+      );
+  }
+  private _filter1(value: string): string[] {
+    const filterValue1 = value.toLowerCase();
+    return this.topicList1.filter(option => option.toLowerCase().includes(filterValue1));
+  }
+
+  private _filter2(value: string): string[] {
+    const filterValue2 = value.toLowerCase();
+    return this.topicList2.filter(option => option.toLowerCase().includes(filterValue2));
   }
 
   getUser(): void {
@@ -57,6 +91,10 @@ export class MyCoachProfileComponent implements OnInit {
           this.isAdmin = true;
         }
       });
+  }
+
+  getTopicsList(): void {
+// todo: implement this so that a list of unique topics is fetched from the database
   }
 
   initializeForm(user: User): void {
@@ -117,6 +155,7 @@ export class MyCoachProfileComponent implements OnInit {
     document.getElementById('topics-cancel-button').style.visibility = 'visible';
     document.getElementById('topics-edit-button').style.visibility = 'hidden';
   }
+
 
   saveCoachTopics() {
     this.topicsForm.disable();
