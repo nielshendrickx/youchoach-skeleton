@@ -1,5 +1,31 @@
 <div *ngIf="CoachList.length !== 0; else message">
   <mat-card class="page-card">
+    <div class="filter-container">
+      <mat-form-field>
+        <mat-label translate>coach-overview.label.filter-topic</mat-label>
+        <mat-select [formControl]="topics" multiple>
+          <mat-select-trigger>
+            {{topics.value ? topics.value[0] : ''}}
+            <span *ngIf="topics.value?.length > 1">
+        (+{{topics.value.length - 1}} {{topics.value?.length === 2 ? 'other' : 'others'}})
+      </span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let topping of topicList" [value]="topping">{{topping}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label translate>coach-overview.label.filter-year</mat-label>
+        <mat-select [formControl]="years" multiple>
+          <mat-select-trigger>
+            {{years.value ? years.value[0] : ''}}
+            <span *ngIf="years.value?.length > 1">
+        (+{{years.value.length - 1}} {{years.value?.length === 2 ? 'other' : 'others'}})
+      </span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let year of yearList" [value]="year">{{year}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
     <div fxLayout="row wrap" fxLayoutGap="0.1%">
       <div class="coachCard" *ngFor="let user of CoachList; ">
         <div class="profile-container">
@@ -9,7 +35,7 @@
             </mat-card-header>
             <mat-card-content class="card-body">
               <div class="imageBox">
-              <img [src]=user.pictureUrl class="card-image" alt="profile picture">
+                <img [src]=user.pictureUrl class="card-image" alt="profile picture">
               </div>
               <div class="topicsBox">
                 <table>
