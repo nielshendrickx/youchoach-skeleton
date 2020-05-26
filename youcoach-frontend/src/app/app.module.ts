@@ -25,6 +25,8 @@ import {CoachProfileComponent} from './coach-profile/coach-profile.component';
 import {FindACoachComponent} from './find-acoach/find-acoach.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RequestProfileChangeComponent} from './request-profile-change/request-profile-change.component';
+import {FilterCoachesByTopicPipe} from './filter-coaches-by-topic.pipe';
+import { FilterCoachByYearPipe } from './filter-coach-by-year.pipe';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -47,6 +49,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoachProfileComponent,
     FindACoachComponent,
     RequestProfileChangeComponent,
+    FilterCoachesByTopicPipe,
+    FilterCoachByYearPipe,
   ],
   imports: [
     BrowserModule,

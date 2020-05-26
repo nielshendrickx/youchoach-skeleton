@@ -6,6 +6,8 @@ import {AuthenticationService} from '../authentication/authentication.service';
 import {Router} from '@angular/router';
 import {Topic} from '../topic';
 import {Grade} from '../grade';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-my-coach-profile',
@@ -34,6 +36,9 @@ export class MyCoachProfileComponent implements OnInit {
   user: User;
   isAdmin = false;
   topicEditMode = false;
+  topicList: string[] = ['physics', 'sports', 'maths', 'french'];
+  filteredTopicList1: Observable<string[]>;
+  filteredTopicList2: Observable<string[]>;
 
   constructor(
     private userService: UserService,
@@ -45,6 +50,9 @@ export class MyCoachProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.setBackgroundColor();
+    // this.getTopicsList();
+    this.filterTopicList1();
+    this.filterTopicList2();
   }
 
   getUser(): void {
@@ -57,6 +65,10 @@ export class MyCoachProfileComponent implements OnInit {
           this.isAdmin = true;
         }
       });
+  }
+
+  getTopicsList(): void {
+// todo: implement this so that a list of unique topics is fetched from the database
   }
 
   initializeForm(user: User): void {
@@ -121,6 +133,26 @@ export class MyCoachProfileComponent implements OnInit {
     document.getElementById('topics-save-button').style.visibility = 'visible';
     document.getElementById('topics-cancel-button').style.visibility = 'visible';
     document.getElementById('topics-edit-button').style.visibility = 'hidden';
+  }
+
+  filterTopicList1(): void {
+    this.filteredTopicList1 = this.topicsForm.get('topic1').valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+  }
+
+  filterTopicList2(): void {
+    this.filteredTopicList2 = this.topicsForm.get('topic2').valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+  }
+  _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.topicList.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   saveCoachTopics() {
