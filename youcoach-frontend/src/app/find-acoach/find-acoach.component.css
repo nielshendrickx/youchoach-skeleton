@@ -8,19 +8,15 @@
   background: #fafafa;
 }
 
-/*.coachCard {
-  display: flex;
-  min-width: 25%;
-  margin: 1%;
-}
-;
-}*/
+@media only screen and (min-width: 451px) {
 
-.card-body {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  min-height: 210px;
+  .card-body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-height: 135px;
+    max-height: 200px;
+  }
 }
 
 .card-header {
@@ -34,18 +30,169 @@
   margin: 0 !important;
 }
 
+.coach-card {
+  padding: 0 !important;
+  alignment: center;
+}
+
+.card-image {
+  width: 100%;
+  /* overflow: hidden;*/
+}
+
+.imageBox {
+  width: 45%;
+  margin-right: 1%;
+}
+
+.topicsBox {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 45%;
+  width: 55%;
+}
+
+table {
+  border-collapse:separate;
+  border-spacing: 0 1em;
+}
 
 
-/*.card.horizontal {
+.year-buttons{
+  display: flex;
+  flex-direction: row;
+}
+
+@media (min-width: 2500px) {
+  .coachCard {
+    display: flex;
+    max-width: 14%;
+    margin: 1%;
+
+  }
+}
+
+@media (min-width: 1959px) and (max-width: 2500px) {
+  .coachCard {
+    display: flex;
+    max-width: 18%;
+    margin: 1%;
+
+  }
+}
+
+@media (min-width: 1486px) and (max-width: 1959px) {
+  .coachCard {
+    display: flex;
+    max-width: 23%;
+    margin: 1%;
+
+  }
+}
+
+@media (max-width: 1486px) and (min-width: 1155px) {
+  .coachCard {
+    display: flex;
+    max-width: 30%;
+    min-width: 25%;
+    margin: 1%;
+
+  }
+}
+
+@media (max-width: 1155px) and (min-width: 790px) {
+  .coachCard {
+    display: flex;
+    max-width: 48%;
+    min-width: 25%;
+    margin: 1%;
+
+  }
+
+  .imageBox {
+    width: 35%;
+  }
+}
+
+@media only screen and (max-width: 790px) {
+  .coach-card {
+    margin: 10px 0 0 0;
+    max-width: 512px;
+  }
+
+  .imageBox {
+    width: 29%;
+  }
+  .topicsBox {
+    width: 71%;
+  }
+
+
+
+}
+
+
+/*
+below here get back if fails
+
+.disabled-button {
+  background-color: #029486 !important;
+  color: black !important;
+}
+
+.page-card {
+  margin: 10px 10px 50px 10px;
+  background: #fafafa;
+}
+
+!*.coachCard {
+  display: flex;
+  min-width: 25%;
+  margin: 1%;
+}
+;
+}*!
+
+.card-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-height: 135px;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+}
+
+::ng-deep .mat-card-header-text {
+  margin: 0 !important;
+
+
+}
+
+::ng-deep .mat-card{
+  padding: 0 !important;
+  alignment: center;
+}
+
+
+
+
+
+!*.card.horizontal {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}*/
+}*!
 
 .card-image {
-  width: 33%;
-  height: 33%;
+  width: 45%;
+  height: 45%;
 
 }
 
@@ -73,20 +220,21 @@
   flex-grow: 1;
 }
 
-/*.profile-container {
+!*.profile-container {
   display: flex;
   flex-direction: column;
   flex: 1;
-}*/
+}*!
 
-/* table.tr{
+!* table.tr{
    border-bottom: 1px black;
- }*/
+ }*!
 
 .profileItems {
   display: flex;
   flex-direction: column;
   flex: 1;
+  height: 45%;
 }
 
 .full-screen-input {
@@ -130,7 +278,7 @@
     border-spacing: 0;
     display: block;
     position: relative;
-    /* sort out borders */
+    !* sort out borders *!
   }
 
   table.responsive-table td:empty:before {
@@ -195,3 +343,4 @@
     border-right: 1px solid rgba(0, 0, 0, 0.12);
   }
 }
+*/
