@@ -1,5 +1,7 @@
 package com.switchfully.youcoach.domain.grade;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -10,6 +12,7 @@ public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
+    @JsonIgnore
     private UUID id;
 
     @Column(name = "year")
