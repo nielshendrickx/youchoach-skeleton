@@ -30,6 +30,7 @@ export class MyCoachProfileComponent implements OnInit {
 
   user: User;
   isAdmin = false;
+  topicEditMode = false;
 
   constructor(
     private userService: UserService,
@@ -41,7 +42,6 @@ export class MyCoachProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.setBackgroundColor();
-    // this.makeTopicsEditFormInvisible();
   }
 
   getUser(): void {
@@ -69,10 +69,6 @@ export class MyCoachProfileComponent implements OnInit {
       document.getElementById('coachee-nav-bar').style.backgroundColor = '#009688';
     }
     document.getElementById('footer').style.backgroundColor = '#009688';
-  }
-
-  makeTopicsEditFormInvisible(): void {
-    document.getElementById('topics-edit-form').style.visibility = 'hidden';
   }
 
   editCoachInformation() {
@@ -113,6 +109,7 @@ export class MyCoachProfileComponent implements OnInit {
   editTopics() {
     this.topicsForm.get('topic1').enable();
     this.topicsForm.get('topic2').enable();
+    this.topicEditMode = true;
     document.getElementById('topics-save-button').style.visibility = 'visible';
     document.getElementById('topics-cancel-button').style.visibility = 'visible';
     document.getElementById('topics-edit-button').style.visibility = 'hidden';
@@ -158,6 +155,7 @@ export class MyCoachProfileComponent implements OnInit {
 
   cancelCoachTopics() {
     this.initializeForm(this.user);
+    this.topicEditMode = false;
     document.getElementById('topics-save-button').style.visibility = 'hidden';
     document.getElementById('topics-cancel-button').style.visibility = 'hidden';
     document.getElementById('topics-edit-button').style.visibility = 'visible';

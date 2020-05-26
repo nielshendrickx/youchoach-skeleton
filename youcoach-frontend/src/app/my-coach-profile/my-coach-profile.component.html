@@ -85,7 +85,7 @@
             <mat-icon>create</mat-icon>
           </button>
       </mat-card-title>
-      <mat-card-content>
+      <mat-card-content *ngIf="topicEditMode == false">
         <table style="width:100%">
           <tr *ngFor="let topic of user.topics">
             <td>{{topic.name}}</td>
@@ -98,7 +98,7 @@
           </tr>
         </table>
       </mat-card-content>
-      <mat-card-content id="topics-edit-form">
+      <mat-card-content *ngIf="topicEditMode == true">
         <form class="profileItems" [formGroup]="topicsForm">
           <mat-form-field>
             <mat-label translate>coach-information.label.topic1</mat-label>
