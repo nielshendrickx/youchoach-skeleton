@@ -11,7 +11,7 @@ import {FormControl} from '@angular/forms';
 export class FindACoachComponent implements OnInit {
   CoachList: User[];
   topics = new FormControl();
-  topicList = ['Mathematics', 'Biology'];
+  topicList = [];
   years = new FormControl();
   yearList = ['1', '2', '3'];
 
@@ -37,8 +37,26 @@ export class FindACoachComponent implements OnInit {
     this.userService.getAllCoach()
       .subscribe(coaches => {
         this.CoachList = coaches;
-        console.log(coaches);
+        this.getAllTopicsOfCoaches(coaches);
+        this.getAllYears(coaches);
       });
   }
 
+  getAllTopicsOfCoaches(coaches: User[]): void {
+    const topicNamesOfCoaches = [];
+    coaches
+      .filter(coach => coach.topics.length !== 0)
+      .map(coach => coach.topics)
+      .map(o => o.forEach(topic => topicNamesOfCoaches.push(topic.name)));
+    this.topicList = [...new Set(topicNamesOfCoaches)].sort();
+  }
+
+  getAllYears(coaches: User[]): void {
+    const years = [];
+    const print = coaches
+      .filter(coach => coach.topics.length !== 0)
+      .map(coach => coach.topics)
+      .map(o => o.forEach(topic => topic.grade.forEach(grade => years.push(grade.year))));
+    this.yearList = [...new Set(years)].sort();
+  }
 }
