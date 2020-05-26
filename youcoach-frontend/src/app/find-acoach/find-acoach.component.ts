@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
 import {User} from '../user';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-find-acoach',
@@ -9,6 +10,10 @@ import {User} from '../user';
 })
 export class FindACoachComponent implements OnInit {
   CoachList: User[];
+  topics = new FormControl();
+  topicList = ['Mathematics', 'Biology'];
+  years = new FormControl();
+  yearList = ['1', '2', '3'];
 
   constructor(
     private userService: UserService,
@@ -30,7 +35,10 @@ export class FindACoachComponent implements OnInit {
 
   getListOfAllCoaches() {
     this.userService.getAllCoach()
-      .subscribe(coaches => {this.CoachList = coaches; console.log(coaches); });
+      .subscribe(coaches => {
+        this.CoachList = coaches;
+        console.log(coaches);
+      });
   }
 
 }

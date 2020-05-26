@@ -59,6 +59,14 @@ table {
   margin: 2% 0 0 0;
 }
 
+.filter-container{
+  margin: 1%;
+}
+
+.filter-container mat-form-field{
+  margin-right: 1%;
+}
+
 
 .year-buttons{
   display: flex;
