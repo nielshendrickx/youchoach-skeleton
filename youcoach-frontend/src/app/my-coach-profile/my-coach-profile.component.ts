@@ -36,8 +36,7 @@ export class MyCoachProfileComponent implements OnInit {
   user: User;
   isAdmin = false;
   topicEditMode = false;
-  topicList1: string[] = ['physics', 'sports', 'maths', 'french'];
-  topicList2: string[] = ['physics', 'sports', 'maths', 'french'];
+  topicList: string[] = ['physics', 'sports', 'maths', 'french'];
   filteredTopicList1: Observable<string[]>;
   filteredTopicList2: Observable<string[]>;
 
@@ -54,31 +53,6 @@ export class MyCoachProfileComponent implements OnInit {
     // this.getTopicsList();
     this.filterTopicList1();
     this.filterTopicList2();
-  }
-
-  filterTopicList1(): void {
-    this.filteredTopicList1 = this.topicsForm.get('topic1').valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter1(value))
-      );
-  }
-
-  filterTopicList2(): void {
-    this.filteredTopicList2 = this.topicsForm.get('topic2').valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter2(value))
-      );
-  }
-  private _filter1(value: string): string[] {
-    const filterValue1 = value.toLowerCase();
-    return this.topicList1.filter(option => option.toLowerCase().includes(filterValue1));
-  }
-
-  private _filter2(value: string): string[] {
-    const filterValue2 = value.toLowerCase();
-    return this.topicList2.filter(option => option.toLowerCase().includes(filterValue2));
   }
 
   getUser(): void {
@@ -156,6 +130,25 @@ export class MyCoachProfileComponent implements OnInit {
     document.getElementById('topics-edit-button').style.visibility = 'hidden';
   }
 
+  filterTopicList1(): void {
+    this.filteredTopicList1 = this.topicsForm.get('topic1').valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+  }
+
+  filterTopicList2(): void {
+    this.filteredTopicList2 = this.topicsForm.get('topic2').valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+  }
+  _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.topicList.filter(option => option.toLowerCase().includes(filterValue));
+  }
 
   saveCoachTopics() {
     this.topicsForm.disable();
