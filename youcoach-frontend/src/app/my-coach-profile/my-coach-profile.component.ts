@@ -156,7 +156,7 @@ export class MyCoachProfileComponent implements OnInit {
   }
 
   saveCoachTopics() {
-    console.log("values of topics" + this.topicsForm.get('grades1').value);
+    console.log('values of topics' + this.topicsForm.get('grades1').value);
     this.topicsForm.disable();
     const updateUser = this.userForm.value;
     updateUser.introduction = this.user.introduction;
