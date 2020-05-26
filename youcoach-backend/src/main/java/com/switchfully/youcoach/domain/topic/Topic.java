@@ -18,7 +18,7 @@ public class Topic {
     @Column(name = "name")
     private String name;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "fk_topic_id")
     private List<Grade> grade;
 

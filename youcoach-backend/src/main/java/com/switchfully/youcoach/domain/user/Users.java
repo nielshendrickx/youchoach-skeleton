@@ -34,7 +34,7 @@ public class Users {
     @Column(name = "availability")
     private String availability;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "fk_user_id")
     private List<Topic> topics;
 
@@ -97,6 +97,10 @@ public class Users {
 
     public List<Topic> getTopics() {
         return topics;
+    }
+
+    public void setTopics(List<Topic> topics) {
+        this.topics = topics;
     }
 
     public void setIntroduction(String introduction) {
