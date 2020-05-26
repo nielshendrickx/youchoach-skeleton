@@ -98,6 +98,22 @@
           </tr>
         </table>
       </mat-card-content>
+      <mat-card-content id="topics-edit-form">
+        <form class="profileItems" [formGroup]="userForm">
+          <mat-form-field>
+            <mat-label translate>coach-information.label.topic1</mat-label>
+            <label for="topic1">
+              <textarea id="topic1" matInput type="text" formControlName="topic1"></textarea>
+            </label>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label translate>coach-information.label.topic2</mat-label>
+            <label for="topic2">
+              <textarea id="topic2" matInput type="text" formControlName="topic2"></textarea>
+            </label>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
       <div class="button-container">
         <button mat-raised-button color="primary" id="topics-save-button" (click)="saveCoachTopics()"><span translate>profile-information.button.save</span>
           <mat-icon>save</mat-icon>
