@@ -116,8 +116,8 @@
             </mat-form-field>
             <mat-form-field>
               <mat-label>Grades</mat-label>
-              <mat-select [formControl]="gradesSelect" multiple>
-                <mat-option *ngFor="let grade of gradesList" [value]="grade">{{grade}}</mat-option>
+              <mat-select id="grades1" formControlName="grades1" multiple required>
+                <mat-option *ngFor="let grade of gradesList" [value]="grade">{{grade.year}}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>

@@ -28,10 +28,10 @@ export class MyCoachProfileComponent implements OnInit {
   topicsForm = new FormGroup({
     topic1: new FormControl(''),
     topic2: new FormControl(''),
+    grades1: new FormControl('')
   });
 
-  gradesSelect = new FormControl();
-  gradesList: number[] = [1, 2, 3, 4, 5, 6, 7];
+  gradesList: Grade[];
 
   user: User;
   isAdmin = false;
@@ -89,8 +89,12 @@ export class MyCoachProfileComponent implements OnInit {
   initializeForm(user: User): void {
     this.userForm.patchValue(user);
     this.userForm.disable();
+    this.gradesList = [{year: 1}, {year: 2}, {year: 3}, {year: 4}, {year: 5}, {year: 6}, {year: 7}];
     this.topicsForm.controls.topic1.setValue(user.topics[0].name);
     this.topicsForm.controls.topic2.setValue(user.topics[1].name);
+    this.topicsForm.controls.grades1.setValue(user.topics[0].grade);
+    console.log(user.topics[0].grade);
+    console.log(this.gradesList);
     this.topicsForm.disable();
   }
 
@@ -139,6 +143,7 @@ export class MyCoachProfileComponent implements OnInit {
   editTopics() {
     this.topicsForm.get('topic1').enable();
     this.topicsForm.get('topic2').enable();
+    this.topicsForm.get('grades1').enable();
     this.topicEditMode = true;
     document.getElementById('topics-save-button').style.visibility = 'visible';
     document.getElementById('topics-cancel-button').style.visibility = 'visible';
@@ -166,6 +171,7 @@ export class MyCoachProfileComponent implements OnInit {
   }
 
   saveCoachTopics() {
+    console.log('values of topics' + this.topicsForm.get('grades1').value);
     this.topicsForm.disable();
     const updateUser = this.userForm.value;
     updateUser.introduction = this.user.introduction;
