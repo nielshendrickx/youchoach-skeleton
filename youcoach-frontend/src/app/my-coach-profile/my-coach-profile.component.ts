@@ -36,9 +36,11 @@ export class MyCoachProfileComponent implements OnInit {
   user: User;
   isAdmin = false;
   topicEditMode = false;
-  topicList: string[] = ['physics', 'sports', 'maths', 'french'];
   filteredTopicList1: Observable<string[]>;
   filteredTopicList2: Observable<string[]>;
+  CoachList: User[];
+  topics = new FormControl();
+  topicList = [];
 
   constructor(
     private userService: UserService,
@@ -50,7 +52,7 @@ export class MyCoachProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.setBackgroundColor();
-    // this.getTopicsList();
+    this.getListOfAllCoachesAndTheirTopics();
     this.filterTopicList1();
     this.filterTopicList2();
   }
@@ -67,8 +69,21 @@ export class MyCoachProfileComponent implements OnInit {
       });
   }
 
-  getTopicsList(): void {
-// todo: implement this so that a list of unique topics is fetched from the database
+  getListOfAllCoachesAndTheirTopics() {
+    this.userService.getAllCoach()
+      .subscribe(coaches => {
+        this.CoachList = coaches;
+        this.getAllTopicsOfCoaches(coaches);
+      });
+  }
+
+  getAllTopicsOfCoaches(coaches: User[]): void {
+    const topicNamesOfCoaches = [];
+    coaches
+      .filter(coach => coach.topics.length !== 0)
+      .map(coach => coach.topics)
+      .map(o => o.forEach(topic => topicNamesOfCoaches.push(topic.name)));
+    this.topicList = [...new Set(topicNamesOfCoaches)].sort();
   }
 
   initializeForm(user: User): void {
