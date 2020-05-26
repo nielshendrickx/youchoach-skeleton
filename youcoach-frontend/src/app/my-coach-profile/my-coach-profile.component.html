@@ -107,6 +107,12 @@
               <textarea id="topic1" matInput type="text" formControlName="topic1"></textarea>
             </label>
           </mat-form-field>
+            <mat-form-field>
+              <mat-label>Grades</mat-label>
+              <mat-select [formControl]="gradesSelect" multiple>
+                <mat-option *ngFor="let grade of gradesList" [value]="grade">{{grade}}</mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
           <div>
           <mat-form-field>

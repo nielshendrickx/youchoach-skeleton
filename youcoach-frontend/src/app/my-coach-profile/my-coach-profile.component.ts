@@ -28,6 +28,9 @@ export class MyCoachProfileComponent implements OnInit {
     topic2: new FormControl('')
   });
 
+  gradesSelect = new FormControl();
+  gradesList: number[] = [1, 2, 3, 4, 5, 6, 7];
+
   user: User;
   isAdmin = false;
   topicEditMode = false;
