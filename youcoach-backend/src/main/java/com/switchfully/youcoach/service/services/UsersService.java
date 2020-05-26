@@ -68,6 +68,7 @@ public class UsersService {
         user.getSecuredUser().setRole(updateUserDto.getRole());
         user.setIntroduction(updateUserDto.getIntroduction());
         user.setAvailability(updateUserDto.getAvailability());
+        user.setTopics(updateUserDto.getTopics());
         return userMapper.toDto(user);
     }
 

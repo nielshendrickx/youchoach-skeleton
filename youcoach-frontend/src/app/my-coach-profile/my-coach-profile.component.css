@@ -15,6 +15,11 @@
   flex: 1;
 }
 
+.profile-img {
+  width: 15%;
+  height: 15%;
+}
+
 .profileItems {
   display: flex;
   flex-direction: column;
@@ -95,6 +100,10 @@ th, td {
 }
 
 #edit-button{
+  color: black;
+}
+
+#topics-edit-button{
   color: black;
 }
 

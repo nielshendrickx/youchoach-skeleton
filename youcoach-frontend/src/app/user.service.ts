@@ -57,7 +57,6 @@ export class UserService {
 
   /** GET: get list of all the coaches */
   getAllCoach(): Observable<any> {
-    console.log('get coaches');
     return this.http.get(this.CoachUrl);
   }
 }

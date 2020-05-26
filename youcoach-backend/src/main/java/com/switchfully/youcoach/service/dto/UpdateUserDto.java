@@ -1,7 +1,9 @@
 package com.switchfully.youcoach.service.dto;
 
+import com.switchfully.youcoach.domain.topic.Topic;
 import com.switchfully.youcoach.security.authorization.Role;
 
+import java.util.List;
 import java.util.UUID;
 
 public class UpdateUserDto {
@@ -13,8 +15,9 @@ public class UpdateUserDto {
     private String pictureUrl;
     private String introduction;
     private String availability;
+    private List<Topic> topics;
 
-    public UpdateUserDto(UUID userId, String username, String firstName, String lastName, Role role, String pictureUrl, String introduction, String availability) {
+    public UpdateUserDto(UUID userId, String username, String firstName, String lastName, Role role, String pictureUrl, String introduction, String availability, List<Topic> topics) {
         this.userId = userId;
         this.username = username;
         this.firstName = firstName;
@@ -23,6 +26,7 @@ public class UpdateUserDto {
         this.pictureUrl = pictureUrl;
         this.introduction = introduction;
         this.availability = availability;
+        this.topics = topics;
     }
 
     public UpdateUserDto(){}
@@ -59,6 +63,10 @@ public class UpdateUserDto {
         return availability;
     }
 
+    public List<Topic> getTopics() {
+        return topics;
+    }
+
     @Override
     public String toString() {
         return "UpdateUserDto{" +
@@ -70,6 +78,7 @@ public class UpdateUserDto {
                 ", pictureUrl='" + pictureUrl + '\'' +
                 ", introduction='" + introduction + '\'' +
                 ", availability='" + availability + '\'' +
+                ", topics='" + topics + '\'' +
                 '}';
     }
 }

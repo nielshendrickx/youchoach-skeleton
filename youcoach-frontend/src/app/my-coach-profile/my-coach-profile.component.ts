@@ -4,6 +4,8 @@ import {User} from '../user';
 import {UserService} from '../user.service';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {Router} from '@angular/router';
+import {Topic} from '../topic';
+import {Grade} from '../grade';
 
 @Component({
   selector: 'app-my-coach-profile',
@@ -21,6 +23,11 @@ export class MyCoachProfileComponent implements OnInit {
     availability: new FormControl('')
   });
 
+  topicsForm = new FormGroup({
+    topic1: new FormControl(''),
+    topic2: new FormControl('')
+  });
+
   user: User;
   isAdmin = false;
 
@@ -34,6 +41,7 @@ export class MyCoachProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.setBackgroundColor();
+    // this.makeTopicsEditFormInvisible();
   }
 
   getUser(): void {
@@ -51,6 +59,9 @@ export class MyCoachProfileComponent implements OnInit {
   initializeForm(user: User): void {
     this.userForm.patchValue(user);
     this.userForm.disable();
+    this.topicsForm.controls.topic1.setValue(user.topics[0].name);
+    this.topicsForm.controls.topic2.setValue(user.topics[1].name);
+    this.topicsForm.disable();
   }
 
   setBackgroundColor(): void {
@@ -58,6 +69,10 @@ export class MyCoachProfileComponent implements OnInit {
       document.getElementById('coachee-nav-bar').style.backgroundColor = '#009688';
     }
     document.getElementById('footer').style.backgroundColor = '#009688';
+  }
+
+  makeTopicsEditFormInvisible(): void {
+    document.getElementById('topics-edit-form').style.visibility = 'hidden';
   }
 
   editCoachInformation() {
@@ -81,9 +96,8 @@ export class MyCoachProfileComponent implements OnInit {
     updateUser.introduction = this.userForm.get('introduction').value;
     updateUser.availability = this.userForm.get('availability').value;
     updateUser.userId = this.authenticationService.getUserId();
-    console.log(updateUser);
+    updateUser.topics = this.user.topics;
     this.userService.updateUser(updateUser).subscribe((response) => {
-        console.log('response received');
         this.user = response;
         this.cancelCoachInformation();
       },
@@ -97,6 +111,55 @@ export class MyCoachProfileComponent implements OnInit {
   }
 
   editTopics() {
+    this.topicsForm.get('topic1').enable();
+    this.topicsForm.get('topic2').enable();
+    document.getElementById('topics-save-button').style.visibility = 'visible';
+    document.getElementById('topics-cancel-button').style.visibility = 'visible';
+    document.getElementById('topics-edit-button').style.visibility = 'hidden';
+  }
 
+  saveCoachTopics() {
+    this.topicsForm.disable();
+    const updateUser = this.userForm.value;
+    updateUser.introduction = this.user.introduction;
+    updateUser.availability = this.user.availability;
+    const gradestopic1: Grade[] = [
+      {year: 1},
+      {year: 2},
+      {year: 3}
+    ];
+    const gradestopic2: Grade[] = [
+      {year: 1},
+      {year: 2},
+      {year: 3}
+    ];
+
+    const topic1Update: Topic = {
+      grade: gradestopic1,
+      name: this.topicsForm.get('topic1').value
+    };
+    const topic2Update: Topic = {
+      grade: gradestopic2,
+      name: this.topicsForm.get('topic2').value
+    };
+    updateUser.topics = [
+      topic1Update,
+      topic2Update
+    ];
+    updateUser.userId = this.authenticationService.getUserId();
+    this.userService.updateUser(updateUser).subscribe((response) => {
+        this.user = response;
+        this.cancelCoachTopics();
+      },
+      () => {
+        console.error('error caught in component');
+      });
+  }
+
+  cancelCoachTopics() {
+    this.initializeForm(this.user);
+    document.getElementById('topics-save-button').style.visibility = 'hidden';
+    document.getElementById('topics-cancel-button').style.visibility = 'hidden';
+    document.getElementById('topics-edit-button').style.visibility = 'visible';
   }
 }
