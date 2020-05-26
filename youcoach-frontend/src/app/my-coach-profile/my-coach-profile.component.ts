@@ -97,6 +97,18 @@ export class MyCoachProfileComponent implements OnInit {
   }
 
   editTopics() {
+    document.getElementById('topics-save-button').style.visibility = 'visible';
+    document.getElementById('topics-cancel-button').style.visibility = 'visible';
+    document.getElementById('topics-edit-button').style.visibility = 'hidden';
+  }
 
+  saveCoachTopics() {
+
+  }
+
+  cancelCoachTopics() {
+    document.getElementById('topics-save-button').style.visibility = 'hidden';
+    document.getElementById('topics-cancel-button').style.visibility = 'hidden';
+    document.getElementById('topics-edit-button').style.visibility = 'visible';
   }
 }

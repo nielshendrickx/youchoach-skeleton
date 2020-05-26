@@ -98,6 +98,10 @@ th, td {
   color: black;
 }
 
+#topics-edit-button{
+  color: black;
+}
+
 
 @media only screen and (max-width: 450px) {
   h2{
