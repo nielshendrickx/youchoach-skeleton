@@ -27,7 +27,7 @@
       </mat-form-field>
     </div>
     <div fxLayout="row wrap" fxLayoutGap="0.1%">
-      <div class="coachCard" *ngFor="let user of CoachList; ">
+      <div class="coachCard" *ngFor="let user of CoachList | filterCoachesByTopic:topics.value">
         <div class="profile-container">
           <mat-card class="coach-card">
             <mat-card-header class="card-header">
