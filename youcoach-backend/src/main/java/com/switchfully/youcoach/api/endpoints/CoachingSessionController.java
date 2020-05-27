@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @RestController
 @RequestMapping(path = CoachingSessionController.SESSION_RESOURCE_PATH)
 public class CoachingSessionController {
@@ -23,8 +25,8 @@ public class CoachingSessionController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public void requestSession(@RequestBody CreateCoachingSessionDto createCoachingSessionDto) {
-        sessionService.createNewSession(createCoachingSessionDto);
+    public void requestSession(@RequestBody CreateCoachingSessionDto createCoachingSessionDto, Principal principal) {
+        sessionService.createNewSession(createCoachingSessionDto,principal);
     }
 
 }

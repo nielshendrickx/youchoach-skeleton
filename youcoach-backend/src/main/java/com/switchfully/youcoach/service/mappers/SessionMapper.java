@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 @Component
 public class SessionMapper {
@@ -19,7 +20,7 @@ public class SessionMapper {
                 coachingSession.getRemarks());
     }*/
 
-    public CoachingSession toSession(CreateCoachingSessionDto createCoachingSessionDto) {
+    public CoachingSession toSession(CreateCoachingSessionDto createCoachingSessionDto, UUID coacheeSecuredID) {
         LocalTime time = LocalTime.parse(createCoachingSessionDto.getTime(), DateTimeFormatter.ofPattern("HH:mm"));
         return new CoachingSession(
                 createCoachingSessionDto.getSubject(),
