@@ -27,28 +27,25 @@
       </mat-form-field>
     </div>
     <div class="coaches-container">
-      <mat-card class="coach-card"
-                *ngFor="let user of CoachList | filterCoachesByTopic:topics.value | filterCoachByYear:years.value">
-        <mat-card-header class="card-header">
-          <h2>{{user.firstName}} {{user.lastName}}</h2>
+      <mat-card class="coach-card" *ngFor="let user of CoachList | filterCoachesByTopic:topics.value | filterCoachByYear:years.value">
+        <mat-card-header>
+          <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
         </mat-card-header>
-        <mat-card-content class="card-body">
-          <div class="imageBox">
-            <img [src]=user.pictureUrl class="card-image" alt="profile picture">
-          </div>
-          <div class="topicsBox">
-            <table>
-              <tr *ngFor="let topic of user.topics">
-                <td>{{topic.name}}</td>
-                <td class="year-buttons">
-                  <button mat-mini-fab disabled class="disabled-button"
-                          *ngFor="let grade of topic.grade" style="margin-left: 5px">{{grade.year}}
-                  </button>
-                </td>
-              </tr>
-            </table>
-          </div>
+        <img mat-card-image [src]=user.pictureUrl alt="profile picture">
+        <mat-card-content>
+          <table>
+            <tr *ngFor="let topic of user.topics">
+              <td>{{topic.name}}</td>
+              <td class="year-buttons">
+                <button mat-mini-fab disabled class="disabled-button"
+                        *ngFor="let grade of topic.grade" style="margin-left: 5px">{{grade.year}}
+                </button>
+              </td>
+            </tr>
+          </table>
         </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
       </mat-card>
     </div>
   </mat-card>

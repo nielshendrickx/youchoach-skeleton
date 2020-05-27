@@ -1,21 +1,22 @@
+.page-card{
+  background-color: whitesmoke;
+  margin: 15px;
+}
+
+.filter-container{
+  margin: 0 0 20px 5px;
+}
+
 .filter-container mat-form-field{
-  margin: 0 2% 0 0;
+  margin: 0 10px 0 0;
 }
 
 .coach-card{
-  margin: 1%;
-}
-
-.card-image{
-  max-width: 40%;
+  margin: 0 5px 10px 5px;
 }
 
 ::ng-deep .mat-card-header-text {
   margin: 0 !important;
-}
-
-.topicsBox{
-  margin: 2%;
 }
 
 .disabled-button{
@@ -24,16 +25,14 @@
 }
 
 @media only screen and (min-width: 451px){
-  .card-body{
-  }
-
   .coach-card{
-    width: 300px;
+    width: 250px;
   }
 
   .coaches-container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: flex-start;
   }
 }
