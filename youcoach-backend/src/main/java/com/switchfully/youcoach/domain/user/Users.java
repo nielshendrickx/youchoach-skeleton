@@ -1,5 +1,6 @@
 package com.switchfully.youcoach.domain.user;
 
+import com.switchfully.youcoach.domain.sessions.CoachingSession;
 import com.switchfully.youcoach.domain.topic.Topic;
 import com.switchfully.youcoach.security.authentication.user.SecuredUser;
 
@@ -37,6 +38,14 @@ public class Users {
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "fk_user_id")
     private List<Topic> topics;
+
+    @OneToMany
+    @JoinColumn(name = "fk_coach_id")
+    private List<CoachingSession> sessionsAsCoach;
+
+    @OneToMany
+    @JoinColumn(name = "fk_coachee_id")
+    private List<CoachingSession> sessionsAsCoachee;
 
 
     public Users(SecuredUser securedUser, String firstName, String lastName, String pictureUrl) {
@@ -111,4 +120,19 @@ public class Users {
         this.availability = availability;
     }
 
+    public List<CoachingSession> getSessionsAsCoach() {
+        return sessionsAsCoach;
+    }
+
+    public List<CoachingSession> getSessionsAsCoachee() {
+        return sessionsAsCoachee;
+    }
+
+    public void setSessionsAsCoach(List<CoachingSession> sessionsAsCoach) {
+        this.sessionsAsCoach = sessionsAsCoach;
+    }
+
+    public void setSessionsAsCoachee(List<CoachingSession> sessionsAsCoachee) {
+        this.sessionsAsCoachee = sessionsAsCoachee;
+    }
 }
