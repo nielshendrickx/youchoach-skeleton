@@ -54,6 +54,14 @@
           </mat-form-field>
         </form>
       </mat-card-content>
+      <div class="button-container">
+        <button *ngIf="isAdmin" mat-raised-button color="primary" id="save-button" (click)="saveCoachInformation()"><span translate>profile-information.button.save</span>
+          <mat-icon>save</mat-icon>
+        </button>
+        <button *ngIf="isAdmin" mat-raised-button color="accent" id="cancel-button" (click)="cancelCoachInformation()"><span translate>profile-information.button.cancel</span>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
     </mat-card>
 
     <mat-card class="card">

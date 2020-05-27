@@ -9,15 +9,15 @@
   margin-right: 30px;
 }
 
-.profile-img {
-  width: 13%;
-  height: 13%;
-}
-
 .profile-container {
   display: flex;
   flex-direction: column;
   flex: 1;
+}
+
+.profile-img {
+  width: 13%;
+  height: 13%;
 }
 
 .profileItems {
@@ -47,13 +47,6 @@
   flex-wrap: wrap;
 }
 
-
-/*info-detail-container {*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  justify-content: space-between;*/
-/*}*/
-
 .mat-button-toggle-checked {
   background-color: #029486;
 }
@@ -78,6 +71,33 @@ th, td {
 .disabled-button{
   background-color: #029486 !important;
   color: black !important;
+}
+
+.button-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.button-container button{
+  margin: 10px 10px;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  color: black;
+  visibility: hidden;
+}
+
+.button-container button mat-icon{
+  margin: 0 0 0 5px
+}
+
+#edit-button{
+  color: black;
+}
+
+#topics-edit-button{
+  color: black;
 }
 
 
