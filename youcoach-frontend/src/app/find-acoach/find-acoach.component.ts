@@ -14,6 +14,7 @@ export class FindACoachComponent implements OnInit {
   topicList = [];
   years = new FormControl();
   yearList = [];
+  searchText: string;
 
   constructor(
     private userService: UserService,
