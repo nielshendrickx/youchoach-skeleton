@@ -12,16 +12,6 @@ import {AuthenticationService} from '../authentication/authentication.service';
 })
 export class CoachProfileComponent implements OnInit {
 
-  isAdmin = false;
-
-  constructor(
-    private userService: UserService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private authenticationService: AuthenticationService
-  ) {
-  }
-
   userForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -34,11 +24,21 @@ export class CoachProfileComponent implements OnInit {
   });
 
   user: User;
-  editable: boolean;
+  profileInfoIsEditable: boolean;
+  isAdmin = false;
+
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private authenticationService: AuthenticationService
+  ) {
+  }
 
   ngOnInit(): void {
     this.getUser();
     this.setBackgroundColor();
+    this.verifyIfUserIsAnAdmin();
   }
 
   getUser(): void {
@@ -47,6 +47,13 @@ export class CoachProfileComponent implements OnInit {
       .subscribe(user => {
         this.initializeForm(user);
         this.user = user;
+      });
+  }
+
+  verifyIfUserIsAnAdmin(): void {
+    const id = this.authenticationService.getUserId();
+    this.userService.getUserById(id)
+      .subscribe(user => {
         if (user.role === 'ADMINISTRATOR') {
           this.isAdmin = true;
         }
@@ -55,7 +62,7 @@ export class CoachProfileComponent implements OnInit {
 
   initializeForm(user: User): void {
     this.userForm.patchValue(user);
-    this.editable = false;
+    this.profileInfoIsEditable = false;
   }
 
   setBackgroundColor(): void {
@@ -64,6 +71,38 @@ export class CoachProfileComponent implements OnInit {
     }
     document.getElementById('footer').style.backgroundColor = '#009688';
   }
+
+  editCoachInformation() {
+    this.userForm.get('introduction').enable();
+    this.userForm.get('availability').enable();
+    document.getElementById('save-button').style.visibility = 'visible';
+    document.getElementById('cancel-button').style.visibility = 'visible';
+    document.getElementById('edit-button').style.visibility = 'hidden';
+  }
+
+  cancelCoachInformation(): void {
+    this.initializeForm(this.user);
+    document.getElementById('save-button').style.visibility = 'hidden';
+    document.getElementById('cancel-button').style.visibility = 'hidden';
+    document.getElementById('edit-button').style.visibility = 'visible';
+  }
+
+  saveCoachInformation(): void {
+    this.userForm.disable();
+    const updateUser = this.userForm.value;
+    updateUser.introduction = this.userForm.get('introduction').value;
+    updateUser.availability = this.userForm.get('availability').value;
+    updateUser.userId = this.authenticationService.getUserId();
+    updateUser.topics = this.user.topics;
+    this.userService.updateUser(updateUser).subscribe((response) => {
+        this.user = response;
+        this.cancelCoachInformation();
+      },
+      () => {
+        console.error('error caught in component');
+      });
+  }
+
 
   editTopics() {
 
