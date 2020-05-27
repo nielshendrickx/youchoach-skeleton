@@ -4,8 +4,10 @@ import com.switchfully.youcoach.domain.topic.Topic;
 import com.switchfully.youcoach.security.authorization.Role;
 
 import java.util.List;
+import java.util.UUID;
 
 public class UserDto {
+    private UUID id;
     private String username;
     private String firstName;
     private String lastName;
@@ -15,7 +17,8 @@ public class UserDto {
     private String availability;
     private List<Topic> topics;
 
-    public UserDto(String username, String firstName, String lastName, String pictureUrl, Role role, String introduction, String availability, List<Topic> topics) {
+    public UserDto(UUID id, String username, String firstName, String lastName, String pictureUrl, Role role, String introduction, String availability, List<Topic> topics) {
+        this.id = id;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -24,6 +27,10 @@ public class UserDto {
         this.introduction = introduction;
         this.availability = availability;
         this.topics = topics;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public String getUsername() {

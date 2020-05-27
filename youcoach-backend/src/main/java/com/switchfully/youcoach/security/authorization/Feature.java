@@ -4,6 +4,7 @@ public enum Feature {
     REQUEST_SESSION("requestsession"),
     ACCEPT_SESSION("acceptsession"),
     VIEW_USER("viewuser"),
+    VIEW_COACH("viewcoach"),
     UPDATE_USER("updateuser");
 
     private String label;

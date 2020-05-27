@@ -179,7 +179,6 @@ export class MyCoachProfileComponent implements OnInit {
   }
 
   saveCoachTopics() {
-    console.log('values of topics' + this.topicsForm.get('grades1').value);
     this.topicsForm.disable();
     const updateUser = this.userForm.value;
     updateUser.introduction = this.user.introduction;
@@ -200,6 +199,8 @@ export class MyCoachProfileComponent implements OnInit {
     updateUser.userId = this.authenticationService.getUserId();
     this.userService.updateUser(updateUser).subscribe((response) => {
         this.user = response;
+        this.selectedGrades1 = [];
+        this.selectedGrades2 = [];
         this.cancelCoachTopics();
       },
       () => {

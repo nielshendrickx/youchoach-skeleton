@@ -25,9 +25,17 @@
           <mat-option *ngFor="let year of yearList" [value]="year">{{year}}</mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field class="search-by-name-filter">
+        <mat-label translate>coach-overview.label.search-placeholder</mat-label>
+        <label>
+          <input matInput type="text" [(ngModel)]="searchText">
+        </label>
+        <span matPrefix><mat-icon>search</mat-icon></span>
+      </mat-form-field>
     </div>
     <div class="coaches-container">
-      <mat-card class="coach-card" *ngFor="let user of CoachList | filterCoachesByTopic:topics.value | filterCoachByYear:years.value">
+      <mat-card class="coach-card" *ngFor="let user of CoachList | filterCoachesByTopic:topics.value
+      | filterCoachesByYear:years.value | filterCoachesByName:searchText" [routerLink]="['/coach/', user.id]">
         <mat-card-header>
           <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
         </mat-card-header>

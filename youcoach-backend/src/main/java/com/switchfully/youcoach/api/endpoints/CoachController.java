@@ -1,5 +1,7 @@
 package com.switchfully.youcoach.api.endpoints;
 
+import com.switchfully.youcoach.domain.exceptions.UserNotFoundException;
+import com.switchfully.youcoach.security.authorization.Role;
 import com.switchfully.youcoach.service.dto.UserDto;
 import com.switchfully.youcoach.service.services.CoachService;
 import com.switchfully.youcoach.service.services.UsersService;
@@ -8,10 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.Collection;
@@ -31,6 +31,18 @@ public class CoachController {
         this.usersService = usersService;
     }
 
+    @PreAuthorize("hasAuthority('viewcoach')")
+    @GetMapping(produces = "application/json", path = "/{id}")
+    @ApiOperation(value = "Get a coach by username", notes = "A coach will be returned", response = UserDto.class)
+    @ResponseStatus(HttpStatus.OK)
+    public UserDto getUserById(@PathVariable UUID id) {
+        loggerUsers.info("Returning a coach");
+        UserDto coach = usersService.getUserById(id);
+        if(coach.getRole() != Role.COACH) {
+            throw new UserNotFoundException();
+        }
+        return coach;
+    }
 
     @GetMapping(produces = "application/json")
     @ApiOperation(value = "Get list of coaches", notes = "A list of all the coaches", response = UserDto.class)

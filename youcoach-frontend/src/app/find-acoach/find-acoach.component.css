@@ -4,6 +4,9 @@
 }
 
 .filter-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   margin: 0 0 20px 5px;
 }
 
@@ -22,6 +25,10 @@
 .disabled-button{
   background-color: #029486 !important;
   color: black !important;
+}
+
+.search-by-name-filter{
+  flex: 1 0 auto;
 }
 
 @media only screen and (min-width: 451px){

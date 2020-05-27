@@ -2,9 +2,9 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {User} from './user';
 
 @Pipe({
-  name: 'filterCoachByYear'
+  name: 'filterCoachesByYear'
 })
-export class FilterCoachByYearPipe implements PipeTransform {
+export class FilterCoachesByYearPipe implements PipeTransform {
 
   transform(coaches: User[], years: number[]): User[] {
     if (years === null) {

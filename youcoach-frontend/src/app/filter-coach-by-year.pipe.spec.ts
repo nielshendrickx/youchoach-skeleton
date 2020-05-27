@@ -1,8 +1,8 @@
-import { FilterCoachByYearPipe } from './filter-coach-by-year.pipe';
+import { FilterCoachesByYearPipe } from './filter-coach-by-year.pipe';
 
 describe('FilterCoachByYearPipe', () => {
   it('create an instance', () => {
-    const pipe = new FilterCoachByYearPipe();
+    const pipe = new FilterCoachesByYearPipe();
     expect(pipe).toBeTruthy();
   });
 });
