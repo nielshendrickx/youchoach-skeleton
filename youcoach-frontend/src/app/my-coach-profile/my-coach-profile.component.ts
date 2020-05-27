@@ -15,15 +15,12 @@ import {map, startWith} from 'rxjs/operators';
   styleUrls: ['./my-coach-profile.component.css']
 })
 export class MyCoachProfileComponent implements OnInit {
-  profileInfoForm = new FormGroup({
+  userForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     username: new FormControl(''),
     role: new FormControl(''),
     pictureUrl: new FormControl(''),
-  });
-
-  coachInfoForm = new FormGroup({
     introduction: new FormControl(''),
     availability: new FormControl('')
   });
@@ -34,18 +31,19 @@ export class MyCoachProfileComponent implements OnInit {
     grades1: new FormControl('')
   });
 
+  selectedGrades1: Grade[] = [];
+  selectedGrades2: Grade[] = [];
+
+  gradesList: Grade[];
+
   user: User;
   isAdmin = false;
-  profileInfoIsEditable: false;
   topicEditMode = false;
   filteredTopicList1: Observable<string[]>;
   filteredTopicList2: Observable<string[]>;
   CoachList: User[];
   topics = new FormControl();
   topicList = [];
-  selectedGrades1: Grade[] = [];
-  selectedGrades2: Grade[] = [];
-  gradesList: Grade[];
 
   constructor(
     private userService: UserService,
@@ -66,7 +64,7 @@ export class MyCoachProfileComponent implements OnInit {
     const id = this.authenticationService.getUserId();
     this.userService.getUserById(id)
       .subscribe(user => {
-        this.initializeForms(user);
+        this.initializeForm(user);
         this.user = user;
         if (user.role === 'ADMINISTRATOR') {
           this.isAdmin = true;
@@ -91,10 +89,9 @@ export class MyCoachProfileComponent implements OnInit {
     this.topicList = [...new Set(topicNamesOfCoaches)].sort();
   }
 
-  initializeForms(user: User): void {
-    this.profileInfoForm.patchValue(user);
-    this.coachInfoForm.patchValue(user);
-    this.coachInfoForm.disable();
+  initializeForm(user: User): void {
+    this.userForm.patchValue(user);
+    this.userForm.disable();
     this.gradesList = [{year: 1}, {year: 2}, {year: 3}, {year: 4}, {year: 5}, {year: 6}, {year: 7}];
     this.topicsForm.controls.topic1.setValue(user.topics[0].name);
     this.topicsForm.controls.topic2.setValue(user.topics[1].name);
@@ -117,25 +114,25 @@ export class MyCoachProfileComponent implements OnInit {
   }
 
   editCoachInformation() {
-    this.coachInfoForm.get('introduction').enable();
-    this.coachInfoForm.get('availability').enable();
+    this.userForm.get('introduction').enable();
+    this.userForm.get('availability').enable();
     document.getElementById('save-button').style.visibility = 'visible';
     document.getElementById('cancel-button').style.visibility = 'visible';
     document.getElementById('edit-button').style.visibility = 'hidden';
   }
 
   cancelCoachInformation(): void {
-    this.initializeForms(this.user);
+    this.initializeForm(this.user);
     document.getElementById('save-button').style.visibility = 'hidden';
     document.getElementById('cancel-button').style.visibility = 'hidden';
     document.getElementById('edit-button').style.visibility = 'visible';
   }
 
   saveCoachInformation(): void {
-    this.coachInfoForm.disable();
-    const updateUser = this.coachInfoForm.value;
-    updateUser.introduction = this.coachInfoForm.get('introduction').value;
-    updateUser.availability = this.coachInfoForm.get('availability').value;
+    this.userForm.disable();
+    const updateUser = this.userForm.value;
+    updateUser.introduction = this.userForm.get('introduction').value;
+    updateUser.availability = this.userForm.get('availability').value;
     updateUser.userId = this.authenticationService.getUserId();
     updateUser.topics = this.user.topics;
     this.userService.updateUser(updateUser).subscribe((response) => {
@@ -183,7 +180,7 @@ export class MyCoachProfileComponent implements OnInit {
 
   saveCoachTopics() {
     this.topicsForm.disable();
-    const updateUser = this.coachInfoForm.value;
+    const updateUser = this.userForm.value;
     updateUser.introduction = this.user.introduction;
     updateUser.availability = this.user.availability;
 
@@ -212,7 +209,7 @@ export class MyCoachProfileComponent implements OnInit {
   }
 
   cancelCoachTopics() {
-    this.initializeForms(this.user);
+    this.initializeForm(this.user);
     this.topicEditMode = false;
     document.getElementById('topics-save-button').style.visibility = 'hidden';
     document.getElementById('topics-cancel-button').style.visibility = 'hidden';

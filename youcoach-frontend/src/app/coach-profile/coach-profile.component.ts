@@ -4,6 +4,10 @@ import {User} from '../user';
 import {UserService} from '../user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from '../authentication/authentication.service';
+import {Observable} from 'rxjs';
+import {Grade} from '../grade';
+import {map, startWith} from 'rxjs/operators';
+import {Topic} from '../topic';
 
 @Component({
   selector: 'app-coach-profile',
@@ -23,9 +27,24 @@ export class CoachProfileComponent implements OnInit {
     topics: new FormControl(''),
   });
 
+  topicsForm = new FormGroup({
+    topic1: new FormControl(''),
+    topic2: new FormControl(''),
+    grades1: new FormControl('')
+  });
+
   user: User;
-  profileInfoIsEditable: boolean;
   isAdmin = false;
+  profileInfoIsEditable: boolean;
+  topicEditMode = false;
+  filteredTopicList1: Observable<string[]>;
+  filteredTopicList2: Observable<string[]>;
+  CoachList: User[];
+  topics = new FormControl();
+  topicList = [];
+  selectedGrades1: Grade[] = [];
+  selectedGrades2: Grade[] = [];
+  gradesList: Grade[];
 
   constructor(
     private userService: UserService,
@@ -39,6 +58,9 @@ export class CoachProfileComponent implements OnInit {
     this.getUser();
     this.setBackgroundColor();
     this.verifyIfUserIsAnAdmin();
+    this.getListOfAllCoachesAndTheirTopics();
+    this.filterTopicList1();
+    this.filterTopicList2();
   }
 
   getUser(): void {
@@ -60,9 +82,39 @@ export class CoachProfileComponent implements OnInit {
       });
   }
 
+  getListOfAllCoachesAndTheirTopics() {
+    this.userService.getAllCoach()
+      .subscribe(coaches => {
+        this.CoachList = coaches;
+        this.getAllTopicsOfCoaches(coaches);
+      });
+  }
+
+  getAllTopicsOfCoaches(coaches: User[]): void {
+    const topicNamesOfCoaches = [];
+    coaches
+      .filter(coach => coach.topics.length !== 0)
+      .map(coach => coach.topics)
+      .map(o => o.forEach(topic => topicNamesOfCoaches.push(topic.name)));
+    this.topicList = [...new Set(topicNamesOfCoaches)].sort();
+  }
+
   initializeForm(user: User): void {
     this.userForm.patchValue(user);
     this.profileInfoIsEditable = false;
+    this.userForm.disable();
+    this.gradesList = [{year: 1}, {year: 2}, {year: 3}, {year: 4}, {year: 5}, {year: 6}, {year: 7}];
+    this.topicsForm.controls.topic1.setValue(user.topics[0].name);
+    this.topicsForm.controls.topic2.setValue(user.topics[1].name);
+    user.topics[0].grade.forEach(grade => {
+      const gradeHelp: Grade = this.gradesList.find(gradeItem => gradeItem.year === grade.year);
+      this.selectedGrades1.push(gradeHelp);
+    });
+    user.topics[1].grade.forEach(grade => {
+      const gradeHelp: Grade = this.gradesList.find(gradeItem => gradeItem.year === grade.year);
+      this.selectedGrades2.push(gradeHelp);
+    });
+    this.topicsForm.disable();
   }
 
   setBackgroundColor(): void {
@@ -75,6 +127,7 @@ export class CoachProfileComponent implements OnInit {
   editCoachInformation() {
     this.userForm.get('introduction').enable();
     this.userForm.get('availability').enable();
+    this.profileInfoIsEditable = true;
     document.getElementById('save-button').style.visibility = 'visible';
     document.getElementById('cancel-button').style.visibility = 'visible';
     document.getElementById('edit-button').style.visibility = 'hidden';
@@ -82,6 +135,7 @@ export class CoachProfileComponent implements OnInit {
 
   cancelCoachInformation(): void {
     this.initializeForm(this.user);
+    this.profileInfoIsEditable = false;
     document.getElementById('save-button').style.visibility = 'hidden';
     document.getElementById('cancel-button').style.visibility = 'hidden';
     document.getElementById('edit-button').style.visibility = 'visible';
@@ -103,8 +157,71 @@ export class CoachProfileComponent implements OnInit {
       });
   }
 
-
   editTopics() {
+    this.topicsForm.get('topic1').enable();
+    this.topicsForm.get('topic2').enable();
+    this.topicsForm.get('grades1').enable();
+    this.topicEditMode = true;
+    document.getElementById('topics-save-button').style.visibility = 'visible';
+    document.getElementById('topics-cancel-button').style.visibility = 'visible';
+    document.getElementById('topics-edit-button').style.visibility = 'hidden';
+  }
 
+  filterTopicList1(): void {
+    this.filteredTopicList1 = this.topicsForm.get('topic1').valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+  }
+
+  filterTopicList2(): void {
+    this.filteredTopicList2 = this.topicsForm.get('topic2').valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+  }
+  _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.topicList.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  saveCoachTopics() {
+    this.topicsForm.disable();
+    const updateUser = this.userForm.value;
+    updateUser.introduction = this.user.introduction;
+    updateUser.availability = this.user.availability;
+
+    const topic1Update: Topic = {
+      grade: this.selectedGrades1,
+      name: this.topicsForm.get('topic1').value
+    };
+    const topic2Update: Topic = {
+      grade: this.selectedGrades2,
+      name: this.topicsForm.get('topic2').value
+    };
+    updateUser.topics = [
+      topic1Update,
+      topic2Update
+    ];
+    updateUser.userId = this.authenticationService.getUserId();
+    this.userService.updateUser(updateUser).subscribe((response) => {
+        this.user = response;
+        this.selectedGrades1 = [];
+        this.selectedGrades2 = [];
+        this.cancelCoachTopics();
+      },
+      () => {
+        console.error('error caught in component');
+      });
+  }
+
+  cancelCoachTopics() {
+    this.initializeForm(this.user);
+    this.topicEditMode = false;
+    document.getElementById('topics-save-button').style.visibility = 'hidden';
+    document.getElementById('topics-cancel-button').style.visibility = 'hidden';
+    document.getElementById('topics-edit-button').style.visibility = 'visible';
   }
 }
