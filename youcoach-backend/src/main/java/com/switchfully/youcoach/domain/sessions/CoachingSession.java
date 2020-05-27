@@ -17,7 +17,6 @@ public class CoachingSession {
     @Column(name = "subject")
     private String subject;
 
-
     @Column(name = "date")
     private Date date;
 
@@ -30,8 +29,6 @@ public class CoachingSession {
     @Column(name = "remarks")
     private String remarks;
 
-
-
     public CoachingSession() {
     }
 
@@ -41,6 +38,10 @@ public class CoachingSession {
         this.time = localTime;
         this.location = location;
         this.remarks = remarks;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public String getSubject() {

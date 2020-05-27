@@ -6,12 +6,13 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.UUID;
 
 @Component
 public class SessionMapper {
 
- /*   public CoachingSessionDto toDto(CoachingSession coachingSession){
+
+
+    /*   public CoachingSessionDto toDto(CoachingSession coachingSession){
         return new CoachingSessionDto(
                 coachingSession.getSubject(),
                 coachingSession.getDate(),
@@ -20,7 +21,7 @@ public class SessionMapper {
                 coachingSession.getRemarks());
     }*/
 
-    public CoachingSession toSession(CreateCoachingSessionDto createCoachingSessionDto, UUID coacheeSecuredID) {
+    public CoachingSession toSession(CreateCoachingSessionDto createCoachingSessionDto) {
         LocalTime time = LocalTime.parse(createCoachingSessionDto.getTime(), DateTimeFormatter.ofPattern("HH:mm"));
         return new CoachingSession(
                 createCoachingSessionDto.getSubject(),
@@ -28,6 +29,7 @@ public class SessionMapper {
                 time,
                 createCoachingSessionDto.getLocation(),
                 createCoachingSessionDto.getRemarks());
+
     }
 
 }
