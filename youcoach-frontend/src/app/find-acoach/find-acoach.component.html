@@ -33,9 +33,6 @@
         <span matPrefix><mat-icon>search</mat-icon></span>
       </mat-form-field>
     </div>
-
-    <p>{{searchText}}</p>
-
     <div class="coaches-container">
       <mat-card class="coach-card" *ngFor="let user of CoachList | filterCoachesByTopic:topics.value
       | filterCoachesByYear:years.value | filterCoachesByName:searchText">
