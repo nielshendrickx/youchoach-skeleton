@@ -14,6 +14,7 @@ public class UserMapper {
 
     public UserDto toDto(Users users) {
         return new UserDto(
+                users.getSecuredUser().getId(),
                 users.getSecuredUser().getUsername(),
                 users.getFirstName(),
                 users.getLastName(),

@@ -9,6 +9,11 @@
   margin-right: 30px;
 }
 
+.profile-img {
+  width: 15%;
+  height: 15%;
+}
+
 .profile-container {
   display: flex;
   flex-direction: column;

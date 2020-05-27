@@ -23,6 +23,12 @@ export class UserService {
   ) {
   }
 
+  getCoachById(id: string): Observable<User> {
+    const UserUrl = `${this.CoachUrl}/${id}`;
+    return this.http.get<User>(UserUrl)
+      .pipe(catchError(this.handleError('getCoachById')));
+  }
+
   getUserById(id: string): Observable<User> {
     const UserUrl = `${this.UsersUrl}/${id}`;
     return this.http.get<User>(UserUrl)

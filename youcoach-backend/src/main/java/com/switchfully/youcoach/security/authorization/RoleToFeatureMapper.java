@@ -14,11 +14,11 @@ public class RoleToFeatureMapper {
     public List<Feature> mapRoleToFeature(Role role) {
         switch (role) {
             case COACH:
-                return newArrayList(ACCEPT_SESSION);
+                return newArrayList(ACCEPT_SESSION, VIEW_COACH);
             case COACHEE:
-                return newArrayList(REQUEST_SESSION);
+                return newArrayList(REQUEST_SESSION, VIEW_COACH);
             case ADMINISTRATOR:
-                return newArrayList(VIEW_USER, UPDATE_USER);
+                return newArrayList(VIEW_USER, UPDATE_USER, VIEW_COACH);
         }
         return new ArrayList<>();
     }
