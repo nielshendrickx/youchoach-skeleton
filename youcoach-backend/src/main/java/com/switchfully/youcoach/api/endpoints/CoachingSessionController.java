@@ -1,6 +1,6 @@
 package com.switchfully.youcoach.api.endpoints;
 
-import com.switchfully.youcoach.service.dto.CoachingSessionDto;
+import com.switchfully.youcoach.service.dto.coachingSession.CreateCoachingSessionDto;
 import com.switchfully.youcoach.service.services.SessionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,8 +23,8 @@ public class CoachingSessionController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public void requestSession(@RequestBody CoachingSessionDto coachingSessionDto) {
-        sessionService.createNewSession(coachingSessionDto);
+    public void requestSession(@RequestBody CreateCoachingSessionDto createCoachingSessionDto) {
+        sessionService.createNewSession(createCoachingSessionDto);
     }
 
 }

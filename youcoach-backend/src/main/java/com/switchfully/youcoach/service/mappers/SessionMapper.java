@@ -1,11 +1,11 @@
 package com.switchfully.youcoach.service.mappers;
 
 import com.switchfully.youcoach.domain.sessions.CoachingSession;
-import com.switchfully.youcoach.service.dto.CoachingSessionDto;
+import com.switchfully.youcoach.service.dto.coachingSession.CreateCoachingSessionDto;
 import org.springframework.stereotype.Component;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 @Component
 public class SessionMapper {
@@ -19,13 +19,14 @@ public class SessionMapper {
                 coachingSession.getRemarks());
     }*/
 
-    public CoachingSession toSession(CoachingSessionDto coachingSessionDto){
+    public CoachingSession toSession(CreateCoachingSessionDto createCoachingSessionDto) {
+        LocalTime time = LocalTime.parse(createCoachingSessionDto.getTime(), DateTimeFormatter.ofPattern("HH:mm"));
         return new CoachingSession(
-                coachingSessionDto.getSubject(),
-                coachingSessionDto.getDate(),
-                coachingSessionDto.getTime(),
-                coachingSessionDto.getLocation(),
-                coachingSessionDto.getRemarks());
+                createCoachingSessionDto.getSubject(),
+                createCoachingSessionDto.getDate(),
+                time,
+                createCoachingSessionDto.getLocation(),
+                createCoachingSessionDto.getRemarks());
     }
 
 }

@@ -1,9 +1,6 @@
 package com.switchfully.youcoach.domain.sessions;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.UUID;
@@ -25,7 +22,7 @@ public class CoachingSession {
     private Date date;
 
     @Column(name = "time")
-    private LocalDate time;
+    private LocalTime time;
 
     @Column(name = "location")
     private String location;
@@ -36,7 +33,7 @@ public class CoachingSession {
     public CoachingSession() {
     }
 
-    public CoachingSession(String subject, Date localDate, LocalDate localTime, String location, String remarks) {
+    public CoachingSession(String subject, Date localDate, LocalTime localTime, String location, String remarks) {
         this.subject = subject;
         this.date = localDate;
         this.time = localTime;
@@ -52,7 +49,7 @@ public class CoachingSession {
         return date;
     }
 
-    public LocalDate getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
