@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {SessionService} from '../session-service';
 import {Session} from '../session';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 
 @Component({
