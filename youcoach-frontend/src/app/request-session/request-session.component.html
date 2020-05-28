@@ -37,7 +37,7 @@
   </form>
 
   <div class="button-container">
-    <button mat-raised-button color="primary" (click)="submit()">
+    <button mat-raised-button color="primary" (click)="submit()" [disabled]="requestForm.invalid">
       <span translate>request-session.button.request-session</span>
       <mat-icon>send</mat-icon>
     </button>
