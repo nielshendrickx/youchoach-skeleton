@@ -26,6 +26,7 @@ public class CoachingSessionController {
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public void requestSession(@RequestBody CreateCoachingSessionDto createCoachingSessionDto, Principal principal) {
+        loggerUsers.info("Requested a session");
         sessionService.createNewSession(createCoachingSessionDto,principal);
     }
 
