@@ -4,6 +4,7 @@ import com.switchfully.youcoach.domain.grade.Grade;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -18,7 +19,7 @@ public class Topic {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(cascade = {CascadeType.MERGE})
+    @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "fk_topic_id")
     private List<Grade> grade;
 
@@ -44,5 +45,20 @@ public class Topic {
                 ", name='" + name + '\'' +
                 ", grade=" + grade +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Topic topic = (Topic) o;
+        return Objects.equals(id, topic.id) &&
+                Objects.equals(name, topic.name) &&
+                Objects.equals(grade, topic.grade);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, grade);
     }
 }

@@ -23,8 +23,7 @@ export class CoachProfileComponent implements OnInit {
     role: new FormControl(''),
     pictureUrl: new FormControl(''),
     introduction: new FormControl(''),
-    availability: new FormControl(''),
-    topics: new FormControl(''),
+    availability: new FormControl('')
   });
 
   topicsForm = new FormGroup({
@@ -102,21 +101,20 @@ export class CoachProfileComponent implements OnInit {
     this.userForm.patchValue(user);
     this.userForm.disable();
     this.gradesList = [{year: 1}, {year: 2}, {year: 3}, {year: 4}, {year: 5}, {year: 6}, {year: 7}];
-    if (user.topics[0] != null) {
+    if (user.topics != null && user.topics[0] != null) {
       this.topicsForm.controls.topic1.setValue(user.topics[0].name);
       user.topics[0].grade.forEach(grade => {
         const gradeHelp: Grade = this.gradesList.find(gradeItem => gradeItem.year === grade.year);
         this.selectedGrades1.push(gradeHelp);
       });
     }
-    if (user.topics[1] != null) {
+    if (user.topics != null && user.topics[1] != null) {
       this.topicsForm.controls.topic2.setValue(user.topics[1].name);
       user.topics[1].grade.forEach(grade => {
         const gradeHelp: Grade = this.gradesList.find(gradeItem => gradeItem.year === grade.year);
         this.selectedGrades2.push(gradeHelp);
       });
     }
-
     this.topicsForm.disable();
   }
 

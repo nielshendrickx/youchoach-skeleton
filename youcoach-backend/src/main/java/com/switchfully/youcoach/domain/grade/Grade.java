@@ -1,8 +1,7 @@
 package com.switchfully.youcoach.domain.grade;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -12,7 +11,6 @@ public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    @JsonIgnore
     private UUID id;
 
     @Column(name = "year")
@@ -31,5 +29,27 @@ public class Grade {
 
     public int getName() {
         return year;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Grade grade = (Grade) o;
+        return year == grade.year &&
+                Objects.equals(id, grade.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, year);
+    }
+
+    @Override
+    public String toString() {
+        return "Grade{" +
+                "id=" + id +
+                ", year=" + year +
+                '}';
     }
 }

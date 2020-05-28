@@ -68,7 +68,9 @@ public class UsersService {
         user.getSecuredUser().setRole(updateUserDto.getRole());
         user.setIntroduction(updateUserDto.getIntroduction());
         user.setAvailability(updateUserDto.getAvailability());
-        user.setTopics(updateUserDto.getTopics());
+        if(!userHasNewTopics(updateUserDto)) {
+            user.setTopics(updateUserDto.getTopics());
+        }
         return userMapper.toDto(user);
     }
 
@@ -84,6 +86,12 @@ public class UsersService {
         if (userHasNewUserName(updateUserDto)) {
             isUsernameAvailable(updateUserDto.getUsername());
         }
+    }
+
+    private boolean userHasNewTopics(UpdateUserDto updateUserDto) {
+        Users user = usersRepository.findBySecuredUser_Id(updateUserDto.getUserId());
+        System.out.println(updateUserDto);
+        return updateUserDto.getTopics().equals(user.getTopics());
     }
 
     private boolean userHasNewUserName(UpdateUserDto updateUserDto) {

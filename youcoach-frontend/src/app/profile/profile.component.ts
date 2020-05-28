@@ -86,7 +86,6 @@ export class ProfileComponent implements OnInit {
     updateUser.role = this.userForm.get('role').value;
     updateUser.userId = this.route.snapshot.paramMap.get('id');
     this.userService.updateUser(updateUser).subscribe((response) => {
-        console.log('response received');
         this.user = response;
         this.cancel();
       },

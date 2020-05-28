@@ -35,7 +35,7 @@ public class Users {
     @Column(name = "availability")
     private String availability;
 
-    @OneToMany(cascade = {CascadeType.MERGE})
+    @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "fk_user_id")
     private List<Topic> topics;
 
