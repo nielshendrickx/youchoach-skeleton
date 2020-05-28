@@ -35,8 +35,7 @@ export class CoachProfileComponent implements OnInit {
 
   user: User;
   isAdmin = false;
-  profileInfoIsEditable: boolean;
-  topicEditMode = false;
+  topicsAreEditable = false;
   filteredTopicList1: Observable<string[]>;
   filteredTopicList2: Observable<string[]>;
   CoachList: User[];
@@ -101,19 +100,23 @@ export class CoachProfileComponent implements OnInit {
 
   initializeForm(user: User): void {
     this.userForm.patchValue(user);
-    this.profileInfoIsEditable = false;
     this.userForm.disable();
     this.gradesList = [{year: 1}, {year: 2}, {year: 3}, {year: 4}, {year: 5}, {year: 6}, {year: 7}];
-    this.topicsForm.controls.topic1.setValue(user.topics[0].name);
-    this.topicsForm.controls.topic2.setValue(user.topics[1].name);
-    user.topics[0].grade.forEach(grade => {
-      const gradeHelp: Grade = this.gradesList.find(gradeItem => gradeItem.year === grade.year);
-      this.selectedGrades1.push(gradeHelp);
-    });
-    user.topics[1].grade.forEach(grade => {
-      const gradeHelp: Grade = this.gradesList.find(gradeItem => gradeItem.year === grade.year);
-      this.selectedGrades2.push(gradeHelp);
-    });
+    if (user.topics[0] != null) {
+      this.topicsForm.controls.topic1.setValue(user.topics[0].name);
+      user.topics[0].grade.forEach(grade => {
+        const gradeHelp: Grade = this.gradesList.find(gradeItem => gradeItem.year === grade.year);
+        this.selectedGrades1.push(gradeHelp);
+      });
+    }
+    if (user.topics[1] != null) {
+      this.topicsForm.controls.topic2.setValue(user.topics[1].name);
+      user.topics[1].grade.forEach(grade => {
+        const gradeHelp: Grade = this.gradesList.find(gradeItem => gradeItem.year === grade.year);
+        this.selectedGrades2.push(gradeHelp);
+      });
+    }
+
     this.topicsForm.disable();
   }
 
@@ -127,7 +130,6 @@ export class CoachProfileComponent implements OnInit {
   editCoachInformation() {
     this.userForm.get('introduction').enable();
     this.userForm.get('availability').enable();
-    this.profileInfoIsEditable = true;
     document.getElementById('save-button').style.visibility = 'visible';
     document.getElementById('cancel-button').style.visibility = 'visible';
     document.getElementById('edit-button').style.visibility = 'hidden';
@@ -135,7 +137,6 @@ export class CoachProfileComponent implements OnInit {
 
   cancelCoachInformation(): void {
     this.initializeForm(this.user);
-    this.profileInfoIsEditable = false;
     document.getElementById('save-button').style.visibility = 'hidden';
     document.getElementById('cancel-button').style.visibility = 'hidden';
     document.getElementById('edit-button').style.visibility = 'visible';
@@ -161,7 +162,7 @@ export class CoachProfileComponent implements OnInit {
     this.topicsForm.get('topic1').enable();
     this.topicsForm.get('topic2').enable();
     this.topicsForm.get('grades1').enable();
-    this.topicEditMode = true;
+    this.topicsAreEditable = true;
     document.getElementById('topics-save-button').style.visibility = 'visible';
     document.getElementById('topics-cancel-button').style.visibility = 'visible';
     document.getElementById('topics-edit-button').style.visibility = 'hidden';
@@ -219,7 +220,7 @@ export class CoachProfileComponent implements OnInit {
 
   cancelCoachTopics() {
     this.initializeForm(this.user);
-    this.topicEditMode = false;
+    this.topicsAreEditable = false;
     document.getElementById('topics-save-button').style.visibility = 'hidden';
     document.getElementById('topics-cancel-button').style.visibility = 'hidden';
     document.getElementById('topics-edit-button').style.visibility = 'visible';

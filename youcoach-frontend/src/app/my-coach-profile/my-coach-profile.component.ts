@@ -31,20 +31,17 @@ export class MyCoachProfileComponent implements OnInit {
     grades1: new FormControl('')
   });
 
-  selectedGrades1: Grade[] = [];
-  selectedGrades2: Grade[] = [];
-
-  gradesList: Grade[];
-
   user: User;
   isAdmin = false;
-  profileInfoIsEditable = false;
   topicsAreEditable = false;
   filteredTopicList1: Observable<string[]>;
   filteredTopicList2: Observable<string[]>;
   CoachList: User[];
   topics = new FormControl();
   topicList = [];
+  selectedGrades1: Grade[] = [];
+  selectedGrades2: Grade[] = [];
+  gradesList: Grade[];
 
   constructor(
     private userService: UserService,
@@ -122,7 +119,6 @@ export class MyCoachProfileComponent implements OnInit {
   editCoachInformation() {
     this.userForm.get('introduction').enable();
     this.userForm.get('availability').enable();
-    this.profileInfoIsEditable = true;
     document.getElementById('save-button').style.visibility = 'visible';
     document.getElementById('cancel-button').style.visibility = 'visible';
     document.getElementById('edit-button').style.visibility = 'hidden';
@@ -130,7 +126,6 @@ export class MyCoachProfileComponent implements OnInit {
 
   cancelCoachInformation(): void {
     this.initializeForm(this.user);
-    this.profileInfoIsEditable = false;
     document.getElementById('save-button').style.visibility = 'hidden';
     document.getElementById('cancel-button').style.visibility = 'hidden';
     document.getElementById('edit-button').style.visibility = 'visible';
