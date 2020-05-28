@@ -39,7 +39,7 @@
         <mat-card-header>
           <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
           <div class="spacer"></div>
-          <button mat-mini-fab>
+          <button mat-mini-fab [routerLink]="['/request-session/', user.id]">
             <mat-icon>calendar_today</mat-icon>
           </button>
         </mat-card-header>

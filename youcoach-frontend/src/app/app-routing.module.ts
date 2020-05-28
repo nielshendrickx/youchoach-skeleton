@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'mycoachprofile', component: MyCoachProfileComponent},
   {path: 'findACoach', component: FindACoachComponent},
   {path: 'requestProfileChange', component: RequestProfileChangeComponent},
-  {path: 'request-session', component: RequestSessionComponent}
+  {path: 'request-session/:id', component: RequestSessionComponent}
 ];
 
 @NgModule({
