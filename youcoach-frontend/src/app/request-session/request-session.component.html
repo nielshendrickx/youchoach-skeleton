@@ -6,27 +6,32 @@
     <mat-form-field>
       <mat-label translate>request-session.label.subject</mat-label>
       <input id="subject" matInput type="text" formControlName="subject">
+      <mat-error *ngIf="requestForm.get('subject').hasError('required')" translate>request-session.message.field-required</mat-error>
     </mat-form-field>
 
     <div class="aroundHalf">
       <mat-form-field class="halfLine">
         <mat-label translate>request-session.label.date</mat-label>
         <input id="date" matInput type="date" formControlName="date">
+        <mat-error *ngIf="requestForm.get('date').hasError('required')" translate>request-session.message.field-required</mat-error>
       </mat-form-field>
       <mat-form-field class="secondHalf">
         <mat-label translate>request-session.label.time</mat-label>
         <input id="time" matInput type="time" formControlName="time">
+        <mat-error *ngIf="requestForm.get('time').hasError('required')" translate>request-session.message.field-required</mat-error>
       </mat-form-field>
     </div>
 
     <mat-form-field>
       <mat-label translate>request-session.label.location</mat-label>
       <input id="location" matInput type="text" formControlName="location">
+      <mat-error *ngIf="requestForm.get('location').hasError('required')" translate>request-session.message.field-required</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label translate>request-session.label.remarks</mat-label>
       <input id="remarks" matInput type="text" formControlName="remarks">
+      <mat-error *ngIf="requestForm.get('remarks').hasError('required')" translate>request-session.message.field-required</mat-error>
     </mat-form-field>
 
   </form>
