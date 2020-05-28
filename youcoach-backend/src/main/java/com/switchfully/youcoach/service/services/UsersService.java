@@ -88,8 +88,6 @@ public class UsersService {
 
     private boolean userHasNewUserName(UpdateUserDto updateUserDto) {
         Users user = usersRepository.findBySecuredUser_Id(updateUserDto.getUserId());
-        System.out.println("update " + updateUserDto.getUsername());
-        System.out.println("old : " + user.getSecuredUser().getUsername());
         return !updateUserDto.getUsername().equals(user.getSecuredUser().getUsername());
     }
 

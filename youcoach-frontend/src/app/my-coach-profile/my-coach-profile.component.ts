@@ -31,19 +31,17 @@ export class MyCoachProfileComponent implements OnInit {
     grades1: new FormControl('')
   });
 
-  selectedGrades1: Grade[] = [];
-  selectedGrades2: Grade[] = [];
-
-  gradesList: Grade[];
-
   user: User;
   isAdmin = false;
-  topicEditMode = false;
+  topicsAreEditable = false;
   filteredTopicList1: Observable<string[]>;
   filteredTopicList2: Observable<string[]>;
   CoachList: User[];
   topics = new FormControl();
   topicList = [];
+  selectedGrades1: Grade[] = [];
+  selectedGrades2: Grade[] = [];
+  gradesList: Grade[];
 
   constructor(
     private userService: UserService,
@@ -157,7 +155,7 @@ export class MyCoachProfileComponent implements OnInit {
     this.topicsForm.get('topic1').enable();
     this.topicsForm.get('topic2').enable();
     this.topicsForm.get('grades1').enable();
-    this.topicEditMode = true;
+    this.topicsAreEditable = true;
     document.getElementById('topics-save-button').style.visibility = 'visible';
     document.getElementById('topics-cancel-button').style.visibility = 'visible';
     document.getElementById('topics-edit-button').style.visibility = 'hidden';
@@ -215,7 +213,7 @@ export class MyCoachProfileComponent implements OnInit {
 
   cancelCoachTopics() {
     this.initializeForm(this.user);
-    this.topicEditMode = false;
+    this.topicsAreEditable = false;
     document.getElementById('topics-save-button').style.visibility = 'hidden';
     document.getElementById('topics-cancel-button').style.visibility = 'hidden';
     document.getElementById('topics-edit-button').style.visibility = 'visible';
