@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {SessionService} from '../session-service';
 import {Session} from '../session';
 
@@ -13,11 +13,11 @@ export class RequestSessionComponent implements OnInit {
   session: Session;
 
   public requestForm = new FormGroup({
-    subject: new FormControl(''),
-    date: new FormControl(''),
-    time: new FormControl(''),
-    location: new FormControl(''),
-    remarks: new FormControl('')
+    subject: new FormControl('', Validators.required),
+    date: new FormControl('', Validators.required/*, this.checkDateValidator*/),
+    time: new FormControl('', Validators.required),
+    location: new FormControl('', Validators.required),
+    remarks: new FormControl('', Validators.required)
   });
 
   constructor(private sessionService: SessionService) {
@@ -33,5 +33,12 @@ export class RequestSessionComponent implements OnInit {
     this.requestForm.reset();
 
   }
+
+/*  checkDateValidator(control: AbstractControl): {[key: string]: boolean} | null {
+    if ( control.value === new Date()) {
+      return {givenDate: true};
+    }
+    return null;
+  }*/
 
 }
