@@ -1,0 +1,41 @@
+<h1 color="accent" translate>request-session.title</h1>
+<mat-card>
+
+  <form [formGroup]="requestForm">
+
+    <mat-form-field>
+      <mat-label translate>request-session.label.subject</mat-label>
+      <input id="subject" matInput type="text" formControlName="subject">
+    </mat-form-field>
+
+    <div class="aroundHalf">
+      <mat-form-field class="halfLine">
+        <mat-label translate>request-session.label.date</mat-label>
+        <input id="date" matInput type="date" formControlName="date">
+      </mat-form-field>
+      <mat-form-field class="secondHalf">
+        <mat-label translate>request-session.label.time</mat-label>
+        <input id="time" matInput type="time" formControlName="time">
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <mat-label translate>request-session.label.location</mat-label>
+      <input id="location" matInput type="text" formControlName="location">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label translate>request-session.label.remarks</mat-label>
+      <input id="remarks" matInput type="text" formControlName="remarks">
+    </mat-form-field>
+
+  </form>
+
+  <div class="button-container">
+    <button mat-raised-button color="primary" (click)="submit()">
+      <span translate>request-session.button.request-session</span>
+      <mat-icon>send</mat-icon>
+    </button>
+  </div>
+
+</mat-card>

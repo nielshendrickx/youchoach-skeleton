@@ -28,6 +28,8 @@ import {RequestProfileChangeComponent} from './request-profile-change/request-pr
 import {FilterCoachesByTopicPipe} from './filter-coaches-by-topic.pipe';
 import {FilterCoachesByYearPipe} from './filter-coach-by-year.pipe';
 import {FilterCoachesByNamePipe} from './filter-coach-by-name.pipe';
+import {RequestSessionComponent} from './request-session/request-session.component';
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -52,7 +54,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RequestProfileChangeComponent,
     FilterCoachesByTopicPipe,
     FilterCoachesByYearPipe,
-    FilterCoachesByNamePipe
+    FilterCoachesByNamePipe,
+    RequestSessionComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true}
