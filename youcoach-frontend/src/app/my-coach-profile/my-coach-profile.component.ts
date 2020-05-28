@@ -38,7 +38,8 @@ export class MyCoachProfileComponent implements OnInit {
 
   user: User;
   isAdmin = false;
-  topicEditMode = false;
+  profileInfoIsEditable = false;
+  topicsAreEditable = false;
   filteredTopicList1: Observable<string[]>;
   filteredTopicList2: Observable<string[]>;
   CoachList: User[];
@@ -116,6 +117,7 @@ export class MyCoachProfileComponent implements OnInit {
   editCoachInformation() {
     this.userForm.get('introduction').enable();
     this.userForm.get('availability').enable();
+    this.profileInfoIsEditable = true;
     document.getElementById('save-button').style.visibility = 'visible';
     document.getElementById('cancel-button').style.visibility = 'visible';
     document.getElementById('edit-button').style.visibility = 'hidden';
@@ -123,6 +125,7 @@ export class MyCoachProfileComponent implements OnInit {
 
   cancelCoachInformation(): void {
     this.initializeForm(this.user);
+    this.profileInfoIsEditable = false;
     document.getElementById('save-button').style.visibility = 'hidden';
     document.getElementById('cancel-button').style.visibility = 'hidden';
     document.getElementById('edit-button').style.visibility = 'visible';
@@ -152,7 +155,7 @@ export class MyCoachProfileComponent implements OnInit {
     this.topicsForm.get('topic1').enable();
     this.topicsForm.get('topic2').enable();
     this.topicsForm.get('grades1').enable();
-    this.topicEditMode = true;
+    this.topicsAreEditable = true;
     document.getElementById('topics-save-button').style.visibility = 'visible';
     document.getElementById('topics-cancel-button').style.visibility = 'visible';
     document.getElementById('topics-edit-button').style.visibility = 'hidden';
@@ -210,7 +213,7 @@ export class MyCoachProfileComponent implements OnInit {
 
   cancelCoachTopics() {
     this.initializeForm(this.user);
-    this.topicEditMode = false;
+    this.topicsAreEditable = false;
     document.getElementById('topics-save-button').style.visibility = 'hidden';
     document.getElementById('topics-cancel-button').style.visibility = 'hidden';
     document.getElementById('topics-edit-button').style.visibility = 'visible';
