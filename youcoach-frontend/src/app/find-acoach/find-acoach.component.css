@@ -18,13 +18,28 @@
   margin: 0 5px 10px 5px;
 }
 
+.mat-card-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
 ::ng-deep .mat-card-header-text {
+  margin: 0 !important;
+}
+
+.mat-card-title{
   margin: 0 !important;
 }
 
 .disabled-button{
   background-color: #029486 !important;
-  color: black !important;
+  color: white !important;
 }
 
 .search-by-name-filter{

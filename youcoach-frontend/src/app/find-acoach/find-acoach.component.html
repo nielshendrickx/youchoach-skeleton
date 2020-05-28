@@ -38,6 +38,10 @@
       | filterCoachesByYear:years.value | filterCoachesByName:searchText" [routerLink]="['/coach/', user.id]">
         <mat-card-header>
           <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+          <div class="spacer"></div>
+          <button mat-mini-fab [routerLink]="['/request-session/', user.id]">
+            <mat-icon>calendar_today</mat-icon>
+          </button>
         </mat-card-header>
         <img mat-card-image [src]=user.pictureUrl alt="profile picture">
         <mat-card-content>
@@ -52,8 +56,6 @@
             </tr>
           </table>
         </mat-card-content>
-        <mat-card-actions>
-        </mat-card-actions>
       </mat-card>
     </div>
   </mat-card>
