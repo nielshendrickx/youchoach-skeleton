@@ -147,7 +147,7 @@ export class CoachProfileComponent implements OnInit {
     const updateUser = this.userForm.value;
     updateUser.introduction = this.userForm.get('introduction').value;
     updateUser.availability = this.userForm.get('availability').value;
-    updateUser.userId = this.authenticationService.getUserId();
+    updateUser.userId = this.route.snapshot.paramMap.get('id');
     updateUser.topics = this.user.topics;
     this.userService.updateUser(updateUser).subscribe((response) => {
         this.user = response;
@@ -206,7 +206,7 @@ export class CoachProfileComponent implements OnInit {
       topic1Update,
       topic2Update
     ];
-    updateUser.userId = this.authenticationService.getUserId();
+    updateUser.userId = this.route.snapshot.paramMap.get('id');
     this.userService.updateUser(updateUser).subscribe((response) => {
         this.user = response;
         this.selectedGrades1 = [];
