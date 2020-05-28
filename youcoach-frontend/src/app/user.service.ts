@@ -49,7 +49,6 @@ export class UserService {
 
   /** PUT: update the user on the server. Returns the updated user upon success. */
   updateUser(updateUser: UpdateUser): Observable<any> {
-    console.log(updateUser);
     return this.http.put(`${this.UsersUrl}`, updateUser, this.httpOptions)
       .pipe(catchError(this.handleError('updateItem')));
   }
