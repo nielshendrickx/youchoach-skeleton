@@ -33,8 +33,6 @@ a{
   background-color: lightgray;
 }
 
-
-/*RESPONSIVE DESIGN*/
 @media only screen and (min-width: 451px) {
   .mobile-nav{
     display: none !important;
@@ -50,5 +48,3 @@ a{
     margin: 0 30% 0 30%;
   }
 }
-
-

@@ -87,7 +87,6 @@ export class MyProfileComponent implements OnInit {
     updateUser.userId = this.authenticationService.getUserId();
     updateUser.topics = this.user.topics;
     this.userService.updateUser(updateUser).subscribe((response) => {
-        console.log('response received');
         this.user = response;
         this.cancel();
       },

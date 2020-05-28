@@ -1,23 +1,5 @@
 <app-nav-bar></app-nav-bar>
-<!--todo-->
-<!-- limit visibility of coachee nav bar to coachees-->
 <app-coachee-nav-bar *ngIf="userId"></app-coachee-nav-bar>
-<!--  <nav class=" navbar navbar-light bg-light navbar-expand-lg
-  ">-->
-<!--    <ul class="navbar-nav mr-a*ngIf="loggedIn$ | async-->
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link" routerLink="/login">Login</a>-->
-<!--      </li>-->
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link" routerLink="/hello-world">Hello world</a>-->
-<!--      </li>-->
-<!--    </ul>-->
-<!--    <div class="mr-2">-->
-<!--      <div class="nav-item" *ngIf="username" translate [translateParams]="{username: username}">navbar.loggedin</div>-->
-<!--      <div class="nav-item" *ngIf="!username" translate>navbar.loggedout</div>-->
-<!--    </div>-->
-
-<!--  </nav>-->
 <router-outlet></router-outlet>
 <div style="flex: 1 0 auto"></div>
 <app-footer></app-footer>

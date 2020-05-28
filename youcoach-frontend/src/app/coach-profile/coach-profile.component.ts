@@ -34,6 +34,7 @@ export class CoachProfileComponent implements OnInit {
 
   user: User;
   isAdmin = false;
+  isCoachee = false;
   topicsAreEditable = false;
   filteredTopicList1: Observable<string[]>;
   filteredTopicList2: Observable<string[]>;
@@ -54,8 +55,9 @@ export class CoachProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
-    this.setBackgroundColor();
     this.verifyIfUserIsAnAdmin();
+    this.setBackgroundColor();
+    this.setColorAccordingToCoachee();
     this.getListOfAllCoachesAndTheirTopics();
     this.filterTopicList1();
     this.filterTopicList2();
@@ -76,6 +78,17 @@ export class CoachProfileComponent implements OnInit {
       .subscribe(user => {
         if (user.role === 'ADMINISTRATOR') {
           this.isAdmin = true;
+        }
+      });
+  }
+
+  setColorAccordingToCoachee(): void {
+    const id = this.authenticationService.getUserId();
+    this.userService.getUserById(id)
+      .subscribe(user => {
+        if (user.role === 'COACHEE') {
+          this.isCoachee = true;
+          this.setBackgroundColor();
         }
       });
   }
@@ -119,35 +132,44 @@ export class CoachProfileComponent implements OnInit {
   }
 
   setBackgroundColor(): void {
-    if (document.getElementById('coachee-nav-bar') !== null) {
-      document.getElementById('coachee-nav-bar').style.backgroundColor = '#009688';
+    if (this.isCoachee) {
+      document.getElementById('coachee-nav-bar').style.backgroundColor = '#fbc130';
+      document.getElementById('footer').style.backgroundColor = '#fbc130';
+    } else {
+      if (document.getElementById('coachee-nav-bar') !== null) {
+        document.getElementById('coachee-nav-bar').style.backgroundColor = '#009688';
+      }
+      document.getElementById('footer').style.backgroundColor = '#009688';
     }
-    document.getElementById('footer').style.backgroundColor = '#009688';
   }
 
-  editCoachInformation() {
-    this.userForm.get('introduction').enable();
-    this.userForm.get('availability').enable();
-    document.getElementById('save-button').style.visibility = 'visible';
-    document.getElementById('cancel-button').style.visibility = 'visible';
-    document.getElementById('edit-button').style.visibility = 'hidden';
+    editCoachInformation() {
+      this.userForm.get('introduction').enable();
+      this.userForm.get('availability').enable();
+      document.getElementById('save-button').style.visibility = 'visible';
+      document.getElementById('cancel-button').style.visibility = 'visible';
+      document.getElementById('edit-button').style.visibility = 'hidden';
+    }
+
+    cancelCoachInformation()
+  :
+    void {
+      this.initializeForm(this.user);
+      document.getElementById('save-button').style.visibility = 'hidden';
+      document.getElementById('cancel-button').style.visibility = 'hidden';
+      document.getElementById('edit-button').style.visibility = 'visible';
   }
 
-  cancelCoachInformation(): void {
-    this.initializeForm(this.user);
-    document.getElementById('save-button').style.visibility = 'hidden';
-    document.getElementById('cancel-button').style.visibility = 'hidden';
-    document.getElementById('edit-button').style.visibility = 'visible';
-  }
-
-  saveCoachInformation(): void {
-    this.userForm.disable();
-    const updateUser = this.userForm.value;
-    updateUser.introduction = this.userForm.get('introduction').value;
-    updateUser.availability = this.userForm.get('availability').value;
-    updateUser.userId = this.route.snapshot.paramMap.get('id');
-    updateUser.topics = this.user.topics;
-    this.userService.updateUser(updateUser).subscribe((response) => {
+    saveCoachInformation()
+  :
+    void {
+      this.userForm.disable();
+      const updateUser = this.userForm.value;
+      updateUser.introduction = this.userForm.get('introduction').value;
+      updateUser.availability = this.userForm.get('availability').value;
+      updateUser.userId = this.route.snapshot.paramMap.get('id');
+      updateUser.topics = this.user.topics;
+      this.userService.updateUser(updateUser).subscribe((response) => {
         this.user = response;
         this.cancelCoachInformation();
       },
@@ -156,71 +178,79 @@ export class CoachProfileComponent implements OnInit {
       });
   }
 
-  editTopics() {
-    this.topicsForm.get('topic1').enable();
-    this.topicsForm.get('topic2').enable();
-    this.topicsForm.get('grades1').enable();
-    this.topicsAreEditable = true;
-    document.getElementById('topics-save-button').style.visibility = 'visible';
-    document.getElementById('topics-cancel-button').style.visibility = 'visible';
-    document.getElementById('topics-edit-button').style.visibility = 'hidden';
+    editTopics() {
+      this.topicsForm.get('topic1').enable();
+      this.topicsForm.get('topic2').enable();
+      this.topicsForm.get('grades1').enable();
+      this.topicsAreEditable = true;
+      document.getElementById('topics-save-button').style.visibility = 'visible';
+      document.getElementById('topics-cancel-button').style.visibility = 'visible';
+      document.getElementById('topics-edit-button').style.visibility = 'hidden';
+    }
+
+    filterTopicList1()
+  :
+    void {
+      this.filteredTopicList1 = this.topicsForm.get('topic1').valueChanges
+        .pipe(
+          startWith(''),
+          map(value => this._filter(value))
+        );
   }
 
-  filterTopicList1(): void {
-    this.filteredTopicList1 = this.topicsForm.get('topic1').valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
+    filterTopicList2()
+  :
+    void {
+      this.filteredTopicList2 = this.topicsForm.get('topic2').valueChanges
+        .pipe(
+          startWith(''),
+          map(value => this._filter(value))
+        );
   }
+    _filter(value
+  :
+    string
+  ):
+    string[] {
+      const filterValue = value.toLowerCase();
+      return this.topicList.filter(option => option.toLowerCase().includes(filterValue));
+    }
 
-  filterTopicList2(): void {
-    this.filteredTopicList2 = this.topicsForm.get('topic2').valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
-  }
-  _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.topicList.filter(option => option.toLowerCase().includes(filterValue));
-  }
+    saveCoachTopics() {
+      this.topicsForm.disable();
+      const updateUser = this.userForm.value;
+      updateUser.introduction = this.user.introduction;
+      updateUser.availability = this.user.availability;
 
-  saveCoachTopics() {
-    this.topicsForm.disable();
-    const updateUser = this.userForm.value;
-    updateUser.introduction = this.user.introduction;
-    updateUser.availability = this.user.availability;
+      const topic1Update: Topic = {
+        grade: this.selectedGrades1,
+        name: this.topicsForm.get('topic1').value
+      };
+      const topic2Update: Topic = {
+        grade: this.selectedGrades2,
+        name: this.topicsForm.get('topic2').value
+      };
+      updateUser.topics = [
+        topic1Update,
+        topic2Update
+      ];
+      updateUser.userId = this.route.snapshot.paramMap.get('id');
+      this.userService.updateUser(updateUser).subscribe((response) => {
+          this.user = response;
+          this.selectedGrades1 = [];
+          this.selectedGrades2 = [];
+          this.cancelCoachTopics();
+        },
+        () => {
+          console.error('error caught in component');
+        });
+    }
 
-    const topic1Update: Topic = {
-      grade: this.selectedGrades1,
-      name: this.topicsForm.get('topic1').value
-    };
-    const topic2Update: Topic = {
-      grade: this.selectedGrades2,
-      name: this.topicsForm.get('topic2').value
-    };
-    updateUser.topics = [
-      topic1Update,
-      topic2Update
-    ];
-    updateUser.userId = this.route.snapshot.paramMap.get('id');
-    this.userService.updateUser(updateUser).subscribe((response) => {
-        this.user = response;
-        this.selectedGrades1 = [];
-        this.selectedGrades2 = [];
-        this.cancelCoachTopics();
-      },
-      () => {
-        console.error('error caught in component');
-      });
+    cancelCoachTopics() {
+      this.initializeForm(this.user);
+      this.topicsAreEditable = false;
+      document.getElementById('topics-save-button').style.visibility = 'hidden';
+      document.getElementById('topics-cancel-button').style.visibility = 'hidden';
+      document.getElementById('topics-edit-button').style.visibility = 'visible';
+    }
   }
-
-  cancelCoachTopics() {
-    this.initializeForm(this.user);
-    this.topicsAreEditable = false;
-    document.getElementById('topics-save-button').style.visibility = 'hidden';
-    document.getElementById('topics-cancel-button').style.visibility = 'hidden';
-    document.getElementById('topics-edit-button').style.visibility = 'visible';
-  }
-}

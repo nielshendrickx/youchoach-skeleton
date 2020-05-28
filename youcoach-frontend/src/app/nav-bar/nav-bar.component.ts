@@ -52,5 +52,3 @@ export class NavBarComponent implements OnInit {
     return this.language;
   }
 }
-
-

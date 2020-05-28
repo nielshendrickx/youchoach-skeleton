@@ -30,8 +30,6 @@ import {FilterCoachesByYearPipe} from './filter-coach-by-year.pipe';
 import {FilterCoachesByNamePipe} from './filter-coach-by-name.pipe';
 import {RequestSessionComponent} from './request-session/request-session.component';
 
-
-
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }

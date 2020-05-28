@@ -41,7 +41,6 @@ export class RegisterComponent implements OnInit {
   registerUser(): void {
     this.resetError();
     this.authenticationService.register(this.userForm.value).subscribe(() => {
-        console.log('response received');
         this.goToUserProfile();
       },
       (error) => {

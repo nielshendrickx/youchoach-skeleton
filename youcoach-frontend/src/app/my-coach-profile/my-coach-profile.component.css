@@ -47,13 +47,6 @@
   flex-wrap: wrap;
 }
 
-
-/*info-detail-container {*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  justify-content: space-between;*/
-/*}*/
-
 .mat-button-toggle-checked {
   background-color: #029486;
 }
@@ -106,7 +99,6 @@ th, td {
 #topics-edit-button{
   color: black;
 }
-
 
 @media only screen and (max-width: 450px) {
   h2{

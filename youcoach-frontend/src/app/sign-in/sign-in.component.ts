@@ -35,7 +35,6 @@ export class SignInComponent implements OnInit {
     this.resetError();
     this.authenticationService.login(this.signInForm.value)
       .subscribe(() => {
-          console.log('response received');
           this.goToUserProfile();
         },
         (error) => {

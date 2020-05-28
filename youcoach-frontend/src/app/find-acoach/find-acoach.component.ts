@@ -24,7 +24,6 @@ export class FindACoachComponent implements OnInit {
   ngOnInit(): void {
     this.setBackgroundColor();
     this.getListOfAllCoaches();
-
   }
 
   setBackgroundColor(): void {

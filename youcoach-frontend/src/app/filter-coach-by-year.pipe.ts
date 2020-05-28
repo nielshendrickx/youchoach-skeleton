@@ -27,4 +27,3 @@ export class FilterCoachesByYearPipe implements PipeTransform {
     return false;
   }
 }
-

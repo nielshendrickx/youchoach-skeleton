@@ -18,10 +18,7 @@ export class SessionService {
   constructor(private http: HttpClient) {
   }
 
-   /** POST: request a new session to server */
    registerSession(sessionData): Observable<any> {
-     console.log('serv');
-     console.log(sessionData);
      return this.http.post<any>(this.RequestSessionURL, sessionData, {observe: 'response'});
    }
 

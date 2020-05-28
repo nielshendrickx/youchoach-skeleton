@@ -1,15 +1,11 @@
 <div class="container">
-<!--  left side menu:-->
   <div class="link-container">
     <p translate>my-coach-profile-menu.title</p>
     <mat-button-toggle-group vertical>
       <mat-button-toggle (click)="goToCoachProfile()"><span translate>my-coach-profile-menu.link.profile-information</span></mat-button-toggle>
-<!--      <mat-button-toggle><span translate>my-coach-profile-menu.link.coaching-sessions</span></mat-button-toggle>-->
       <mat-button-toggle  checked="true"><span translate>my-coach-profile-menu.link.request-profile-change</span></mat-button-toggle>
     </mat-button-toggle-group>
   </div>
-
-<!--  actual page:-->
   <div class="profile-container">
     <mat-card class="card">
       <div class="card-header">

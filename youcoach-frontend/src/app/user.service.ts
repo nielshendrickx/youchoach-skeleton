@@ -53,7 +53,6 @@ export class UserService {
       .pipe(catchError(this.handleError('updateItem')));
   }
 
-
   private handleError(operation = 'operation') {
     return (error: any) => {
       console.error(error);

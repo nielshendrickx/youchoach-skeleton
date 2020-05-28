@@ -105,7 +105,6 @@ export class MyCoachProfileComponent implements OnInit {
         this.selectedGrades2.push(gradeHelp);
       });
     }
-
     this.topicsForm.disable();
   }
 
