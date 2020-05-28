@@ -90,7 +90,6 @@ public class UsersService {
 
     private boolean userHasNewTopics(UpdateUserDto updateUserDto) {
         Users user = usersRepository.findBySecuredUser_Id(updateUserDto.getUserId());
-        System.out.println(updateUserDto);
         return updateUserDto.getTopics().equals(user.getTopics());
     }
 
