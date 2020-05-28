@@ -18,7 +18,7 @@ public class Topic {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(cascade = {CascadeType.ALL})
+    @OneToMany(cascade = {CascadeType.MERGE})
     @JoinColumn(name = "fk_topic_id")
     private List<Grade> grade;
 
@@ -35,5 +35,14 @@ public class Topic {
 
     public List<Grade> getGrade() {
         return grade;
+    }
+
+    @Override
+    public String toString() {
+        return "Topic{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", grade=" + grade +
+                '}';
     }
 }
